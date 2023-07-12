@@ -93,7 +93,7 @@
 	\addtocounter{framenumber}{-1}
     \begin{outlineframe}
     \frametitle{\outlineTitle} % \renewcommand{\outlineTitle}{Overzicht}
-        \tableofcontents[currentsection]
+        \tableofcontents[currentsection,hideallsubsections]
     \end{outlineframe}
 	\setbeamerfont{section in toc}{series=\mdseries}			
 }}}
