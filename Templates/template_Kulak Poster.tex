@@ -1,0 +1,42 @@
+\documentclass[kulak]{kulakposter}
+% % % options: [kulak] (default), [kuleuven-brugge], or [kul] for appropriate logo
+% % % options: [landscape] or [portrait] (default) for appropriate logo
+% % % options: [photo] (default) or [nophoto] for photo next to logo
+% % % options: [background] or [nobackground] (default) or [nophoto] for light blue or white background
+% % % poster format: [a3], ..., [a0] - increase page size AND font size
+% % % \photohere manual placement of photo (only with [nophoto])
+% % % run pdflatex 2 times for 
+
+\usepackage[dutch]{babel} % % % Choose your language  % % % 
+
+\title{Titel van de poster}
+\faculty{Groep Wetenschap \& Technologie Kulak}
+\institute{Naam van het vak}
+\author{Voornaam Naam}
+\photo{photo}
+
+
+\begin{document}
+
+\maketitle
+
+\section*{Inleiding}
+\begin{multicols}{2}\setlength{\columnseprule}{0pt}
+Inleidende tekst.
+\end{multicols}
+
+\begin{multicols}{2}
+\section{Hoofdstuktitel}
+Tekst. \photohere
+
+\columnbreak
+\section{Hoofdstuktitel}
+Tekst.
+\end{multicols}
+
+\section*{Besluit}
+\begin{multicols}{2}\setlength{\columnseprule}{0pt}
+Afsluitende tekst.
+\end{multicols}
+
+\end{document}

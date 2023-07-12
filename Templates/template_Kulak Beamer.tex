@@ -1,0 +1,48 @@
+\documentclass
+[kulak,handout] % [kulak|kul|kuleuven-brugge,handout|outline|]
+{kulakbeamer}
+
+\usepackage[dutch]{babel}
+\usepackage[T1]{fontenc}
+
+\title[Korte titel]{Lange titel}
+\subtitle{Ondertitel}
+\author[Korte naam]{Lange naam} 
+\institute[Kulak]{KU Leuven Kulak}
+\date{Academiejaar 2023 -- 2024}
+
+\renewcommand{\outlineTitle}{Overzicht} % enkel met optie outline
+
+\begin{document}
+	
+	\begin{titleframe}
+		\titlepage
+	\end{titleframe}
+	
+	\begin{outlineframe}[Overzicht]
+		\tableofcontents
+	\end{outlineframe}
+	
+	% % % Here you go  % % % 
+	
+	\section{Inleiding}
+	
+	\begin{frame}
+		\frametitle{Inleidende frame}
+		Inleidende tekst.
+	\end{frame}
+	
+	\section[Korte titel]{Lange hoofdstuktitel}
+	
+	\begin{frame}
+		\frametitle{Frame-titel}
+		Tekst.
+	\end{frame}
+	
+	\section{Besluit}
+	\begin{frame}
+		\frametitle{Afsluitende frame}
+		Afsluitende tekst.
+	\end{frame}
+	
+\end{document}
