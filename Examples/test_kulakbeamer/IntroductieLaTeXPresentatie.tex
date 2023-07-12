@@ -1,0 +1,1630 @@
+%\documentclass[kulak,handout]{kulakbeamer} % handout
+\documentclass[kulak,outline]{kulakbeamer} % outline
+
+\usepackage[dutch]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{siunitx}
+    \sisetup{output-decimal-marker = {,}}
+\usepackage{chemfig}
+	\setchemfig{atom sep=2em}
+\usepackage[version=3]{mhchem}
+\DeclareMathOperator{\Bgtan}{Bgtan}
+\newcommand{\R}{\ensuremath{\mathbb{R}}}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
+\newenvironment{roodmidden}
+{\begin{center}\color{red}}
+	{\end{center}}
+\usepackage{cancel}
+
+\usefonttheme[onlymath]{serif}			% math font with serifs, delete to make it sans-serif
+
+\title[\LaTeX\ en Beamer]{De kunst van het tekstzetten}
+\subtitle{\LaTeX\ en Beamer}
+\author{Stijn Rebry}
+\institute[Kulak]{Groep Wetenschap \& Technologie, Kulak}
+\date{X0B53a -- Wetenschappelijk rekenen en schrijven}
+\renewcommand{\outlineTitle}{Overzicht}
+
+\begin{document}
+	
+	\begin{titleframe}
+	\titlepage
+\end{titleframe}
+
+\begin{outlineframe}\frametitle{Overzicht}
+	\tableofcontents[hideallsubsections]
+\end{outlineframe}
+
+\section{Introductie}
+
+\begin{frame}[t]
+\frametitle{Wat is LaTeX?}
+\begin{itemize}
+	\item Stabiel, platform-onafhankelijk, betrouwbaar
+	\begin{itemize}
+		\item Gebaseerd op \TeX\ (1977, Donald Knuth)
+		\item Macro's met voorgedefinieerde lay-out
+		\item Nog steeds in ontwikkeling en achterwaarts compatibel
+	\end{itemize}
+	\item Mark-up in plaats van WYSIWYG
+	\begin{itemize}
+		\item Auteur bepaalt de logische structuur
+		\item \LaTeX\ bepaalt de lay-out
+	\end{itemize}
+	\item Voor- en nadelen\ldots
+	\begin{itemize}
+		\item Automatisch een consequente, professionele lay-out
+		\item Mooie en eenvoudig te maken formules
+		\item Onmogelijk om ongestructureerde documenten te maken
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+% -----------------------------------------------------------
+
+\begin{frame}[t]
+\frametitle{Waaruit bestaat een LaTeX-systeem?}
+\begin{enumerate}
+\item Een geschikte editor
+\begin{itemize}
+	\item Bron is een gewoon tekst-bestand (\texttt{.tex})
+	\item Windows: \texttt{TeXStudio}
+\end{itemize}
+\item Een \LaTeX-distributie
+\begin{itemize}
+	\item Zet \texttt{.tex}-tekst om naar \texttt{.pdf}-bestand
+	\item Windows, Linux: \texttt{TeX Live}
+	\item Mac OS: \texttt{MacTeX}
+\end{itemize}
+\item Een flexibele viewer
+\begin{itemize}
+	\item Printen, presenteren, doorzoeken van het \texttt{.pdf}-bestand
+	\item Windows: \texttt{SumatraPDF}
+\end{itemize}
+\end{enumerate}
+\end{frame}
+
+
+\section{Wetenschappelijke artikels schrijven}
+
+\subsection{Basissyntax van een \LaTeX-document}
+
+\begin{frame}[fragile,t]
+\frametitle{Een minimaal document}
+\begin{columns}
+\column{.5\textwidth}
+\begin{exampleblock}{Minimaal document}
+\begin{verbatim}
+\documentclass{article}
+
+\begin{document}
+
+Dag iedereen!
+
+\end{document}
+\end{verbatim}
+\end{exampleblock}
+\column{.5\textwidth}
+\verb+\documentclass{}+\newline bepaalt de lay-out:
+\begin{itemize}
+\item \texttt{article}: korte tekst
+\item \texttt{book}: een boek
+\item \texttt{beamer}:  een presentatie
+\item \ldots
+\end{itemize}
+\end{columns}
+\end{frame}
+
+% -----------------------------------------------------------
+
+\begin{frame}[fragile,t]
+\frametitle{Structuur van een document}
+\begin{columns}
+\column{.5\textwidth}
+\begin{block}{Minimale syntax}
+\begin{verbatim}
+\documentclass{article}
+
+% Preamble
+
+\begin{document}
+
+% Body
+
+\end{document}
+\end{verbatim}
+\end{block}
+\column{.5\textwidth}
+\begin{itemize}
+\item Preamble: Instellingen\newline
+van \verb+\documentclass+\newline
+tot \verb+\begin{document}+
+\item Body: Inhoud\newline van \verb+\begin{document}+\newline tot \verb+\end{document}+
+\end{itemize}
+\end{columns}
+\end{frame}
+
+% -----------------------------------------------------------
+
+\begin{frame}[fragile,t]
+\frametitle{Structuur van commando's}
+\begin{columns}
+\column{.5\textwidth}
+\begin{block}{Syntax van commando's}
+\begin{verbatim}
+\commando{arg}
+\commando{arg1}{arg2}
+\commando[opt]{arg}
+
+\begin{environment}
+...
+\end{environment}
+
+% Commentaar
+\end{verbatim}
+\end{block}
+\column{.5\textwidth}
+\begin{itemize}
+\item Commando's beginnen met \verb+\+ backslash 
+\item Argumenten tussen \verb+{}+ accolades
+\item Optionele argumenten tussen \verb+[]+ vierkante haakjes
+\item Omgevingen/environments\newline
+tussen \verb+\begin{...}+ en \verb+\end{...}+
+\item Commentaar achter een \verb+%+ procent-teken
+\end{itemize}
+\end{columns}
+\end{frame}
+
+% -----------------------------------------------------------
+
+\begin{frame}[fragile,t]
+\frametitle{De hoofding}
+\begin{columns}
+\column{.5\textwidth}
+\begin{exampleblock}{Titel, auteur en datum}
+\begin{verbatim}
+\documentclass{article}
+\title{Van start ...}
+\author{Stijn Rebry}
+\date{\today}
+
+\begin{document}
+\maketitle
+Dag iedereen!
+\end{document}
+\end{verbatim}
+\end{exampleblock}
+\column{.5\textwidth}
+\begin{itemize}
+\item \verb+\title+, \verb+\author+, \verb+\date+\newline leggen informatie vast
+\item \verb+\today+\newline de datum van vandaag
+\item \verb+\maketitle+\newline maakt de hoofding
+\end{itemize}
+\end{columns}
+\end{frame}
+
+% -----------------------------------------------------------
+
+\begin{frame}[fragile,t]
+\frametitle{Extra Pakketten}
+\begin{columns}
+\column{.5\textwidth}
+\begin{exampleblock}{Taal, hyperlinks en figuren}
+\begin{verbatim}
+\documentclass{article}
+
+\usepackage[dutch]{babel}
+\usepackage{hyperref}
+\usepackage{graphicx}
+
+\title{Van start ...}
+\end{verbatim}
+\end{exampleblock}
+\column{.5\textwidth}
+Belangrijke pakketten:
+\begin{itemize}
+%\item \texttt{inputenc}: vreemde symbolen
+\item \texttt{babel}: woordafbreking
+\item \texttt{hyperref}: hyperlinks
+\item \texttt{graphics}: figuren
+\end{itemize}
+\end{columns}
+\end{frame}
+
+% -----------------------------------------------------------
+
+\begin{frame}[fragile,t]
+\frametitle{Vreemde symbolen}
+\begin{columns}
+\column{.5\textwidth}
+\begin{exampleblock}{Speciale tekens}
+\begin{verbatim}
+
+\# \$ \% \& \{ \}
+
+\^ e \^{} e \~ n \~{} n
+
+- \(-\) -- 
+
+\LaTeX \LaTeX\ \LaTeX
+
+\end{verbatim}
+\end{exampleblock}
+\column{.5\textwidth}
+\begin{itemize}
+\item Speciale symbolen:\newline
+\# \$ \% \& \{ \}\newline
+backslash toevoegen
+\item Accenten en tilde:\newline
+\^ e \^{} e \~ n \~{} n\newline
+vereisen leeg argument
+\item Koppelteken -, minteken \(-\), gedachte\-streepje --
+\item Witruimte na commando verdwijnt, backslash + spatie zet expliciete spatie:\newline
+\LaTeX \LaTeX\ \LaTeX
+\end{itemize}
+\end{columns}
+\end{frame}
+
+
+% -----------------------------------------------------------
+
+\subsection{Structureren van een tekst}
+
+\begin{frame}[fragile,t]
+\frametitle{Hoofdstukken}
+\begin{columns}
+\column{.5\textwidth}
+\begin{exampleblock}{(sub)\(^{\ast}\)secties}
+\begin{verbatim}
+\section*{Inleiding}
+Ongenummerde sectie.
+
+\section{Het begin}
+Automatische nummering
+
+\subsection{Subsectie}
+Dubbele nummering 
+\end{verbatim}
+\end{exampleblock}
+\column{.5\textwidth}
+Verschillende niveau's
+\begin{itemize}
+\item \verb+\part+
+\item \verb+\chapter+
+\item \verb+\section+
+\item \verb+\subsection+
+\item \verb+\subsubsection+
+\item \verb+\paragraph+
+\item \verb+\subparagraph+
+\end{itemize}
+Inhoudstafel maken:
+\begin{itemize}
+\item \verb+\tableofcontents+
+\end{itemize}
+\end{columns}
+\end{frame}
+
+% -----------------------------------------------------------
+
+\begin{frame}[fragile,t]
+\frametitle{Opsommingen}
+\begin{columns}
+\column{.5\textwidth}
+\begin{exampleblock}{Van begin tot end}
+\begin{verbatim}
+\begin{enumerate}
+
+\item Editor
+
+\item Distributie
+
+\item Viewer
+
+\end{enumerate}
+\end{verbatim}
+\end{exampleblock}
+\column{.5\textwidth}
+Soorten lijsten:
+\begin{itemize}
+\item \texttt{enumerate}
+\item \texttt{itemize}
+\item \texttt{description}
+\end{itemize}
+Nesten van lijsten mogelijk
+\end{columns}
+\end{frame}
+
+% -----------------------------------------------------------
+
+\begin{frame}[fragile,t]
+\frametitle{Uitlijning}
+\begin{columns}
+\column{.5\textwidth}
+\begin{exampleblock}{Van links naar rechts}
+\begin{verbatim}
+\begin{flushright}
+\today
+\end{flushright}
+
+\begin{center}
+In het midden
+\end{center}
+\end{verbatim}
+\end{exampleblock}
+\column{.5\textwidth}
+Soorten uitlijning:
+\begin{itemize}
+\item \texttt{flushleft}
+\item \texttt{flushright}
+\item \texttt{center}
+\item \texttt{quote}
+\item \ldots
+\end{itemize}
+\end{columns}
+\end{frame}
+
+% -----------------------------------------------------------
+
+\begin{frame}[fragile,t]
+\frametitle{Computercode en typewriter-font}
+\begin{columns}
+\column{.5\textwidth}
+\begin{exampleblock}{Computercode}
+\verb|\texttt{typewriter}|\newline
+
+\verb|\verb+\texttt{...}+|\newline
+\verb=\verb+\verb|...|+=\newline
+
+\verb|\begin{verbatim}|\newline
+\verb| test := proc(x)|\newline
+\verb|  x := x**2;|\newline
+\verb| end proc:|\newline
+\verb|\end{verbatim}|
+\end{exampleblock}
+\column{.5\textwidth}
+Computercode steeds in \texttt{typewriter}-lettertype
+\begin{itemize}
+\item Doorlopende tekst:\newline
+\verb|\texttt{...}|
+\item LaTeX-code weergeven:\newline
+\verb+\verb|...|+\newline
+met willekeurig begin- en eindsymbool (hier \verb+|+)
+\item Meerdere lijnen:\newline
+\texttt{verbatim}-environment
+\item Lange stukken code:\newline
+\texttt{listings}-pakket
+\end{itemize}
+\end{columns}
+\end{frame}
+
+% -----------------------------------------------------------
+
+\begin{frame}[fragile,t]
+\frametitle{Kruisverwijzingen}
+\begin{columns}
+\column{.5\textwidth}
+\begin{exampleblock}{Labels en referenties}
+\begin{verbatim}
+\section*{Inleiding}
+In hoofdstuk \ref{sec:install}
+op pagina \pageref{sec:install}
+wordt eerst...
+
+\section{Installatie}
+\label{sec:install}
+\subsection{MikTeX}
+\label{sub:miktex} 
+\end{verbatim}
+\end{exampleblock}
+\column{.5\textwidth}
+\begin{itemize}
+\item \verb+\label+ maakt een onzichtbaar etiket
+\item \verb+\ref+ plaatst het correcte nummer
+\item \verb+\pageref+ verwijst naar de pagina
+\item 2 \(\times\) \LaTeX\ uitvoeren
+\end{itemize}
+\end{columns}
+\end{frame}
+
+% -----------------------------------------------------------
+
+\begin{frame}[fragile,t]
+\frametitle{Voetnoten}
+Voetnoten\footnote{Dit is een voetnoot} in doorlopende tekst worden geplaatst met het commando \verb|\footnote|.
+\begin{columns}
+\column{.5\textwidth}
+\begin{exampleblock}{Labels en referenties}
+\begin{verbatim}
+\footnote
+{Dit is een voetnoot}
+
+\footnotemark
+\footnotetext
+{Nog een voetnoot}
+\end{verbatim}
+\end{exampleblock}
+\column{.5\textwidth}
+\begin{itemize}
+\item Doorlopende tekst:\newline
+\verb|\footnote{...}|
+\item Speciale omgevingen\footnotemark:\newline
+\verb|\footnotemark|\newline
+Verderop in tekst\newline
+\verb|\footnotetext{...}|\newline
+\end{itemize}
+\end{columns}
+\footnotetext{Nog een voetnoot\newline\newline ~}
+\end{frame}
+
+% -----------------------------------------------------------
+
+\begin{frame}[fragile,t]
+	\frametitle{Hyperlinks}
+	\begin{columns}
+		\column{.5\textwidth}
+		\begin{exampleblock}{Hyperlinks}
+			\begin{verbatim}
+				\href{https://...}{text}
+				
+				\href{mailto:...}{text}
+			\end{verbatim}
+		\end{exampleblock}
+		\column{.5\textwidth}
+\verb+\href{URL}{tekst}+
+		\begin{itemize}
+			\item \texttt{URL}, de effectieve link
+			\item \texttt{text}, aanklikbare tekst
+			\item speciale symbolen worden aanvaard
+			\item \texttt{mailto:...} voor e-mailadressen
+		\end{itemize}
+	\end{columns}
+\end{frame}
+
+% -----------------------------------------------------------
+
+\subsection{Tabellen en figuren invoegen}
+
+\begin{frame}[fragile,t]
+\frametitle{Tabellen invoegen}
+\begin{columns}
+\column{.5\textwidth}
+\begin{exampleblock}{Tabel maken}
+\begin{verbatim}
+
+\begin{tabular}{l|rc}
+& kop 1 & kop 2 \\
+\hline
+rij1 &   abc &  123  \\
+rij2 &     A &   1
+\end{tabular}
+
+\end{verbatim}
+\end{exampleblock}
+\column{.5\textwidth}
+\begin{itemize}
+\item \texttt{tabular}-omgeving
+\item Kolomdefinitie \verb|{rcl}|: één symbool per kolom\newline
+- \verb|r| rechts uitgelijnd\newline
+- \verb|c| gecentreerd\newline
+- \verb|l| links uitgelijnd\newline
+- \verb+|+ vertikale lijn\newline
+- \verb|\hline| horizontale lijn
+\item \verb|&| kolomscheiding
+\item \verb|\\| nieuwe rij
+\end{itemize}
+\end{columns}
+\end{frame}
+
+% -----------------------------------------------------------
+
+\begin{frame}[fragile,t]
+\frametitle{Tabellen invoegen}
+\begin{columns}
+\column{.5\textwidth}
+\begin{exampleblock}{Speciale kolomdefinities}
+\begin{verbatim}
+\begin{tabular}{p{5cm}}
+Tekst in een kolom van 5 cm breed
+over meerdere lijnen
+\end{tabular}
+
+\begin{tabular}
+	{r@{$\leftrightarrow$}l}
+groot & klein\\ dik  & dun
+\end{tabular}
+\end{verbatim}
+\end{exampleblock}
+\column{.5\textwidth}
+\begin{itemize}
+\item Kolomdefinitie \verb|p{5cm}|:\newline
+- kolom met vaste breedte\newline
+- tekst over meerdere lijnen
+\item Scheidingsteken tussen twee kolommen:  \verb|@{...}|
+\item Tekst gecentreerd over twee kolommen:\newline
+\verb|\multicolumn|\newline
+\verb|   {2}{c}{text}|\newline
+\end{itemize}
+\end{columns}
+\end{frame}
+
+% -----------------------------------------------------------
+
+\begin{frame}[fragile,t]
+\frametitle{Figuur invoegen}
+\begin{columns}
+\column{.5\textwidth}
+\begin{exampleblock}{Figuur invoegen}
+\begin{verbatim}
+\documentclass{article}
+\usepackage{graphicx}
+\begin{document}
+
+\includegraphics
+[width=.5\textwidth]
+{figuur}
+
+\end{document}
+\end{verbatim}
+\end{exampleblock}
+\column{.5\textwidth}
+\begin{itemize}
+\item Pakket \texttt{graphic}\alert<2>{\texttt{x}} vereist
+\item \verb+\includegraphic+\alert<2>{\texttt{s}}\texttt{\{bestand\}}\newline
+figuur \texttt{bestand.???} invoegen
+\item Extensie \texttt{.pdf}, \texttt{.png} of \texttt{.jpg},\newline
+\alert<2>{niet \texttt{.jpeg}, \texttt{.JPG}, \texttt{.bmp}, \ldots}
+\item Best in dezelfde map
+\item Hoofdlettergevoelig
+\item \alert<2>{Nooit} spaties in bestandsnamen
+\item Optioneel argument:\newline grootte, rotatie, \ldots
+\end{itemize}
+\end{columns}
+\end{frame}
+
+% -----------------------------------------------------------
+
+%\begin{frame}[fragile,t]
+%\frametitle{Wetenschappelijke afbeeldingen}
+%\begin{itemize}
+%\item Rasterafbeeldingen (\texttt{.jpg} en \texttt{.png}) \alert{ongeschikt} voor grafieken
+%%\item \texttt{.pdf}-export in Maple \alert{ongeschikt} (volledige pagina)
+%%\item \texttt{.eps}-bestanden na conversie wel bruikbaar
+%\item Klik in TeXStudio op \texttt{Options}, \texttt{Configure TeXstudio}, \texttt{Commands}, \texttt{PdfLaTeX}
+%\item Voeg de optie \texttt{--shell-escape} toe:\newline
+%\verb|pdflatex --shell-escape %.tex|
+%\item Package \texttt{epstopdf} inladen
+%\item \texttt{.eps}-figuur inladen zoals normaal\newline
+%\verb|\includegraphics{figuur}|
+%\end{itemize}
+%\end{frame}
+
+% -----------------------------------------------------------
+
+\begin{frame}[fragile,t]
+\frametitle{Float maken van tabel of figuur}
+\begin{columns}
+\column{.5\textwidth}
+\begin{exampleblock}{Figuren laten zweven}
+\begin{verbatim}
+\begin{figure}
+\centering
+\includegraphics{...}
+\caption{bijschrift}
+\label{fig:euclides}
+\end{figure}
+
+\listoffigures
+\end{verbatim}
+\end{exampleblock}
+\column{.5\textwidth}
+\begin{itemize}
+\item Zwevende omgeving met\newline
+\texttt{figure} of \texttt{table}\newline
+voor figuur resp.\ tabel
+\item \verb+\centering+\newline inhoud centreren
+\item \verb+\caption+ + \verb+\label+\newline
+bijschrift voor kruisverwijzing
+\item \verb|\listoffigures| en \verb|\listoftables| voor lijst van figuren resp.\ tabellen
+\end{itemize}
+\end{columns}
+\end{frame}
+
+% -----------------------------------------------------------
+
+\subsection{Bibliografie en index}
+
+\begin{frame}[fragile,t]
+\frametitle{Bibliografische informatie verzamelen}
+\begin{columns}
+\column{.5\textwidth}
+\begin{exampleblock}{Het \texttt{.bib}-bestand}
+\begin{verbatim}
+@article{label_article,
+  title={...},
+  author={...}}
+@book{label_book,
+  title={...},
+  author={...}}
+@misc{label_website,
+  title={...},
+  author={...}}
+\end{verbatim}
+\end{exampleblock}
+\column{.5\textwidth}
+\begin{itemize}
+\item Afzonderlijk bestand met\newline bibliografische informatie\newline
+\verb+mijnbib.bib+
+\item Een record per bron,\newline
+\verb+@article{...}+, \verb+@book{...}+, \verb+@misc{...}+, \ldots
+\item Noodzakelijke informatie in velden naargelang type bron,\newline
+\verb+title={...}+, \verb+author={...}+, \verb+publisher={...}+, \ldots
+\end{itemize}
+\end{columns}
+\end{frame}
+
+% -----------------------------------------------------------
+
+\begin{frame}[fragile,t]
+\frametitle{Bibliografische informatie invoegen}
+\begin{columns}
+\column{.5\textwidth}
+\begin{exampleblock}{Citaties en bibliografie}
+\begin{verbatim}
+Uit het werk van Dierckx
+\cite{label_article} blijkt dat...
+
+Volgens de ECTS-fiche
+\cite{label_website} geldt dat...
+
+\bibliographystyle{plain}
+\bibliography{mijnbib}
+\end{verbatim}
+\end{exampleblock}
+\column{.5\textwidth}
+\begin{itemize}
+\item Citatie invoegen met behulp van het label,\newline
+\verb+\cite{label}+
+\item Integreer citaties in de tekst op een zinvolle plaats
+\item Lay-out en ordening instellen met\newline
+\verb+\bibliographystyle{...}+
+\item Bibliografie invoegen met\newline
+\verb+\bibliography{...}+
+\item \LaTeX\ + Bib\TeX\ + \LaTeX
+\end{itemize}
+\end{columns}
+\end{frame}
+
+% -----------------------------------------------------------
+
+\begin{frame}[fragile,t]
+\frametitle{Index toevoegen}
+\begin{columns}
+\column{.5\textwidth}
+\begin{exampleblock}{Het \texttt{makeidx}-pakket}
+\begin{verbatim}
+\usepackage{makeidx} \makeindex
+
+\index{lemma}
+\index{lemma!sublemma}
+\index{bereik|(}...\index{bereik|)}
+\index{lemma|see{...}}
+\index{sorteren@lemma}
+
+\printindex
+\end{verbatim}
+\end{exampleblock}
+\column{.5\textwidth}
+\begin{itemize}
+\item Pakket inladen om \verb|\index{}|-commando beschikbaar te maken
+\item \verb|\makeindex| zorgt dat de index effectief gemaakt wordt
+\item \verb|\index{}| voegt lemma's toe, op de plaats naarwaar verwezen wordt
+\item \verb|\printindex}| op de plaats waar de index wordt afgedrukt
+\item \LaTeX\ + MakeIndex + \LaTeX
+\end{itemize}
+\end{columns}
+\end{frame}
+
+% -----------------------------------------------------------
+
+\section{Wetenschappelijke formules invoegen}
+\subsection{Wiskundige formules}
+
+\begin{frame}[fragile,t]
+\frametitle{De wiskunde-modi}
+\begin{columns}
+\column{.5\textwidth}
+\begin{exampleblock}{Van klein naar groot}
+\begin{verbatim}
+Een rechte door punten \((a,b)\)
+en \((c,d)\) heeft als vergelijking
+\[y = \frac{d-a}{c-a}(x-a)+b.\]
+
+Formule \ref{eq:euler} werd
+ontdekt door Euler,
+\begin{equation}\label{eq:euler}
+	1+e^{i\pi}=0.
+\end{equation}
+\end{verbatim}
+\end{exampleblock}
+\column{.5\textwidth}
+\begin{itemize}
+\item \verb+$...$+ of \verb+\(...\)+\newline in doorlopende tekst
+\item \verb+$$...$$+ of \verb+\[...\]+\newline op afzonderlijke lijn
+\item \texttt{equation}-environment\newline genummerde formules\newline met label
+\item \texttt{align}-environment\newline berekeningen over meerdere lijnen
+\end{itemize}
+\end{columns}
+\end{frame}
+
+% -----------------------------------------------------------
+
+\begin{frame}[fragile,t]
+\frametitle{De wiskunde-modi}
+\begin{columns}
+\column{.5\textwidth}
+\begin{exampleblock}{Van klein naar groot}
+\begin{verbatim}
+\usepackage{amsmath}
+
+\begin{align}
+1 & = \sqrt{1}        \\
+  & = \sqrt{(-1)(-1)} \\
+  & = i \cdot i       \\
+  & =  -1
+\end{align}
+\end{verbatim}
+\end{exampleblock}
+\column{.5\textwidth}
+\begin{itemize}
+\item \verb+$...$+ of \verb+\(...\)+\newline in doorlopende tekst
+\item \verb+$$...$$+ of \verb+\[...\]+\newline op afzonderlijke lijn
+\item \texttt{equation}-environment\newline genummerde formules\newline met label
+\item \texttt{align}-environment\newline berekeningen over meerdere lijnen
+\end{itemize}
+\end{columns}
+\end{frame}
+
+% -----------------------------------------------------------
+
+\begin{frame}[fragile,t]
+\frametitle{Getallen}
+    \begin{columns}
+        \column{.5\textwidth}
+\begin{exampleblock}{Commando \texttt{num} uit het \texttt{siunitx}-pakket}
+\begin{tabular}{@{}r|r|r|r@{}}
+Input&Text & Math & \verb|\num{...}| \\   \hline
+\verb|1|&1          & $1      $       &\num{1       }     \\
+\verb|-1|&\xcancel{-1}         & $-1     $       &\num{-1      }     \\
+\verb|1,1|&1,1        & \xcancel{$1,1    $}       &\num{1,1     }     \\
+\verb|10000|&\xcancel{10000}       & \xcancel{$10000   $}       &\num{10000    }     \\
+\verb|0,00001|&\xcancel{0,00001}    & \xcancel{$0,00001$}       &\num{0,00001 }   
+\end{tabular}
+\begin{verbatim}
+\usepackage{siunitx}
+\sisetup{output-decimal-marker={,}}
+\num{-123456.789}
+\end{verbatim}
+
+\end{exampleblock}
+        \column{.5\textwidth}
+Moeilijkheden:
+\begin{itemize}
+	\item Minteken
+	\item Decimaalteken
+	\item Spatiëring 
+\end{itemize}
+Oplossing naargelang soort getal:
+\begin{itemize}
+\item Natuurlijke getallen: geen probleem
+\item Negatieve getallen: wiskunde-modus
+\item Zeer grote getallen: \verb+num{...}+
+\item Kommagetallen:  \verb+num{...}+
+\end{itemize}
+Enkel met \verb|\num{...}| altijd correct
+    \end{columns}
+\end{frame}
+
+% -----------------------------------------------------------
+
+\begin{frame}[fragile,t]
+\frametitle{Roman of Italic?}
+\begin{columns}
+\column{.5\textwidth}
+\begin{exampleblock}{Uitzonderingen}
+\begin{verbatim}
+\usepackage{amsmath}
+\DeclareMathOperator{\Bgtan}{Bgtan}
+\usepackage{siunitx,mhchem}
+
+\cos(x), \Bgtan(x)
+\(m_{\text{aarde}}\)
+\(\si{kg.m/s^2}\)
+\(\SI{9.81}{m/s^2}\)
+\(V_{\ce{H_2O}}\)
+\end{verbatim}
+\end{exampleblock}
+\column{.5\textwidth}
+Wiskunde cursief tenzij
+\begin{itemize}
+\item Meerdere letters\\
+niet \(cos x\) maar \(\cos x\)\\
+niet \(Bgtan x\) maar \(\Bgtan x\)
+\item Lopende tekst in formule\\
+niet \(m_{aarde}\) maar \(m_{\text{aarde}}\)
+\item Fysische eenheden\\
+niet \(kg m/s^2\) maar \(\si{kg m/s^2}\)
+\item Namen van atomen\\
+niet \(V_{H_2O}\) maar \(V_{\ce{H2O}}\)
+\end{itemize}
+\end{columns}
+\end{frame}
+
+% -----------------------------------------------------------
+
+\begin{frame}[fragile,t]
+\frametitle{Functies en formules}
+\begin{columns}
+\column{.5\textwidth}
+\begin{exampleblock}{Wiskunde-syntax}
+\begin{verbatim}
+x^n=\underbrace{
+	x\cdot\ldots\cdot x}_n
+
+\lim_{x\to 0}\frac{\sin(x)}{x}=1
+
+\sum_{n=0}^{+\infty}\frac{1}{2^n}=2
+
+(\int_a^x f(t) dt)'=f(x)
+\end{verbatim}
+\end{exampleblock}
+\column{.5\textwidth}
+\begin{itemize}
+\item \verb+_+ subscript
+\item \verb+^+ superscript
+\item \verb+\frac+ breuk
+\item \verb+\lim+ limiet
+\item \verb+\sum+ som
+\item \verb+\int+ integraal
+\item \verb+\infty+ oneindig
+\end{itemize}
+\end{columns}
+\end{frame}
+
+% -----------------------------------------------------------
+
+\begin{frame}[fragile,t]
+\frametitle{Matrices en stelsels}
+\begin{columns}
+\column{.5\textwidth}
+\begin{exampleblock}{Syntax voor  matrices}
+\begin{verbatim}
+\left( \begin{array}{cc}
+   a_{11} & a_{12} \\
+   a_{21} & a_{22} 
+\end{array} \right)
+
+|x| =  \left\{ \begin{array}{rl}
+    x & \textrm{als } x   >  0 \\
+   -x & \textrm{als } x \leq 0 
+\end{array} \right.
+\end{verbatim}
+\end{exampleblock}
+\column{.5\textwidth}
+\begin{itemize}
+\item \texttt{array}-omgeving, analoog aan \texttt{tabular}
+%\item Kolomdefinitie \verb|{rcl}|: één symbool per kolom\newline
+%- \verb|r| rechts uitgelijnd\newline
+%- \verb|c| gecentreerd\newline
+%- \verb|l| links uitgelijnd\newline
+%- \verb+|+ vertikale streep\newline
+%- \verb|\hline| horizontale streep
+%\item \verb|&| kolomscheiding
+%\item \verb|\\| nieuwe rij
+\item \verb+\left(+ en \verb+\right)+ gepaste haakjes
+\item \verb+\left\{+ en \verb+\right.+ voor stelsel
+\end{itemize}
+Tabellen allerhande:
+\begin{itemize}
+	\item \texttt{tabular}: teksmodus, elementen horen tekst te zijn, of \verb+\(\)+
+	\item \texttt{array}: wiskundemodus, elementen horen wiskunde te zijn, of \verb+\text{...}+
+	\item \texttt{table}: float-environment voor tabellen, bevat typisch nog \texttt{tabular}-environment
+\end{itemize}
+\end{columns}
+\end{frame}
+
+% -----------------------------------------------------------
+
+\subsection{Eigen commando's en omgevingen}
+
+\begin{frame}[fragile,t]
+\frametitle{Eigen commando's definiëren}
+\begin{columns}
+\column{.5\textwidth}
+\begin{exampleblock}{Nieuwe commando's}
+\begin{verbatim}
+\usepackage{amssymb}
+\newcommand{\R}
+   {\ensuremath{\mathbb{R}}}
+\newcommand{\norm}[1]
+   {\left\|#1\right\|}
+\newcommand{\pd}[2]
+   {\frac{\partial #1}{\partial #2}}
+
+\(\R, \norm{\vec{v}, \pd{f}{x}\)
+\end{verbatim}
+\end{exampleblock}
+\column{.5\textwidth}
+\verb+\newcommand{\naam}[n]{<code>}+
+\begin{itemize}
+\item \verb+\naam+  het nieuwe commando
+\item \verb+n+ aantal argumenten
+\item \verb|<code>| uit te voeren code
+\item \verb|#1|, \verb|#2| argumenten
+\end{itemize}
+Resultaten:
+\begin{itemize}
+\item \R \\
+\item \(\norm{\vec{v}}\) \\
+\item \(\pd{f}{x}\)
+\end{itemize}
+\end{columns}
+\end{frame}
+
+% -----------------------------------------------------------
+
+\begin{frame}[fragile,t]
+\frametitle{Eigen omgevingen definiëren}
+\begin{columns}
+\column{.5\textwidth}
+\begin{exampleblock}{Definities en stellingen}
+\begin{verbatim}
+\newenvironment{roodmidden}
+   {\begin{center} \color{red}}
+   {\end{center}}
+
+\begin{roodmidden}
+   Rood en in het midden
+\end{roodmidden}
+\end{verbatim}
+\end{exampleblock}
+\column{.5\textwidth}
+\verb+\newenvironment{naam}+\\
+\verb+ {<begin>} {<einde>}+
+\begin{itemize}
+\item \verb+naam+ de nieuwe omgeving
+\item \verb+\begin{naam}+ wordt \verb+<begin>+
+\item \verb+\end{naam}+ wordt \verb+<einde>+
+\end{itemize}
+Resultaat:
+\begin{roodmidden}
+Rood en in het midden
+\end{roodmidden}
+\end{columns}
+\end{frame}
+
+% -----------------------------------------------------------
+
+\begin{frame}[fragile,t]
+\frametitle{Stelling en bewijs}
+\begin{columns}
+\column{.5\textwidth}
+\begin{block}{newtheorem-syntax}
+\begin{verbatim}
+% nieuwe teller:
+\newtheorem
+{arg1}{arg2}[opt1]
+
+% bestaande teller:
+\newtheorem
+{arg1}[opt2]{arg2}
+\end{verbatim}
+\end{block}
+\column{.5\textwidth}
+\begin{itemize}
+\item \verb+\newtheorem+\newline nieuwe omgeving
+\item \texttt{arg1}: naam environment
+\item \texttt{arg2}: Stelling/Definitie
+\item \texttt{opt1}: sectie-niveau
+\item \texttt{opt2}: theorem-naam
+\end{itemize}
+\end{columns}
+\end{frame}
+
+% -----------------------------------------------------------
+
+\begin{frame}[fragile,t]
+\frametitle{Stelling en bewijs}
+\begin{columns}
+\column{.48\textwidth}
+\begin{exampleblock}{Preambule}
+\begin{verbatim}
+	\newtheorem{df}{Definitie}[section]
+	\newtheorem{st}[df]{Stelling}
+\end{verbatim}
+\end{exampleblock}
+\column{.52\textwidth}
+\begin{exampleblock}{Body}
+\begin{verbatim}
+	\begin{df}[Continuïteit]
+		Een functie is continu als ...
+	\end{df}
+	\begin{st}
+		De som van twee continue functies ...
+	\end{st}
+	\begin{proof}
+		Oefening voor de lezer.
+	\end{proof}
+\end{verbatim}
+\end{exampleblock}
+\end{columns}
+\end{frame}
+
+% -----------------------------------------------------------
+
+\subsection{Chemische moleculen en reacties}
+
+\begin{frame}[fragile,t]
+\frametitle{Basisformules}
+\begin{columns}
+\column{.5\textwidth}
+\begin{exampleblock}{Chemie-modus}
+\begin{verbatim}
+\usepackage{mhchem}
+
+\begin{document}
+
+\ce{^{227}_{90}Th^+}
+\ce{CO_2 + C <=> 2CO}
+\ce{SO_4^{2-}+Ba^{2+} -> BaSO_4 v}
+\end{verbatim}
+\end{exampleblock}
+\column{.5\textwidth}
+\begin{itemize}
+\item Pakket: \texttt{mhchem}
+\item Commando: \verb|\ce{...}|
+\end{itemize}
+
+Resultaten:
+\begin{itemize}
+\item \ce{^{227}_{90}Th^+}
+\item \ce{CO_2 + C <=> 2CO}
+\item \ce{SO_4^{2-} + Ba^{2+} -> BaSO_4 v}
+\end{itemize}
+\end{columns}
+\end{frame}
+
+% -----------------------------------------------------------
+
+\begin{frame}[fragile,t]
+\frametitle{Moleculen tekenen}
+\begin{columns}
+\column{.5\textwidth}
+\begin{exampleblock}{Chemie-modus}
+\begin{verbatim}
+\usepackage{chemfig}
+\setchemfig{atom sep=2em}
+
+\chemfig{H-[:30]O-[:30]H}
+\chemfig{-[:30]=[:-30]-[:30]}
+\chemfig{*6(=-=-=-)}
+\chemfig{N(-[:150]H)(-[:-150]H)
+	(-C*6(=C-C=C-C=C-C))}
+\end{verbatim}
+\end{exampleblock}
+\column{.5\textwidth}
+\begin{itemize}
+\item Pakket: \texttt{chemfig}
+\item Commando: \verb|\chemfig{...}|
+\end{itemize}
+Resultaten:
+\begin{center}
+\chemfig{H-[:30]O-[:-30]H}
+\chemfig{-[:30]=[:-30]-[:30]}
+\chemfig{*6(=-=-=-)}
+\chemfig{N(-[:150]H)(-[:-150]H)(-C*6(=C-C=C-C=C-))}
+\end{center}
+\end{columns}
+\end{frame}
+
+
+% -----------------------------------------------------------
+\section{Presentaties maken met Beamer}
+
+\subsection{De basisprincipes van Beamer}
+
+\begin{frame}[fragile,t]
+\frametitle{De \texttt{Beamer}-klasse}
+\begin{columns}
+\column{.5\textwidth}
+\begin{exampleblock}{Een minimaal document}
+\begin{verbatim}
+\documentclass[...]{beamer}
+
+\title[Kort]{Volledig}
+\author[Kort]{Volledig}
+\date{\today}
+
+\end{verbatim}
+%\verb|\documentclass|\\
+%\verb| %[handout]|\\
+%\verb| {beamer}|\\
+%\verb| \title[Kort]{Volledig}|\\
+%\verb| \author[Kort]{Volledig}|\\
+%\verb| \date{\today}|\\
+%\verb|\begin{document}|\\
+%\verb| \begin{frame}|\\
+%\verb|  \titlepage|\\
+%\verb| \end{frame}|\\
+%\verb|\end{document}|
+%\usetheme{PaloAlto}
+%\usecolortheme{seahorse}
+%  
+%\setbeamercovered
+% {transparent}
+%
+%\logo
+% {\includegraphics{...}}
+\end{exampleblock}
+\column{.5\textwidth}
+\begin{itemize}
+\item \verb|beamer|\newline
+presentatie-opmaak
+\item \verb+handout+ (optioneel)\newline enkel handouts maken
+\item \verb+\titlepage+\newline maakt een titel-slide
+%\item \verb|frame|:\newline
+%bevat telkens één scherm-inhoud
+\item Korte versie van titel, auteur, secties, \ldots voor kop- en voettekst
+%\textit{\item \verb+\usetheme+:\newline  lay-out van de slides\newline
+%\texttt{Madrid}, \texttt{Antibes}, \ldots
+%\item \verb+\usetheme+:\newline  kleurenschema\newline
+%\texttt{albatross}, \texttt{beetle}, \ldots
+%\item \verb+\setbeamercovered+:\newline  transparante tekst
+%\item \verb+\logo+:\newline  een logo invoegen}
+\end{itemize}
+\end{columns}
+\end{frame}
+
+% -----------------------------------------------------------
+
+\begin{frame}[fragile,t]
+\frametitle{Secties en frames}
+\begin{columns}
+\column{.5\textwidth}
+\begin{exampleblock}{Een eerste frame}
+\begin{verbatim}
+\begin{document}
+
+\section
+{Basisprincipes}
+\end{verbatim}
+\verb|\begin{frame}|
+
+\verb|\frametitle|
+\verb|{Secties en frames}|
+\verb|Inhoud van het frame|
+\verb|\end{frame}|
+\begin{verbatim}
+\end{document}
+\end{verbatim}
+%\begin{verbatim}
+%\begin{document}
+%
+%\section
+%{Basisprincipes}
+%
+%\begin{frame}
+%\frametitle
+%{Secties en frames}
+%Inhoud van het frame
+%\end{frame}
+%
+%\end{document}
+%\end{verbatim}
+\end{exampleblock}
+\column{.5\textwidth}
+\begin{itemize}
+\item Alle inhoud in \texttt{frame}-environment: telkens één scherminhoud
+\item \verb+\frametitle+ geeft elk frame afzonderlijke titel
+\item Sectie-commando's daarbuiten: bepalen inhoudstafel en overzicht
+\end{itemize}
+\end{columns}
+\end{frame}
+
+% -----------------------------------------------------------
+
+\subsection[Structureren]{Frames structureren}
+
+\begin{frame}[fragile,t]
+\frametitle{Horizontaal structureren}
+\begin{columns}
+\column{.5\textwidth}
+\begin{exampleblock}{Block-syntax}
+\begin{verbatim}
+\begin{block} {Een blok}
+...
+\end{block}
+\begin{exampleblock} {Een voorbeeld}
+...
+\end{exampleblock}
+\begin{alertblock} {Een opmerking}
+...
+\end{alertblock}
+\end{verbatim}
+\end{exampleblock}
+\column{.5\textwidth}
+\begin{itemize}
+\item \texttt{block}:\newline belangrijk resultaat, doorgaans blauw
+\item \texttt{exampleblock}:\newline een voorbeeld, groen
+\item \texttt{alertblock}:\newline een opmerking, rood
+\item \texttt{theorem}:\newline automatisch als \texttt{block}
+\end{itemize}
+\end{columns}
+\end{frame}
+
+% -----------------------------------------------------------
+
+\begin{frame}[fragile,t]
+\frametitle{Verticaal structureren}
+\begin{columns}
+\column{.5\textwidth}
+\begin{exampleblock}{Columns-syntax}
+\begin{verbatim}
+\begin{columns}
+\column{.5\textwidth}
+Tekst in kolom 1
+\column{.5\textwidth}
+Tekst in kolom 2
+\end{columns}
+\end{verbatim}
+\end{exampleblock}
+\column{.5\textwidth}
+\begin{itemize}
+\item \texttt{columns}-environment:\newline deelt de beschikbare breedte op in meerdere kolommen
+\item \verb+\column{}+:\newline begint een nieuwe kolom van de opgegeven breedte
+\end{itemize}
+\end{columns}
+\end{frame}
+
+% -----------------------------------------------------------
+
+\subsection{Slides}
+
+\begin{frame}[fragile,t]
+\frametitle{Slides en frames}
+\begin{columns}
+\column{.5\textwidth}
+\begin{exampleblock}{Pauzeren}
+\begin{verbatim}
+\begin{itemize}
+
+\item Eerste slide
+
+\pause
+
+\item Tweede slide
+
+\end{itemize}
+\end{verbatim}
+\end{exampleblock}
+\column{.5\textwidth}
+\begin{itemize}[<+->]
+\item \texttt{Frame}: De volledige inhoud van één scherm
+\item \texttt{Slide}: Elke stap binnen de opbouw van een frame
+\item \verb+\pause+: Pauzeert tussen twee slides
+\end{itemize}
+\end{columns}
+\end{frame}
+
+% -----------------------------------------------------------
+
+\begin{frame}[fragile,t]
+\frametitle{Overlays}
+\begin{columns}
+\column{.5\textwidth}
+\begin{exampleblock}{Speciale effecten}
+\begin{verbatim}
+\uncover<2-> {Leesbaar maken}
+
+\only <3-4> {Laten verschijnen}
+
+\alert <4> {Benadrukken}
+
+\textit <5> {Tekstopmaak toepassen}
+\end{verbatim}
+\end{exampleblock}
+\column{.5\textwidth}
+\begin{itemize}
+\item \verb+<2->+:\newline slide specificatie
+\item \verb+\uncover+:\newline  \uncover<2->{Leesbaar maken}
+\item<only@3-4> \verb+\only+:\newline  Tekst laten verschijnen
+\item \verb+\alert+:\newline  \alert<4>{Tekst benadrukken}
+\item \verb+\textit+:\newline  \textit<5>{Tekstopmaak toepassen}
+\end{itemize}
+\end{columns}
+\end{frame}
+
+% -----------------------------------------------------------
+
+\begin{frame}[fragile,t]
+\frametitle{Overlays in opsommingen}
+\begin{columns}
+\column{.5\textwidth}
+\begin{exampleblock}{Slidespecificaties}
+\begin{verbatim}
+\item<2> Enkel op slide 2
+
+\item<-4> Tot en met slide 4
+
+\item<3-5> Van slide 3 tot 5
+
+\item<2-> Vanaf slide 2
+
+\item<-2|alert@4> Combinatie
+\end{verbatim}
+\end{exampleblock}
+\column{.5\textwidth}
+Slide \only<1>{1}\only<2>{2}\only<3>{3}\only<4>{4}\only<5>{5}
+\begin{itemize}
+\item<2> Enkel op slide 2
+\item<-4> Tot en met slide 4
+\item<3-5> Van slide 3 tot slide 5
+\item<2-> Vanaf slide 2
+\item<-2,4|alert@4> Tot slide twee en op slide 4 benadrukt
+\end{itemize}
+\end{columns}
+\end{frame}
+
+% -----------------------------------------------------------
+
+\begin{frame}[fragile,t]
+\frametitle{Overlays in opsommingen}
+\begin{columns}
+\column{.5\textwidth}
+\begin{exampleblock}{Automatische specificaties}
+\begin{verbatim}
+\begin{itemize}[<+->]
+
+\item Items automatisch
+
+\item één voor één
+
+\item laten verschijnen
+
+\end{itemize}
+\end{verbatim}
+\end{exampleblock}
+\column{.5\textwidth}
+\begin{itemize}[<+->]
+
+\item Items automatisch
+
+\item één voor één
+
+\item laten verschijnen
+
+\end{itemize}
+
+\end{columns}
+\end{frame}
+
+% -----------------------------------------------------------
+
+\begin{frame}[fragile,t]
+\frametitle{Kruisverwijzingen in beamer}
+\begin{columns}
+\column{.5\textwidth}
+\begin{exampleblock}{Labels op specifieke slides}
+\begin{verbatim}
+\hypertarget <1> {label1} {tekst1}
+
+\hypertarget <2> {label2} {tekst2}
+
+\hyperlink {label1} {tekst}
+\end{verbatim}
+\end{exampleblock}
+\column{.5\textwidth}
+\begin{itemize}
+\item \verb|\hypertarget<1>{label1}{tekst1}|
+\begin{itemize}
+\item \verb|<1>|: slide die label bevat
+\item \verb|{label1}|: onzichtbaar label
+\item \verb|{tekst1}|: bijhorende tekst
+\end{itemize}
+\item \verb|\hyperlink{label1}{tekst}|
+\begin{itemize}
+\item \verb|{label1}|: bestaand label
+\item \verb|{tekst}|: aanklikbare tekst
+\end{itemize}
+\end{itemize}
+
+\end{columns}
+\end{frame}
+
+% -----------------------------------------------------------
+
+\subsection{Handouts maken}
+
+\begin{frame}[fragile,t]
+\frametitle{Handouts maken}
+\begin{columns}
+\column{.5\textwidth}
+\begin{exampleblock}{Beamer vs.\ handout}
+\begin{verbatim}
+\documentclass[handout]{beamer}
+\AtBeginSection{...}
+
+\begin{document}
+
+\only<beamer|handout>{...}
+
+\begin{frame}[label=overzicht]
+\againframe{overzicht}
+\end{verbatim}
+\end{exampleblock}
+\column{.5\textwidth}
+\begin{itemize}
+\item Standaard: elke slide is één fysieke pagina
+\item Optie \texttt{handout}: slechts één pagina per frame
+\item Slide-specificaties \only<beamer>{\texttt{beamer}: enkel in de presentatie} \only<handout>{\texttt{handout}: enkel in de handout}
+\item Nuttig om inhoudstafel of specifieke slides te hernemen
+\end{itemize}
+\end{columns}
+\end{frame}
+
+% -----------------------------------------------------------
+
+\section{TeXStudio, templates en meer}
+
+% -----------------------------------------------------------
+
+\begin{frame}[fragile,t]
+	\frametitle{Wetenschappelijke poster met \texttt{kulakposter}}
+	\begin{columns}
+		\column{.5\textwidth}
+		\begin{exampleblock}{Kolommen op een poster}
+			\begin{verbatim}
+				\usepackage{multicol}
+				
+				\begin{multicols}{2}
+					Kolom 1
+					\columnbreak
+					Kolom 2
+				\end{multicols}
+			\end{verbatim}
+		\end{exampleblock}
+		\column{.5\textwidth}
+		\begin{itemize}
+			\item Gebaseerd op \texttt{sciposter}-klasse.
+			\item Kolommen met \texttt{multicol}-pakket:\newline
+			- \texttt{multicols}-environment
+			- kan genest worden\newline
+			- kolommen automatisch gebalanceerd, manueel met \verb|\columnbreak|
+			\item Zo weinig mogelijk doorlopende tekst, zo veel mogelijk afbeeldingen
+			\item Floats zelf positioneren.
+		\end{itemize}
+	\end{columns}
+\end{frame}
+
+
+\subsection{KU Leuven en Kulak huisstijl}
+
+\begin{frame}[fragile,t]
+\frametitle{KU Leuven en Kulak huisstijl: bestanden}
+Beschikbare documentklassen:
+\begin{itemize}
+	\item \texttt{kulakarticle}, eenzijdig, eenvoudige hoofding
+	\item \texttt{kulakreport}, tweezijdig, voorblad en achterflap
+	\item \texttt{kulakposter}, A3 tot A0, landscape of portrait-poster
+	\item \texttt{kulakbeamer}, beamer- en handout-klasse
+\end{itemize}
+%Beschikbare beamersjablonen:
+%\begin{itemize}
+%	\item \texttt{beamerthemekuleuven2}
+%\end{itemize}
+%\only<2>{\texttt{kulakbeamer} is verouderd, gebruik het beamersjabloon voor nieuwe documenten!}
+\end{frame}
+
+\begin{frame}[fragile,t]
+\frametitle{KU Leuven en Kulak huisstijl: installatie}
+Zie \texttt{readme.pdf} (ook voor Mac OS X/Linux))
+\begin{itemize}
+\item Kopieer de \texttt{texmf}-submap \texttt{kulak} naar\newline
+\verb|c:\texlive\texmf-local\tex\latex\local|
+\item Start het programma \texttt{TeX Live Manager} via\newline
+\texttt{Start}, \texttt{All programs}, \texttt{TeX Live yyyy}, \texttt{TeX Live Manager}
+\item Klik op \texttt{Actions}, \texttt{Update filename database}
+\end{itemize}
+\end{frame}
+
+% -----------------------------------------------------------
+
+\begin{frame}[fragile,t]
+\frametitle{KU Leuven en Kulak huisstijl: gebruik}
+Zie \texttt{readme.pdf} en meegeleverde templates
+\begin{itemize}
+\item Voor documentklassen:
+\begin{verbatim}
+\documentclass[a4paper,kulak]{kulakarticle}
+\end{verbatim}
+\item Voor beamersjabloon:
+\begin{verbatim}
+\documentclass[aspectratio=169,kulak,t]{kulakbeamer}
+\end{verbatim}
+\end{itemize}
+\end{frame}
+
+% -----------------------------------------------------------
+
+\subsection{Templates in TeXStudio}
+
+\begin{frame}[fragile,t]
+\frametitle{Templates instellen in TeXStudio}
+
+Eigen template maken:
+\begin{itemize}
+\item Schrijf minimaal \texttt{.tex}-bestand
+\item Klik op \texttt{File}, \texttt{Make Template...}
+\end{itemize}
+
+Kulak-templates installeren:
+\begin{itemize}
+\item Plaats inhoud van \texttt{Templates}-map in\newline
+\verb|C:\users\<user>\AppData\Roaming\texstudio\templates\user|\newline
+\verb|~/.config/texstudio/templates/user|
+\end{itemize}
+
+Template openen:
+\begin{itemize}
+\item Klik op \texttt{File}, \texttt{New From Template...}
+\end{itemize}
+\end{frame}
+
+% -----------------------------------------------------------
+
+\subsection{Spellingscorrectie in TeXStudio}
+
+\begin{frame}[fragile,t]
+\frametitle{Spellingscorrectie in TeXStudio}
+
+Woordenlijst downloaden en installeren:
+\begin{itemize}
+\item Per gewenste taal OpenOffice-add on downloaden,\newline
+\href{http://extensions.openoffice.org/dictionaries}{\texttt{http://extensions.openoffice.org/dictionaries}}
+%\item Extensie \texttt{.oxt} veranderen in \texttt{.zip}
+%\item \texttt{.dic}-bestand uit \texttt{.zip}-file kopiëren naar\newline
+%\verb|C:/Program Files (x86)/TeXstudio/dictionaries|
+\item Voorkeuren in TeXStudio instellen via
+\texttt{Options}, \texttt{Configure TeXStudio}, \texttt{General}, \texttt{Dictionaries}
+\item Taal per taal toevoegen via \texttt{Import dictionary...} en gewenste \texttt{.oxt}-bestand selecteren
+\end{itemize}
+Taal van document instellen
+\begin{itemize}
+\item Selecteer juiste taal rechts onderaan TeXStudio-scherm
+\item Klik op \texttt{Insert Language as TeX comment}
+\end{itemize}
+\end{frame}
+
+% -----------------------------------------------------------
+
+\subsection{Meer informatie}
+
+\begin{frame}
+\frametitle{Meer informatie}
+\begin{itemize}
+\item\href{http://mirrors.ctan.org/info/lshort/english/lshort.pdf}{The not so Short Introduction to \LaTeX2e}:\newline
+De beste introductie tot \LaTeX
+\item\href{http://mirrors.ctan.org/macros/latex/contrib/beamer/doc/beameruserguide.pdf}{The \textsc{beamer} class}:
+Uitgebreide handleiding bij \textsc{beamer},\newline
+Sectie 3, \emph{Euclid’s Presentation}, is goede introductie
+\item\href{http://mirrors.ctan.org/graphics/pgf/base/doc/pgfmanual.pdf}{The Ti\emph{k}Z \& \textsc{PGF} Packages}: Handleiding bij tekenpakket,\newline
+Deel I, \emph{Tutorials and Guidelines}, is goede introductie
+\item \href{http://www.ctan.org/}{The Comprehensive TeX Archive Network}:\newline
+Uitgebreide databank met handleiding bij elk pakket.
+\end{itemize}
+
+\end{frame}
+
+
+\end{document}

@@ -1,0 +1,217 @@
+% !TeX spellcheck = en_GB
+\documentclass[kulak]{kulakarticle} %options: kul, kuleuven-brugge or kulak (default)
+
+\title{KU Leuven and Kulak corporate lay-out \LaTeX-classes}
+\author{Stijn Rebry}
+\date{\today}
+\address{
+	\bf Groep Wetenschap \& Technologie Kulak\\
+	Etienne Sabbelaan 53, 8500 Kortrijk \\
+	056 24 60 20 \(\cdot\) \href{mailto:stijn.rebry@kuleuven.be}{\texttt{stijn.rebry@kuleuven.be}}
+}
+
+\begin{document}
+
+\maketitle
+
+\section*{Introduction}
+This text explains how to write \LaTeX\ documents according to the KU Leuven and Kulak corporate lay-out.
+It explains which files are needed, how to use and install the different class files, templates and examples.
+
+\section{Folder content}
+\begin{description}
+\item[\texttt{kulak/}] class files, style files and necessary images and logos. These have to be available to \LaTeX\ in the local \texttt{texmf}-tree as explained in section \ref{sec:install}.
+\begin{description}
+\item[\texttt{kulakarticle.cls}]  for short documents, one side printing, no title page.
+\item[\texttt{kulakreport.cls}]  for longer documents or books, two side printing, with title page.
+\item[\texttt{kulakposter.cls}]  for portrait or landscape posters, based on \texttt{sciposter.cls}.
+\item[\texttt{kulakbeamer.cls}]  for presentations, on screen and hand-outs.
+%\item[\texttt{beamerthemekuleuven2.sty}]  new alternative for presentations, see \ref{sssec:style}.
+\end{description}
+\item[\texttt{/Examples/}] example files for each class with output. 
+\begin{description}
+\item[\texttt{test\_kulakarticle}]  this very document.
+\item[\texttt{test\_kulakreport}]  document explaining \LaTeX-basics.
+\item[\texttt{test\_kulakposter}]  basics for structuring a scientific poster.
+\item[\texttt{test\_kulakbeamer}]  a presentation on \LaTeX and Beamer.
+%\item[\texttt{demo\_kuleuvenstyle}]  presentation in the KU Leuven beamer style (see \ref{sssec:style}).
+\end{description}
+\item[\texttt{/Templates/}] template files for each class. Instructions on how to use are to be found in section \ref{ssec:templates}.
+\begin{description}
+\item[\texttt{template\_kulakarticle.tex}]
+\item[\texttt{template\_kulakreport.tex}]
+\item[\texttt{template\_kulakposter.tex}]  
+\item[\texttt{template\_kulakbeamer.tex}]  
+%\item[\texttt{template\_kuleuvenbeamerstyle.tex}] 
+\end{description}
+\end{description}
+
+\section{Specific commands and options}
+All four classes have options \textbf{\texttt{kulak}}, \textbf{\texttt{kuleuven-brugge}} and \textbf{\texttt{kul}} to select the appropriate logo.
+\begin{center}
+\begin{tabular}{c|c|c}
+\textbf{\texttt{kulak}} & \textbf{\texttt{kuleuven-brugge}} & \textbf{\texttt{kul}}\\
+\includegraphics[height=1cm]{kulakLogo} & \includegraphics[height=1cm]{kuleuvenBruggeLogo} & \includegraphics[height=1cm]{kuleuvenLogo}
+\end{tabular}
+\end{center}
+
+\subsection{Kulak article class}
+
+The title bar on the first page is generated with the command \textbf{\texttt{\textbackslash maketitle}}. This command requires the following four commands in the preamble.
+\begin{description}
+\item[\texttt{\textbackslash title\{\}}] large bold text, lower right of title bar.
+\item[\texttt{\textbackslash author\{\}}] large text, lower right of title bar.
+\item[\texttt{\textbackslash date\{\}}] normal text, lower left of title bar.
+\item[\texttt{\textbackslash address\{\}}] small text, upper right of title bar.
+\end{description}
+
+\subsection{Kulak report class}
+
+The title page and back cover are generated with the command \textbf{\texttt{\textbackslash titlepage}}. This command requires the following commands in the preamble.
+
+\begin{description}
+\item[\texttt{\textbackslash faculty\{\}}]      upper right of title page, in coloured bar.
+\item[\texttt{\textbackslash group\{\}}]        upper right of title page, under coloured bar.
+\item[\texttt{\textbackslash title\{\}}]        huge bold text, centre of the title page.
+\item[\texttt{\textbackslash subtitle\{\}}]     large bold text, below of the title.
+\item[\texttt{\textbackslash author\{\}}]       large bold text, bottom right of the title page.
+\item[\texttt{\textbackslash institute\{\}}]    normal text, below of the author.
+\item[\texttt{\textbackslash date\{\}}]         normal text, below of the institute.
+\item[\texttt{\textbackslash emailaddress\{\}}] to be used in the address-field.
+\item[\texttt{\textbackslash address\{\}}]      small text, upper right of the back cover.
+\end{description}
+
+\subsection{Kulak poster class}
+
+This class is based on \texttt{sciposter} and allows all \texttt{sciposter} options: \textbf{\texttt{landscape}} and \textbf{\texttt{portrait}} (default) for page orientation, \textbf{\texttt{a3}} up to \textbf{\texttt{a0}} for page (and font) size. It is important to note that the correct placement of the title-banner might require multiple \LaTeX-runs.
+
+The option \textbf{\texttt{background}} yields a very light blue fill, whereas \textbf{\texttt{nobackground}} (default) yields a white fill.
+
+A picture of the author can be added next to the logo. This is obtained with the option \textbf{\texttt{photo}} (default), whereas \textbf{\texttt{nophoto}} suppresses this information. In the latter case the photo can be added manually with the command \textbf{\texttt{\textbackslash photohere}}.
+
+With the command \textbf{\texttt{\textbackslash maketitle}}, the title bar is placed below the coloured banner. This command requires the following information to be found in the preamble.
+
+\begin{description}
+\item[\texttt{\textbackslash title\{\}}]
+\item[\texttt{\textbackslash author\{\}}]
+\item[\texttt{\textbackslash institute\{\}}]
+\item[\texttt{\textbackslash photo\{\}}]
+\item[\texttt{\textbackslash emailaddress\{\}}]
+\end{description}
+
+\subsection{Kulak beamer class}
+
+This class is based on \texttt{beamer} and allows all \texttt{beamer} options. 
+
+Two new environments are defined for obtaining an alternative frame-layout. The first environment, \textbf{\texttt{titleframe}}, is merely intended for use on the title-page. The second environment, \textbf{\texttt{outlineframe}}, can be used for outlines or chapter-titles.
+
+\begin{verbatim}
+\begin{titleframe}
+  \titlepage
+\end{titleframe}
+
+\begin{outlineframe}
+  \tableofcontents
+\end{outlineframe}
+\end{verbatim}
+
+%\subsubsection{2018 layout update}
+%\label{sssec:style}
+%
+%In the 2018 version, a new layout was introduced based on the KU Leuven beamer style, which can be downloaded here:
+%
+%\href{https://www.kuleuven.be/communicatie/marketing/templates/presentatiemateriaal/index.html}{\texttt{https://www.kuleuven.be/communicatie/marketing/templates/presentatiemateriaal/index.html}}
+%
+%For new documents, we recommend using the KU Leuven beamer style rather than the Kulak beamer class. The files necessary to use this style are also included in the \texttt{texmf}-folder.
+
+\section{Installing the files}
+\label{sec:install}
+
+To use these classes, one has to copy \texttt{/kulak/} to a local folder \emph{and} make \LaTeX\ recognize the new files. If a local \TeX-tree already exists, just add the subfolder \texttt{/kulak/} and all of its content to the appropriate folder.
+
+\subsection{\texttt{MikTeX} and \texttt{Windows}}
+
+Create the following directory structure and copy \texttt{/kulak/} and all of its content to the appropriate folder:
+\begin{verbatim}
+c:\users\<username>\texmf\tex\latex\
+\end{verbatim}
+Now start the \texttt{MikTeX Console} program by clicking 
+\verb+Start, All programs, MikTeX Console.+
+Click on \texttt{Settings} and \texttt{Directories}, then click the \texttt{+}-sign, and browse for the folder \verb+c:\users\<username>\texmf+ and click OK twice.
+
+\subsection{\texttt{TeXLive} and \texttt{Windows}}
+
+When installing \texttt{TeXLive} on a \texttt{Windows} system, a local \TeX-tree should be created automatically. The default location is:
+\begin{verbatim}
+c:\texlive\texmf-local\tex\latex\local\
+\end{verbatim}
+Add the subfolder \texttt{/kulak/} and all of its content to this folder. Open the TeX Live Manager, and click `Update filename database' in the Actions menu.
+
+
+\subsection{\texttt{MacTeX} and \texttt{Mac OS X}}
+Place the folder \texttt{/kulak/} and all of its content in \verb+~/Library/texmf/tex/latex/+. Done.
+
+\subsection{\texttt{TeXLive} and \texttt{Linux}}
+
+Open a terminal session and create the necessary directory structure:
+\begin{verbatim}
+cd ~
+mkdir -p texmf/tex/latex/
+\end{verbatim}
+Copy the folder \texttt{/kulak/} and all of its content into this newly created directory and make \LaTeX\ recognize the new files:
+\begin{verbatim}
+texhash ~/texmf
+\end{verbatim}
+
+\subsection{Installing the templates in \texttt{TeXStudio}}
+\label{ssec:templates}
+
+The easiest way to use the Kulak-classes is to start from the appropriate template, for these contain all necessary commands. To avoid overwriting the original files, register each one of them as templates. The following instructions on how to do this are specific to \texttt{TeXStudio}, but other editors offer similar solutions. 
+
+To install all Kulak-templates simultaneously, simply copy the files from the \verb|/Templates/|-directory to your personal \texttt{TeXStudio}-template-folder, depending on the operating system on one of the following or a similar location (make sure you can view hidden folders in Windows Explorer):
+\begin{itemize}
+\item \verb=C:\Users\<username>\AppData\Roaming\texstudio\templates\user=
+\item \verb=~/.config/texstudio/templates/user=
+\end{itemize}
+
+If you want to install these templates for all users, add them to the existing template-folder that comes with every \texttt{TeXStudio}-installation:
+
+\begin{verbatim}
+C:\Program Files\texstudio\templates
+\end{verbatim}
+
+To adjust the Kulak-templates or to make your own template, follow these steps:
+\begin{itemize}
+\item Open the file \verb+template_kulak<class>.tex+ in \texttt{TeXStudio}.
+\item Adjust this file to own needs: add desired packages, commands, author name, \ldots
+\item Click \texttt{File}, then \texttt{Make Template...}
+\item Fill out the form and click OK.
+\end{itemize}
+
+To start a new Kulak-themed document, click \texttt{File}, then \texttt{New from template...} and choose the desired template. A new minimal-content-file opens.
+
+\section{Documentation}
+Must-have documentation about \LaTeX\ can be found here:
+\begin{description}
+\item[\href{http://mirrors.ctan.org/info/lshort/english/lshort.pdf}{The not so Short Introduction to \LaTeX2e.}]
+  The best introduction to how and why to write documents with \LaTeX.
+\item[\href{http://en.wikibooks.org/wiki/LaTeX}{wikibooks.org: \LaTeX.}]
+  A wiki-based guide to the \LaTeX\ markup language.
+\item[\href{http://mirrors.ctan.org/macros/latex/contrib/beamer/doc/beameruserguide.pdf}{The \textsc{beamer} class.}]
+  Comprehensive manual on how to make presentations and how to do it with \textsc{beamer}. Section 3, \emph{Tutorial: Euclid’s Presentation}, gives a good introduction.
+\item[\href{https://www.cpt.univ-mrs.fr/~masson/latex/Beamer-appearance-cheat-sheet.pdf}{\textsc{beamer} appearance cheat sheet.}]
+  Overview of most \textsc{beamer}’s elements (colors, fonts, templates).
+\item[\href{http://mirrors.ctan.org/macros/latex/contrib/sciposter/scipostermanual.pdf}{Manual for Preparation of Posters.}]
+  Manual for the \textsc{sciposter}-package, explaining the preparation of posters of any size.
+\item[\href{https://mirror.lyrahosting.com/CTAN/graphics/pgf/base/doc/pgfmanual.pdf}{The Ti\emph{k}Z \& \textsc{PGF} Packages}] Comprehensive manual on the unlimited possibilities of making drawings with Ti\emph{k}Z and \textsc{pgf}. Part I, \emph{Tutorials and Guidelines}, gives a good introduction through the step-by-step building of a few detailed examples.
+\item[\href{http://mirrors.ctan.org/macros/latex/contrib/siunitx/siunitx.pdf}{A comprehensive (SI) units package.}]
+The package \textsc{siunitx} takes care of the correct typesetting of values with units.
+\item[\href{http://mirrors.ctan.org/macros/latex/contrib/mhchem/mhchem.pdf}{The \textsc{mhchem} Bundle.}] This package provides commands for typesetting chemical molecular formul\ae\ and equations.
+\item[\href{http://mirrors.ctan.org/macros/latex/contrib/biocon/manual.pdf}{The \textsc{biocon} package.}] The biological conventions-package aids the typesetting of some biological conventions.
+\end{description}
+
+\section*{Conclusion}
+
+\LaTeX\ works like a charm, but these classes maybe not so much\ldots all advice on how to improve them is much appreciated: \href{mailto:stijn.rebry@kuleuven.be}{\texttt{stijn.rebry@kuleuven.be}}.
+
+\end{document}
