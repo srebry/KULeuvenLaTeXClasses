@@ -116,6 +116,7 @@
 \setbeamercolor{title}			{fg=white}				
 \setbeamercolor{title page}		{fg=white}
 \setbeamercolor{normal text}	{fg = black}			%text color
+\setbeamercolor{structure}	{fg = KULblauw1}			%text color
 \setbeamercolor{frametitle}		{fg=KULblauw1}			%frame title color
 \setbeamercolor{section in toc}{fg=white}			%toc (section) color
 \setbeamercolor{section in toc shaded}{fg=black}		%toc (shaded section) color
