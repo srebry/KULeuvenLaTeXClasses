@@ -1,4 +1,4 @@
-# KULeuvenLaTeXClasses -- https://github.com/srebry/KULeuvenLaTeXClasses
+# https://github.com/srebry/KULeuvenLaTeXClasses
 
 Dit pakket voorziet bestanden en instructies om LaTeX en de KU Leuven huisstijl te installeren en te gebruiken.
 
