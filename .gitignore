@@ -1,0 +1,19 @@
+# LaTeX
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.synctex.gz
+*.out
+*.toc
+
+# BibTeX
+*.bbl
+*.big
+*.idx
+*.ilg
+*.ind
+*.blg
+
+# MacOS
+.DS_Store
