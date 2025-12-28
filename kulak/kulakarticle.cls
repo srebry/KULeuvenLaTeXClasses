@@ -63,11 +63,11 @@
 
 \makeatletter
 
-% Optional: group name, subtitle.
+% Optional: department name, subtitle.
 
-\newcommand\group[1]{\renewcommand\@group{#1}}
-\newcommand\@group{}
-\newcommand{\thegroup}{\@group}
+\newcommand\department[1]{\renewcommand\@department{#1}}
+\newcommand\@department{}
+\newcommand{\thedepartment}{\@department}
 
 \newcommand\subtitle[1]{\renewcommand\@subtitle{#1}}
 \newcommand\@subtitle{}
@@ -91,10 +91,10 @@
 \end{tikzpicture}}
 \lfoot{
    \begin{tikzpicture}[overlay, inner sep=0mm]
-      \fill[KULblauw1]  (0,1) rectangle ( 16,1.02);
+      \fill[KULblauw1]  (0,1.05) rectangle ( 16,1.07);
    \end{tikzpicture}\renewcommand{\arraystretch}{0.8}
    \begin{tabular}[b]{@{}l@{}}
-      \footnotesize{\textbf{\InstanceName}\ifdefempty{\@group}{}{ -- \thegroup}}\\
+      \footnotesize{\textbf{\InstanceName}\ifdefempty{\@department}{}{ -- \thedepartment}}\\
       \footnotesize{\thetitle}\ifdefempty{\@subtitle}{}{ -- \footnotesize{\textit{\thesubtitle}}}\\
       \footnotesize{\theauthor}
 \end{tabular}}
@@ -110,7 +110,7 @@
          \node[anchor=north west] at ( 3.0,28.2) {\includegraphics[height=\LogoHeight]{\Logo}};
          \node[anchor=north east] at ( 19,28.2) {\includegraphics[height=1.5cm]{kuleuvenSedes}};
          \node[anchor=east] at (17,27.47) {
-         \footnotesize\begin{tabular}{@{}r@{}}\ifdefempty{\@group}{}{\textbf{\thegroup}\\}\theaddress\end{tabular}
+         \footnotesize\begin{tabular}{@{}r@{}}\ifdefempty{\@department}{}{\textbf{\thedepartment}\\}\theaddress\end{tabular}
          };
       \node[anchor=south east] at (19,24) {
          \begin{tabular}{@{}r@{}}
