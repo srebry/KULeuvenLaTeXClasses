@@ -16,7 +16,7 @@
 \DeclareOption{kulak}{
    \providecommand{\Logo}{kulakLogo}
    \providecommand{\LogoHeight}{1.5cm}
-   \providecommand{\InstanceName}{KU Leuven Kulak Campus Kortrijk}
+   \providecommand{\InstanceName}{KU Leuven Campus Kulak Kortrijk}
    }
 \DeclareOption{kul}{
    \renewcommand{\Logo}{kuleuvenLogo}
