@@ -5,17 +5,18 @@
 \usepackage{enumitem}
 
 \title{\LaTeX\ en de KU Leuven huisstijl}
+\subtitle{Handleiding voor installatie en gebruik}
 \author{Stijn Rebry}
 \date{Academiejaar 2025 -- 2026}
+\group{Groep Wetenschap \& Technologie Kulak}
 \address{
-\textbf{Groep Wetenschap \& Technologie Kulak} \\
 Etienne Sabbelaan 53 \\
 8500 Kortrijk}
 
 \begin{document}
-	
+
 \maketitle
-	
+
 \tableofcontents
 
 \section*{Inleiding}
@@ -31,10 +32,10 @@ Door deze handleiding te volgen, ben je in staat om snel en efficiënt documente
 \subsection{\LaTeX, een tekstzetsysteem}
 \LaTeX\ is een tekstzetsysteem dat geschikt is voor het maken van allerlei soorten publicaties: artikels, boeken, posters en presentaties. Het grote verschil met meer gangbare WYSIWYG-tekstverwerkers (What You See Is What You Get), is dat de auteur zich niet moet bezig houden met de lay-out van het document en zich enkel moet focussen op de inhoud en de structuur. \LaTeX\ is een markeertaal (markup language) waar commando's de logische structuur van het document bepalen. Een hoofdstuktitel wordt bijvoorbeeld gezet met \verb+\section{Wat is \LaTeX?}+, waarna deze automatisch in een gepaste stijl wordt gezet, genummerd, toegevoegd aan de inhoudstafel en zo voort. De software zet de tekst automatisch op het blad, terwijl de auteur dat in WYSIWYG-software zelf moet doen. Voordelen hiervan zijn:
 \begin{itemize}
-\item Professioneel ogende uitvoer met aandacht voor leesbaarheid en de regels van de typografie;
-\item Consequente lay-out en bladspiegel;
-\item Automatisering van alle mogelijke taken: inhoudstafel, kruisverwijzingen, bibliografie, index, ...
-\item Gratis, open en beschikbaar voor de meeste besturingssystemen.
+	\item Professioneel ogende uitvoer met aandacht voor leesbaarheid en de regels van de typografie;
+	\item Consequente lay-out en bladspiegel;
+	\item Automatisering van alle mogelijke taken: inhoudstafel, kruisverwijzingen, bibliografie, index, ...
+	\item Gratis, open en beschikbaar voor de meeste besturingssystemen.
 \end{itemize}
 Sinds oudsher is het in \LaTeX\ bovendien erg geschikt om wiskundige of wetenschappelijke formules te zetten, waardoor het vooral in technisch-wetenschappelijke kringen erg populair is. De andere voordelen gaan even goed op voor eender welke tekst.
 
@@ -56,42 +57,42 @@ Bij een markup taal is dat niet zo. De auteur hoeft enkel bezorgd te zijn om de 
 Instructies voor het installeren van TeX Live voor Windows.
 \paragraph{Download het installatieprogramma.}
 \begin{enumerate}
-\item Surf naar \href{http://www.tug.org/texlive/}{TeX Live}
-\item Klik op ``Download''
-\item Klik op ``install-tl-windows.exe'' en sla dit bestand op (naargelang je browser gebeurt dit automatisch of moet je rechts klikken)
-\item Voer dit programma uit als administrator (indien nodig klikken op ``More info'' en ``Run anyway'')
-\item Kies voor ``Install'' (niet ``Unpack'') en klik op ``Next'', daarna opnieuw op ``Install''.
+	\item Surf naar \href{http://www.tug.org/texlive/}{TeX Live}
+	\item Klik op ``Download''
+	\item Klik op ``install-tl-windows.exe'' en sla dit bestand op (naargelang je browser gebeurt dit automatisch of moet je rechts klikken)
+	\item Voer dit programma uit als administrator (indien nodig klikken op ``More info'' en ``Run anyway'')
+	\item Kies voor ``Install'' (niet ``Unpack'') en klik op ``Next'', daarna opnieuw op ``Install''.
 \end{enumerate}
-Wacht even tot de installer is uitgepakt. Als je een foutmelding krijgt, probeer dan opnieuw het \texttt{.exe}-bestand uit te voeren (als administrator!). Een nieuw venster  opent automatisch: 
+Wacht even tot de installer is uitgepakt. Als je een foutmelding krijgt, probeer dan opnieuw het \texttt{.exe}-bestand uit te voeren (als administrator!). Een nieuw venster  opent automatisch:
 \paragraph{TeX Live Installer.} Kies volgende opties\ldots
 \begin{itemize}
-\item De standaardlocatie is goed, niet aanpassen
-\item Kies A4 als papierformaat
-\item Kies om het programma voor alle gebruikers te installeren
-\item TeXworks gebruiken we niet, mag je uitschakelen
+	\item De standaardlocatie is goed, niet aanpassen
+	\item Kies A4 als papierformaat
+	\item Kies om het programma voor alle gebruikers te installeren
+	\item TeXworks gebruiken we niet, mag je uitschakelen
 \end{itemize}
 \begin{enumerate}[resume]
-\item Klik op ``Install''.
+	\item Klik op ``Install''.
 \end{enumerate}
 Het proces dat nu volgt, duurt een tijdje, reken op minstens een uur. Zorg voor een snelle en stabiele internetverbinding. Valt deze weg, dan zal je het proces moeten herbeginnen bij stap 4. Het downloaden hervat waar het was gebleven.
 \begin{enumerate}[resume]
-\item Klik op ``Finish'', en in het andere venster even later op ``Close''.
+	\item Klik op ``Finish'', en in het andere venster even later op ``Close''.
 \end{enumerate}
 
 \subsection{\LaTeX-editor: TeXstudio}
 Zorg dat de \LaTeX-distributie eerst is afgewerkt vooraleer te beginnen met het installeren van TeXStudio voor Windows.
 
 \begin{enumerate}
-\item Surf naar  \href{http://texstudio.sourceforge.net/}{TeXStudio}
-\item klik je op de downloadloadknop die hoort bij je besturingssysteem
-\item Voer dit programma uit, klik op ``Next''
-\item De installatie-directory instellen (standaard-instelling is waarschijnlijk goed) en op ``Install'' klikken
+	\item Surf naar  \href{http://texstudio.sourceforge.net/}{TeXStudio}
+	\item klik je op de downloadloadknop die hoort bij je besturingssysteem
+	\item Voer dit programma uit, klik op ``Next''
+	\item De installatie-directory instellen (standaard-instelling is waarschijnlijk goed) en op ``Install'' klikken
 \end{enumerate}
 Installatie van TeX Live en TeXstudio kan je controleren als volgt:
 \begin{enumerate}
-\item Kies in ``TeXstudio'' voor ``File'', ``New from template''
-\item Klik op ``Article'' en ``OK''. Er opent een tekstbestand met een tiental lijntjes code.
-\item Druk ``F5''.
+	\item Kies in ``TeXstudio'' voor ``File'', ``New from template''
+	\item Klik op ``Article'' en ``OK''. Er opent een tekstbestand met een tiental lijntjes code.
+	\item Druk ``F5''.
 \end{enumerate}
 Alles is correct geïnstalleerd als er na enkele seconden een venster verschijnt met daarin een pagina dat de datum van vandaag bevat, het woord ``Abstract'' en enkele ogenschijnlijk verdwaalde cijfers.
 
@@ -100,27 +101,27 @@ Alles is correct geïnstalleerd als er na enkele seconden een venster verschijnt
 \subsection{KULeuvenLaTeXClasses}
 Het pakket \href{https://github.com/srebry/KULeuvenLaTeXClasses}{\texttt{KULeuvenLaTeXClasses}} bevat class-files, templates, voorbeelden en instructies om artikels, rapporten, posters en presentaties in de KU Leuven-huisstijl (inclusief Kulak en Brugge) te maken. Deze zijn gebaseerd op de standaard documentklassen en hebben in principe dezelfde functionaliteit.
 \begin{itemize}
-\item \texttt{kulakarticle.cls} eenzijdig document met section als hoogste niveau, gebaseerd op \texttt{article.cls}
-\item \texttt{kulakreport.cls} eenzijdig document met chapter als hoogste niveau, gebaseerd op \texttt{report.cls}
-\item \texttt{kulakposter} wetenschappelijke poster op formaat A3 tot A0, gebaseerd op \texttt{sciposter.cls}
-\item \texttt{kulakbeamer.cls} presentaties maken, gebaseerd op \texttt{beamer.cls}
+	\item \texttt{kulakarticle.cls} eenzijdig document met section als hoogste niveau, gebaseerd op \texttt{article.cls}
+	\item \texttt{kulakreport.cls} eenzijdig document met chapter als hoogste niveau, gebaseerd op \texttt{report.cls}
+	\item \texttt{kulakposter} wetenschappelijke poster op formaat A3 tot A0, gebaseerd op \texttt{sciposter.cls}
+	\item \texttt{kulakbeamer.cls} presentaties maken, gebaseerd op \texttt{beamer.cls}
 \end{itemize}
 
 Er is geen documentklasse ter vervanging van \texttt{book}. Voor het schrijven van een PhD Thesis heeft Arenberg Doctoral School heel specifieke \href{https://set.kuleuven.be/intranet-associatie/ADS/guidelines_PhDthesis.htm}{richtlijnen} en is er een specifieke \href{https://people.cs.kuleuven.be/~wannes.meert/adsphd/}{\LaTeX-template}.
 
 \begin{itemize}
-\item \texttt{kulak} -- logo's en \texttt{.cls}-bestanden. Verderop volgen instructies om deze bestanden in de local texmf-tree te zetten en de TeX Live databank te regenereren. Pas daarna is het mogelijk om bijvoorbeeld \verb+\documentclass{kulakarticle}+ te gebruiken.
-\item \texttt{Templates}  -- \texttt{.tex}-bestanden bij elke Kulak-documentklasse die al een typische preambule bevatten en als startpunt voor een nieuw document kunnen dienen. Verderop volgen instructies om deze bestanden in de  template-mappen van TeXstudio te zetten. Pas daarna is het mogelijk om bijvoorbeeld een Beamer-presentatie in Kulak-stijl te starten via \texttt{Make new from template}. 
-\item \texttt{Examples} -- uitgebreide voorbeelden bij elke documentklasse.
+	\item \texttt{kulak} -- logo's en \texttt{.cls}-bestanden. Verderop volgen instructies om deze bestanden in de local texmf-tree te zetten en de TeX Live databank te regenereren. Pas daarna is het mogelijk om bijvoorbeeld \verb+\documentclass{kulakarticle}+ te gebruiken.
+	\item \texttt{Templates}  -- \texttt{.tex}-bestanden bij elke Kulak-documentklasse die al een typische preambule bevatten en als startpunt voor een nieuw document kunnen dienen. Verderop volgen instructies om deze bestanden in de  template-mappen van TeXstudio te zetten. Pas daarna is het mogelijk om bijvoorbeeld een Beamer-presentatie in Kulak-stijl te starten via \texttt{Make new from template}.
+	\item \texttt{Examples} -- uitgebreide voorbeelden bij elke documentklasse.
 \end{itemize}
 De volgende secties legt uit hoe deze kunnen worden geïnstalleerd en gebruikt.
 
 \subsection{Huisstijl installeren}
 Volg de instructies in één van volgende secties
 \begin{description}
-\item[\ref{sssec:dl}] \textbf{Downloaden en configureren} voor wie Github niet kent, je zal nieuwe versies van de huisstijl telkens manueel moeten installeren.
-\item[\ref{sssec:gh}] \textbf{Repository clonen en symlinks maken} voor de ervaren Github gebruiker, je werkt steeds met de recentste versie van de huisstijl.
-\item[\ref{sssec:linux} -- \ref{sssec:macos}] \textbf{Linux en MacOS gebruikers} volgen dezelfde principes, al zijn de bestandslocaties verschillend. Deze worden verderop gespecificeerd.
+	\item[\ref{sssec:dl}] \textbf{Downloaden en configureren} voor wie GitHub niet kent, je zal nieuwe versies van de huisstijl telkens manueel moeten installeren.
+	\item[\ref{sssec:gh}] \textbf{Repository clonen en symlinks maken} voor de ervaren Github gebruiker, je werkt steeds met de recentste versie van de huisstijl.
+	\item[\ref{sssec:linux} -- \ref{sssec:macos}] \textbf{Linux en MacOS gebruikers} volgen dezelfde principes, al zijn de bestandslocaties verschillend. Deze worden verderop gespecificeerd.
 \end{description}
 
 
@@ -130,57 +131,56 @@ Deze methode is aangewezen voor wie Github niet kent, je zal nieuwe versies van 
 
 \paragraph{Bestanden downloaden.}
 \begin{enumerate}
-\item Surf naar het Github repository
-\href{https://github.com/srebry/KULeuvenLaTeXClasses}{\texttt{KULeuvenLaTeXClasses}}
-\item Klik op de groene knop ``Code''
-\item Klik in de pop-up op ``Download ZIP''
-\item Ga naar de map ``Downloads'' en open de gecomprimeerde map
+	\item Surf naar het GitHub repository
+	      \href{https://github.com/srebry/KULeuvenLaTeXClasses}{\texttt{KULeuvenLaTeXClasses}}
+	\item Klik op de groene knop ``Code''
+	\item Klik in de pop-up op ``Download ZIP''
+	\item Ga naar de map ``Downloads'' en open de gecomprimeerde map
 \end{enumerate}
 \paragraph{Class files configureren.}
 \begin{enumerate}[resume]
-\item Verplaats de map kulak naar \verb+C:\texlive\texmf-local\tex\LaTeX\local\kulak+
-\item Start het Windows-programma ``TeX Live Shell'' en klik op ``Actions'' en ``Regenerate filename database''
+	\item Verplaats de map kulak naar \verb+C:\texlive\texmf-local\tex\LaTeX\local\kulak+
+	\item Start het Windows-programma ``TeX Live Shell'' en klik op ``Actions'' en ``Regenerate filename database''
 \end{enumerate}
 \paragraph{Templates configureren.}
 \begin{enumerate}
-\item Pas de \texttt{.tex}-bestanden in de map \texttt{Templates} aan (naam, jaartal, studierichting, ...)
-\item Verplaats de bestanden uit de map \texttt{Templates} naar volgende map (TeXstudio herkent de templates niet als ze in een subdirectory van deze locatie zitten).
-\begin{verbatim} C:\Users\<username>\AppData\Roaming\texstudio\templates\user
+	\item Pas de \texttt{.tex}-bestanden in de map \texttt{Templates} aan (naam, jaartal, studierichting, ...)
+	\item Verplaats de bestanden uit de map \texttt{Templates} naar volgende map (TeXstudio herkent de templates niet als ze in een subdirectory van deze locatie zitten).
+	      \begin{verbatim} C:\Users\<username>\AppData\Roaming\texstudio\templates\user
 \end{verbatim}
-\item TeXstudio herstarten en klikken op ``File'', ``New From Template...''
+	\item TeXstudio herstarten en klikken op ``File'', ``New From Template...''
 \end{enumerate}
 
 \subsubsection{Repository clonen en symlinks maken}
 \label{sssec:gh}
-Deze methode is aangewezen voor ervaren Github gebruikers en hoef je niet te doen als je al de stappen in \ref{sssec:dl} Downloaden en configureren hebt doorlopen.
+Deze methode is aangewezen voor ervaren GitHub gebruikers en hoef je niet te doen als je al de stappen in \ref{sssec:dl} Downloaden en configureren hebt doorlopen.
 
 \paragraph{Bestanden clonen.}
 
 \begin{enumerate}
-\item Cloon de repository \href{https://github.com/srebry/KULeuvenLaTeXClasses}{KULeuvenLaTeXClasses} naar het eigen bestandssyteem
+	\item Cloon de repository \href{https://github.com/srebry/KULeuvenLaTeXClasses}{KULeuvenLaTeXClasses} naar het eigen bestandssyteem
 \end{enumerate}
 
 \paragraph{Class files configureren.}
 \begin{enumerate}[resume]
-\item Zoek de locatie van de map kulak, bijvoorbeeld \begin{verbatim}
+	\item Zoek de locatie van de map kulak, bijvoorbeeld \begin{verbatim}
 C:\Users\<username>\Documents\KULeuvenLaTeXClasses\kulak
 \end{verbatim}
-\item Zoek de locatie van de map texlive, typisch \verb+C:\texlive\+
-\item Open de Windows Command Prompt/Opdrachtprompt als administrator
-\item Maak een symbolische link met het volgende commando (op één lijn), waarin je gevonden locaties substitueert:
-\begin{verbatim}
+	\item Zoek de locatie van de map texlive, typisch \verb+C:\texlive\+
+	\item Open de Windows Command Prompt/Opdrachtprompt als administrator
+	\item Maak een symbolische link met het volgende commando (op één lijn), waarin je gevonden locaties substitueert:
+	      \begin{verbatim}
 mklink /D C:\texlive\texmf-local\tex\LaTeX\local\kulak
           C:\Users\<username>\Documents\KULeuvenLaTeXClasses\kulak
-\end{verbatim}			
-\item Start het Windows-programma ``TeX Live Shell'' en klik op ``Actions'' en ``Regenerate filename database''. Deze laatste stap is opnieuw nodig als er na een pull van een nieuwe versie extra bestanden zouden zijn geïnstalleerd.
+\end{verbatim}
+	\item Start het Windows-programma ``TeX Live Shell'' en klik op ``Actions'' en ``Regenerate filename database''. Deze laatste stap is opnieuw nodig als er na een pull van een nieuwe versie extra bestanden zouden zijn geïnstalleerd.
 \end{enumerate}
 
 \paragraph{Templates configureren.}
 \begin{enumerate}
 	\item Pas de \texttt{.tex}-bestanden in de map \texttt{Templates} aan (naam, jaartal, studierichting, ...)
 	\item Verplaats de bestanden uit de map \texttt{Templates} naar volgende map (TeXstudio herkent de templates niet als ze in een subdirectory van deze locatie zitten).
-	\begin{verbatim} C:\Users\<username>\AppData\Roaming\texstudio\templates\user
-	\end{verbatim}
+	      \begin{verbatim} C:\Users\<username>\AppData\Roaming\texstudio\templates\user\end{verbatim}
 	\item TeXstudio herstarten en klikken op ``File'', ``New From Template...''
 \end{enumerate}
 
@@ -190,10 +190,10 @@ mklink /D C:\texlive\texmf-local\tex\LaTeX\local\kulak
 De werkwijze op Linux is analoog als die op Windows, met volgende verschillen.
 
 \begin{itemize}
-\item Map \texttt{kulak} verplaatsen naar \verb+~/texmf/tex/LaTeX/+
-\item Een symbolische link maken met het commando \texttt{ln -s}
-\item Commando \verb+texhash ~/texmf+ in terminal uitvoeren om de TeX Live databases te regenereren
-\item Inhoud van de map \texttt{Templates} verplaatsen naar \verb+~/.config/texstudio/templates/user+
+	\item Map \texttt{kulak} verplaatsen naar \verb+~/texmf/tex/LaTeX/+
+	\item Een symbolische link maken met het commando \texttt{ln -s }
+	\item Commando \verb+texhash ~/texmf+ in terminal uitvoeren om de TeX Live databases te regenereren
+	\item Inhoud van de map \texttt{Templates} verplaatsen naar \verb+~/.config/texstudio/templates/user+
 \end{itemize}
 
 \subsubsection{Werkwijze MacOS}
@@ -201,29 +201,37 @@ De werkwijze op Linux is analoog als die op Windows, met volgende verschillen.
 
 De werkwijze op MacOS is analoog als die op Windows, met volgende verschillen.
 \begin{itemize}
-	\item  Map \texttt{kulak} verplaatsen/linken naar \verb+~/Library/texmf/tex/LaTeX/+
-\item Een symbolische link maken met het commando \texttt{ln -s}
-\item Regenereren van de MacTeX-databases is niet nodig
-\item Inhoud van de map \texttt{Templates} verplaatsen naar [??]
+	\item Map \texttt{kulak} verplaatsen/linken naar \verb+~/Library/texmf/tex/LaTeX/+
+	\item Een symbolische link maken met onderstaand commando
+	      \begin{verbatim}ln -s <pad_naar_repo>/KULeuvenLaTeXClasses/kulak ~/Library/texmf/tex/latex/kulak\end{verbatim}
+	\item Inhoud van de map \texttt{Templates} verplaatsen naar \verb+~/.config/texstudio/templates/user+
 \end{itemize}
-				
+
 \subsection{Specifieke commando's en opties}
-De vier documentklassen hebben telkens de opties \textbf{\texttt{kulak}}, \textbf{\texttt{kuleuven-brugge}} en \textbf{\texttt{kul}} om het juiste logo te selecteren
+De vier documentklassen hebben telkens de opties \texttt{kulak}, \texttt{kuleuven-brugge}, \texttt{ingenieurswetenschappen} en \texttt{kul} om het juiste logo te selecteren.
 \begin{center}
-	\begin{tabular}{c|c|c}
-		\textbf{\texttt{kulak}} & \textbf{\texttt{kuleuven-brugge}} & \textbf{\texttt{kul}}\\ \hline
-		\includegraphics[height=1cm]{kulakLogo} & \includegraphics[height=1cm]{kuleuvenBruggeLogo} & \includegraphics[height=1cm]{kuleuvenLogo}
+	\begin{tabular}{c c}
+		\includegraphics[height=1cm]{kulakLogo}    & \includegraphics[height=1cm]{kuleuvenBruggeLogo} \\
+		\textbf{\texttt{kulak}}                    & \textbf{\texttt{kuleuven-brugge}}                \\[0.2cm]
+		\includegraphics[height=1cm]{kuleuvenLogo} & \includegraphics[height=1cm]{irLogo}             \\
+		\textbf{\texttt{kul}}                      & \textbf{\texttt{ingenieurswetenschappen}}
 	\end{tabular}
 \end{center}
 
 \subsubsection{Kulak article class}
 
-Deze klasse is gebaseerd op de documentklasse \texttt{article} en laat alle functionaliteit ervan toe. De hoofding op de eerste pagina wordt gezet met het commando \verb+\maketitle+. Goede werking vereist volgende vier commando's in de preambule.
+Deze klasse is gebaseerd op de documentklasse \texttt{article} en laat alle functionaliteit ervan toe. De hoofding op de eerste pagina wordt gezet met het commando \verb+\maketitle+.
+Goede werking vereist volgende vier commando's in de preambule.
 \begin{itemize}
-\item \verb+\title{}+ grote vette tekst, rechts bovenaan in de titelbalk
-\item \verb+\author{}+ grote tekst, rechts onderaan in de titelbalk
-\item \verb+\date{}+ normale tekst, links onderaan in de titelbalk
-\item \verb+\address{}+ kleine tekst, tussen beide logo's
+	\item \verb+\title{}+ grote vette tekst, rechts bovenaan in de titelbalk
+	\item \verb+\author{}+ grote tekst, rechts onderaan in de titelbalk
+	\item \verb+\date{}+ normale tekst, links onderaan in de titelbalk
+	\item \verb+\address{}+ kleine tekst, tussen beide logo's
+\end{itemize}
+Optioneel kunnen ook volgende commando's worden gebruikt.
+\begin{itemize}
+	\item \verb+\subtitle{}+ middelgrote cursieve tekst, onder de titel
+	\item \verb+\group{}+ kleine tekst, vetgedrukte hoofding tussen beide logo's (groep, faculteit, vak, ...)
 \end{itemize}
 
 \subsubsection{Kulak report class}
@@ -231,15 +239,15 @@ Deze klasse is gebaseerd op de documentklasse \texttt{article} en laat alle func
 Deze klasse is gebaseerd op de documentklasse \texttt{report} en laat alle functionaliteit ervan toe. Voor- en achterblad worden gegenereerd met het commando \verb+titlepage+. Goede werking vereist volgende commando's in de preambule.
 
 \begin{itemize}
-\item \verb+\faculty{}+ rechts bovenaan het voorblad in de gekleurde balk
-\item \verb+\group{}+ rechts bovenaan het voorblad onder de gekleurde balk
-\item \verb+\title{}+ hele grote vette tekst, gecentreerd op het voorblad
-\item \verb+\subtitle{}+ grote vette tekst, onder de titel
-\item \verb+\author{}+ grote vette tekst, rechts onderaan het titelblad
-\item \verb+\institute{}+ normale tekst, onder de auteur
-\item \verb+\date{}+ normale tekst, onder het instituut
-\item \verb+\emailaddress{}+ gebruikt in het adres-veld
-\item \verb+\address{}+ kleine tekst, rechts bovenaan het achterblad
+	\item \verb+\faculty{}+ rechts bovenaan het voorblad in de gekleurde balk
+	\item \verb+\group{}+ rechts bovenaan het voorblad onder de gekleurde balk
+	\item \verb+\title{}+ hele grote vette tekst, gecentreerd op het voorblad
+	\item \verb+\subtitle{}+ grote vette tekst, onder de titel
+	\item \verb+\author{}+ grote vette tekst, rechts onderaan het titelblad
+	\item \verb+\institute{}+ normale tekst, onder de auteur
+	\item \verb+\date{}+ normale tekst, onder het instituut
+	\item \verb+\emailaddress{}+ gebruikt in het adres-veld
+	\item \verb+\address{}+ kleine tekst, rechts bovenaan het achterblad
 \end{itemize}
 
 \subsubsection{Kulak poster class}
@@ -248,10 +256,10 @@ Deze klasse is gebaseerd op \texttt{sciposter} en laat alle functionaliteit erva
 
 \begin{itemize}
 	\item \textbf{\texttt{landscape}} en \textbf{\texttt{portrait}} voor de oriëntatie van de pagina
-	\item \textbf{\texttt{a3}} tot \textbf{\texttt{a0}} voor grootte van de pagina en het lettertype. 
+	\item \textbf{\texttt{a3}} tot \textbf{\texttt{a0}} voor grootte van de pagina en het lettertype.
 	\item \textbf{\texttt{background}} en \textbf{\texttt{nobackground}} bepalen of de achtergrond wordt ingekleurd.
 	\item \textbf{\texttt{photo}} voegt een foto van de auteur toe naast het logo, \textbf{\texttt{nophoto}} onderdrukt deze foto. Het commando \verb+\photohere+ laat toe de foto van de auteur elders te positioneren.
-\end{itemize} 
+\end{itemize}
 
 De gekleurde banner en hoofding worden gegenereerd met het commando \verb+\maketitle+. Mogelijk moet het commando pdflatex herhaaldelijk worden uitgevoerd om alle positionering op de pagina juist te krijgen. Goede werking vereist volgende commando's in de preambule.
 
@@ -278,7 +286,7 @@ Er zijn twee extra omgevingen die een andere frame-layout voorzien: \textbf{\tex
 		\tableofcontents
 	\end{outlineframe}
 \end{verbatim}
-							
+
 \section{Verdere configuratie van TeXstudio}
 \label{sec:texstudio}
 \subsection{Spellingscorrectie}
@@ -286,23 +294,23 @@ Extra talen toevoegen voor spellingscorrectie in TeXstudio kan door het plaatsen
 
 \paragraph{Eenmalige configuratie.}
 \begin{itemize}
-\item Download per gewenste taal de OpenOffice-add on,
-\item Stel voorkeuren in TeXStudio in via ``Options'', ``Configure TeXStudio'', ``Language Checking''
-\item Taal per taal toevoegen via ``Import dictionary...'' en gewenste \texttt{.oxt}-bestand selecteren
-\item Stel hier ook je voorkeurtaal in
+	\item Download per gewenste taal de OpenOffice-add on,
+	\item Stel voorkeuren in TeXStudio in via ``Options'', ``Configure TeXStudio'', ``Language Checking''
+	\item Taal per taal toevoegen via ``Import dictionary...'' en gewenste \texttt{.oxt}-bestand selecteren
+	\item Stel hier ook je voorkeurtaal in
 \end{itemize}
 
 \paragraph{Taalinstellingen per document.}
 \begin{itemize}
-\item Selecteer de juiste taal van een document rechts onderaan TeXStudio-scherm. De taalcodes zijn van de vorm \texttt{taal\_land} (\texttt{en\_GB}, \texttt{fr\_FR}, \texttt{nl\_NL}, ...).
-\item Klik op ``Insert Language as TeX comment'', dit voegt een lijn toe aan het document dat de taalinstelling onthoudt
+	\item Selecteer de juiste taal van een document rechts onderaan TeXStudio-scherm. De taalcodes zijn van de vorm \texttt{taal\_land} (\texttt{en\_GB}, \texttt{fr\_FR}, \texttt{nl\_NL}, ...).
+	\item Klik op ``Insert Language as TeX comment'', dit voegt een lijn toe aan het document dat de taalinstelling onthoudt
 \end{itemize}
 \subsection{User commands: Handouts bij een beamer-presentatie}
 De gebruiker kan naargelang de eigen nood veelgebruikte output-routines automatiseren en toekennen aan een sneltoets. Als eerste voorbeeld het genereren van de handout-versie van een beamer-presentatie:
 \paragraph{Gebruikelijke workflow.}
 \begin{itemize}
-\item \verb+\documentclass{beamer}+ + quickbuild: genereert \texttt{file.pdf} met de on screen-presentatie
-\item \verb+\documentclass[handout]{beamer}+ + quickbuild: overschrijft \texttt{file.pdf} met de handout-versie
+	\item \verb+\documentclass{beamer}+ + quickbuild: genereert \texttt{file.pdf} met de on screen-presentatie
+	\item \verb+\documentclass[handout]{beamer}+ + quickbuild: overschrijft \texttt{file.pdf} met de handout-versie
 \end{itemize}
 In het bronbestand \texttt{file.tex} moet dus telkens de optie \texttt{[handout]} worden toegevoegd of verwijderd, en het doelbestand \texttt{file.pdf} van naam veranderd om beide versies te behouden.
 \paragraph{Automatiseren van de workflow.}
@@ -313,23 +321,23 @@ pdf\LaTeX\ -jobname "?m)Handout" "\PassOptionsToClass{handout}{beamer}\input{%}"
 \end{verbatim}
 
 \begin{itemize}
-\item \verb+-jobname+ stelt een alternatieve naam voor de uitvoer in
-\texttt{-jobname}
-\item \verb+"?m)Handout"+ selecteert de bestandsnaam zonder extensie en voegt het suffix Handout toe
-\item \verb+%+ is binnen TeXstudio de naam van het \texttt{.tex}-bestand (zonder extensie, tussen aanhalingstekens)
-\item Het laatste argument is eigenlijk de volledige \LaTeX-code waarop het commando pdflatex wordt losgelaten, en die code bestaat uit twee commando's
-\begin{itemize}
-\item \verb+\PassOptionsToClass{handout}{beamer}+, commando dat de extra optie toevoegt om handouts te maken aan het daaropvolgende \verb+\documentclass+-commando
-\item \verb+\input{%}+ voegt het volledige bestand aan het voorgaande commando toe
-\end{itemize}
+	\item \verb+-jobname+ stelt een alternatieve naam voor de uitvoer in
+	      \texttt{-jobname}
+	\item \verb+"?m)Handout"+ selecteert de bestandsnaam zonder extensie en voegt het suffix Handout toe
+	\item \verb+%+ is binnen TeXstudio de naam van het \texttt{.tex}-bestand (zonder extensie, tussen aanhalingstekens)
+	\item Het laatste argument is eigenlijk de volledige \LaTeX-code waarop het commando pdflatex wordt losgelaten, en die code bestaat uit twee commando's
+	      \begin{itemize}
+		      \item \verb+\PassOptionsToClass{handout}{beamer}+, commando dat de extra optie toevoegt om handouts te maken aan het daaropvolgende \verb+\documentclass+-commando
+		      \item \verb+\input{%}+ voegt het volledige bestand aan het voorgaande commando toe
+	      \end{itemize}
 \end{itemize}
 
 \paragraph{Eenmalige configuratie.}
 
 \begin{itemize}
-\item Klik op ``Options'', ``Configure TeXstudio'', ``Build''
-\item Typ in een vrije invoerlijn onder ``User Commands'' de naam ``Handout'' in het linkervak en rechts daarvan bovenstaand commando
-\item Klik op ``Shortcuts'', ``Tools'', ``User'' en selecteer een sneltoets (bijvoorbeeld ``ctrl+F5'') voor het uitvoeren van de net geschreven output-routine
+	\item Klik op ``Options'', ``Configure TeXstudio'', ``Build''
+	\item Typ in een vrije invoerlijn onder ``User Commands'' de naam ``Handout'' in het linkervak en rechts daarvan bovenstaand commando
+	\item Klik op ``Shortcuts'', ``Tools'', ``User'' en selecteer een sneltoets (bijvoorbeeld ``ctrl+F5'') voor het uitvoeren van de net geschreven output-routine
 \end{itemize}
 
 \paragraph{Combineren van twee flows.}
@@ -338,7 +346,7 @@ Om systematisch zowel slides als handouts te maken, is het nodig telkens tegelij
 \begin{itemize}
 	\item Klik op ``Options'', ``Configure TeXstudio'', ``Build''
 	\item Typ in een vrije invoerlijn onder ``User Commands'' de naam ``Presentation'' in het linkervak en rechts daarvan onderstaand commando
-\begin{verbatim}
+	      \begin{verbatim}
 	txs:///pdf\LaTeX\ | txs:///Handout
 \end{verbatim}
 	\item Ken eventueel opnieuw een sneltoets toe. Uitvoeren van het user-command ``Presentation'' resulteert dus meteen in 2 \texttt{.pdf}-bestanden: \texttt{file.pdf} met slides en \texttt{fileHandout.pdf} met handouts.
@@ -401,17 +409,17 @@ Bibliografische informatie kan zeer snel worden verzameld via
 \paragraph{Eenmalige configuratie in Google Scholar.}
 
 \begin{itemize}
-\item Open het hamburger-menu
-\item Klik op ``Instellingen''
-\item Selecteer ``Links voor import in BibTeX weergeven'' en klik op ``Opslaan''
+	\item Open het hamburger-menu
+	\item Klik op ``Instellingen''
+	\item Selecteer ``Links voor import in BibTeX weergeven'' en klik op ``Opslaan''
 \end{itemize}
 
 \paragraph{Bibliografische informatie verzamelen.}
 
 Bij zoekopdrachten via Google Scholar verschijnt nu standaard een downloadlink bij elke bron
 \begin{enumerate}
-\item Klik op ``Importeren in BibTeX'', er verschijnt een tekstbestand als volgt
-\begin{verbatim}
+	\item Klik op ``Importeren in BibTeX'', er verschijnt een tekstbestand als volgt
+	      \begin{verbatim}
 @book{TLC,
   title={The \LaTeX\ companion},
   author={Mittelbach, F. and Goossens, M. and Braams, J. and Carlisle, [...]},
@@ -420,8 +428,8 @@ Bij zoekopdrachten via Google Scholar verschijnt nu standaard een downloadlink b
   publisher={Addison-Wesley}
 }
 \end{verbatim}
-\item Lees de gevonden informatie na, soms staat er duidelijk onzin in bepaalde velden!
-\item Kopieer en plak deze informatie voor alle gebruikte bronnen in één grote file \texttt{bibliografie.bib} of gebruik een referentie-manager als \href{http://jabref.sourceforge.net/}{JabRef}.
+	\item Lees de gevonden informatie na, soms staat er duidelijk onzin in bepaalde velden!
+	\item Kopieer en plak deze informatie voor alle gebruikte bronnen in één grote file \texttt{bibliografie.bib} of gebruik een referentie-manager als \href{http://jabref.sourceforge.net/}{JabRef}.
 \end{enumerate}
 
 \paragraph{Citaties aan een tekst toevoegen.}
@@ -429,10 +437,10 @@ Bij zoekopdrachten via Google Scholar verschijnt nu standaard een downloadlink b
 Volgende commando's zijn vereist in het bestand \texttt{tekst.tex} met \texttt{bibliografie.bib} in dezelfde map:
 
 \begin{itemize}
-\item \verb+\usepackage{natbib}+ inladen in de preambule
-\item \verb+\cite{label}+ voor elke citatie in de doorlopende tekst, \texttt{label} is het eerste veld in de bibliografie-record (\texttt{TLC} in bovenstaand voorbeeld)
-\item \verb+\bibliographystyle{plainnat}+ bepaalt sortering en lay-out van de bibliografie
-\item \verb+\bibliography{bibliografie}+ zet de bibliografie op de plek waar dit commando staat
+	\item \verb+\usepackage{natbib}+ inladen in de preambule
+	\item \verb+\cite{label}+ voor elke citatie in de doorlopende tekst, \texttt{label} is het eerste veld in de bibliografie-record (\texttt{TLC} in bovenstaand voorbeeld)
+	\item \verb+\bibliographystyle{plainnat}+ bepaalt sortering en lay-out van de bibliografie
+	\item \verb+\bibliography{bibliografie}+ zet de bibliografie op de plek waar dit commando staat
 \end{itemize}
 
 Als het bestand \texttt{bibliografie.bib} geen bibilografische informatie bevat bij het gevraagde label, resulteert dat in een ongeldige verwijzing ``[??]''. Bronnen zonder expliciete citatie in de tekst, verschijnen niet in de bibliografie.
@@ -440,9 +448,9 @@ Als het bestand \texttt{bibliografie.bib} geen bibilografische informatie bevat 
 Het programma pdflatex, dat \texttt{tekst.tex} omzet in \texttt{tekst.pdf}, kan zelf de nodige bibliografische informatie niet sorteren of opmaken, daarvoor is er het programma bibtex. Om de referentielijst en correcte citaties aan de output toe te voegen, zijn volgende stappen nodig:
 
 \begin{enumerate}
-\item pdflatex lijst op basis van de \verb+\cite+-commando's in de bron \texttt{tekst.tex} de gewenste citaties op in het hulpbestand \texttt{tekst.aux};
-\item bibtex haalt op basis van het hulpbestand \texttt{tekst.aux} de nodige informatie uit \texttt{bibliografie.bib} en schrijft die in de gewenste lay-out volgens het commando \verb+\bibliographystyle{}+ weg naar \texttt{tekst.bbl};
-\item pdflatex voegt \texttt{tekst.bbl} toe aan de output en vult citaties als ``Mittelbach et al.\ 2004'' toe in de tekst.
+	\item pdflatex lijst op basis van de \verb+\cite+-commando's in de bron \texttt{tekst.tex} de gewenste citaties op in het hulpbestand \texttt{tekst.aux};
+	\item bibtex haalt op basis van het hulpbestand \texttt{tekst.aux} de nodige informatie uit \texttt{bibliografie.bib} en schrijft die in de gewenste lay-out volgens het commando \verb+\bibliographystyle{}+ weg naar \texttt{tekst.bbl};
+	\item pdflatex voegt \texttt{tekst.bbl} toe aan de output en vult citaties als ``Mittelbach et al.\ 2004'' toe in de tekst.
 \end{enumerate}
 Als TeXstudio correct is geconfigureerd, voert het Quick Build-commando (``F5'') deze drie stappen automatisch uit. Enkel in specifieke situaties is het dan nodig om zelf bibtex uit te voeren.
 
@@ -451,33 +459,33 @@ Als TeXstudio correct is geconfigureerd, voert het Quick Build-commando (``F5'')
 \subsubsection{Geschikte afbeeldingsformaten}
 \LaTeX\ kan enkel figuren toevoegen van enkele specifieke formaten
 \begin{itemize}
-\item \texttt{.pdf} aangewezen voor vectortekeningen zoals grafieken (zie ook het pakket \texttt{pdfpages} op integrale pagina's tussen te voegen)
-\item \texttt{.eps} veelvoorkomend export-formaat in rekenpakketten (zie verder)
-\item \texttt{.jpg} aangewezen voor foto's van hoge resolutie
-\item \texttt{.png} aangewezen voor afbeeldingen van lage resolutie zoals screenshots
+	\item \texttt{.pdf} aangewezen voor vectortekeningen zoals grafieken (zie ook het pakket \texttt{pdfpages} op integrale pagina's tussen te voegen)
+	\item \texttt{.eps} veelvoorkomend export-formaat in rekenpakketten (zie verder)
+	\item \texttt{.jpg} aangewezen voor foto's van hoge resolutie
+	\item \texttt{.png} aangewezen voor afbeeldingen van lage resolutie zoals screenshots
 \end{itemize}
 Andere formaten (\texttt{.wmf}, \texttt{.bmp}, \texttt{.HEIC}, ...) moeten worden geconverteerd eer ze in een \LaTeX-document kunnen worden gebruikt.
 
 \subsubsection{Afbeeldingen invoegen}
 Om een figuur in te voegen, zijn volgende stappen noodzakelijk
 \begin{itemize}
-\item \verb+\usepackage{graphicx}+ in de preambule plaatsen (let op de letter \texttt{x})
-\item Het bestand \texttt{figuur.ext} correct opslaan:
-\begin{itemize}
-\item \texttt{figuur}, de bestandsnaam, moet eenvoudig zijn, zonder spaties of vreemde symbolen -- \LaTeX\ is hoofdlettergevoelig!
-\item \texttt{.ext}, de bestandsextensie, moet precies overeenkomen met een van de vier hierboven opgesomde formaten, en dus bestaan uit precies drie kleine letters (niet \texttt{.JPG} of \texttt{.jpeg}).
-\item Het bestand staat in dezelfde map als de \texttt{.tex}-file.
-\end{itemize}
-\item Op de gewenste plaats in het \texttt{.tex}-document het commando \verb+\includegraphics{}+ gebruiken, de resulterende figuur wordt beschouwd als een tekstkarakter.
-\item \verb+\includegraphics{figuur}+ de bestandsextensie hoeft niet te worden toegevoegd.
-\item \verb+\includegraphics[width=0.62\textwidth]{figuur}+ de grootte van de afbeelding kan worden gespecificeerd in verschillende eenheden:
-\begin{itemize}
-\item \texttt{width=5cm} -- absolute maat, in centimeter
-\item \texttt{width=3ex} of \texttt{width=3em} -- relatief ten opzichte van het lettergrootte op de huidige plaats in het document (breedte van de letter ``x'' of ``m'')
-\item \verb+width=0.62\textwidth+ -- relatief ten opzichte van de tekstbreedte
-\end{itemize}
-\item In een wetenschappelijke tekst zijn afbeeldingen niet decoratief, en hoeven ze dus niet op een specifieke plaats te staan. Omdat zij op een vaste positie de leesbaarheid verhinderen en de de bladspiegel kunnen verstoren, worden ze in de regel als een ``floating object'' gezet, met een bijschrift en een label waarnaar minstens één keer vanuit de tekst wordt gerefereerd.
-\begin{verbatim}
+	\item \verb+\usepackage{graphicx}+ in de preambule plaatsen (let op de letter \texttt{x})
+	\item Het bestand \texttt{figuur.ext} correct opslaan:
+	      \begin{itemize}
+		      \item \texttt{figuur}, de bestandsnaam, moet eenvoudig zijn, zonder spaties of vreemde symbolen -- \LaTeX\ is hoofdlettergevoelig!
+		      \item \texttt{.ext}, de bestandsextensie, moet precies overeenkomen met een van de vier hierboven opgesomde formaten, en dus bestaan uit precies drie kleine letters (niet \texttt{.JPG} of \texttt{.jpeg}).
+		      \item Het bestand staat in dezelfde map als de \texttt{.tex}-file.
+	      \end{itemize}
+	\item Op de gewenste plaats in het \texttt{.tex}-document het commando \verb+\includegraphics{}+ gebruiken, de resulterende figuur wordt beschouwd als een tekstkarakter.
+	\item \verb+\includegraphics{figuur}+ de bestandsextensie hoeft niet te worden toegevoegd.
+	\item \verb+\includegraphics[width=0.62\textwidth]{figuur}+ de grootte van de afbeelding kan worden gespecificeerd in verschillende eenheden:
+	      \begin{itemize}
+		      \item \texttt{width=5cm} -- absolute maat, in centimeter
+		      \item \texttt{width=3ex} of \texttt{width=3em} -- relatief ten opzichte van het lettergrootte op de huidige plaats in het document (breedte van de letter ``x'' of ``m'')
+		      \item \verb+width=0.62\textwidth+ -- relatief ten opzichte van de tekstbreedte
+	      \end{itemize}
+	\item In een wetenschappelijke tekst zijn afbeeldingen niet decoratief, en hoeven ze dus niet op een specifieke plaats te staan. Omdat zij op een vaste positie de leesbaarheid verhinderen en de de bladspiegel kunnen verstoren, worden ze in de regel als een ``floating object'' gezet, met een bijschrift en een label waarnaar minstens één keer vanuit de tekst wordt gerefereerd.
+	      \begin{verbatim}
 \begin{figure}
   \centering
   \includegraphics[width=0.62\textwidth]{figuur}
@@ -493,17 +501,17 @@ Sommige rekenpakketten geven niet de mogelijkheid om grafieken te exporteren als
 \paragraph{Eenmalige configuratie.}
 
 \begin{itemize}
-\item Klik op ``Options'', ``Configure TeXStudio'', ``Commands''
-\item Vul het veld ``pdflatex'' aan met de optie \texttt{--shell-escape}, bijvoorbeeld
-\begin{verbatim}
+	\item Klik op ``Options'', ``Configure TeXStudio'', ``Commands''
+	\item Vul het veld ``pdflatex'' aan met de optie \texttt{--shell-escape}, bijvoorbeeld
+	      \begin{verbatim}
 pdflatex -synctex=1 -interaction=nonstopmode --shell-escape %.tex
 \end{verbatim}
 \end{itemize}
 
 \paragraph{Invoegen van \texttt{.eps}-figuur}
 \begin{itemize}
-\item \verb+\usepackage{epstopdf}+ laden in de preambule, ná het pakket \texttt{graphicx}
-\item \verb+\includegraphics{figuur}+ gebruiken zoals bij andere bestandsformaten
+	\item \verb+\usepackage{epstopdf}+ laden in de preambule, ná het pakket \texttt{graphicx}
+	\item \verb+\includegraphics{figuur}+ gebruiken zoals bij andere bestandsformaten
 \end{itemize}
 
 Dankzij \texttt{--shell-escape} kan pdflatex het compileerproces onderbreken, wordt het epstopdf-programma uitgevoerd, wordt de \texttt{figuur.eps} omgezet in \texttt{figuur-eps-converted-to.pdf}. Tijdens elk volgend compileerproces wordt nagegeaan of een figuur is veranderd. Enkel in dat geval wordt opnieuwe een conversie uitgevoerd.
@@ -516,9 +524,9 @@ Een zeer volledig en relatief gebruiksvriendelijk systeem is ``TikZ''. Een aanta
 \begin{itemize}
 	\item In deel 1 van de (enorm uitgebreide) \href{https://mirror.lyrahosting.com/CTAN/graphics/pgf/base/doc/pgfmanual.pdf}{TikZ en PGF handleiding} worden een aantal voorbeelden stap voor stap opgebouwd.
 	\item De website
-	\href{http://www.texample.net/tikz/examples/all/}{TeXample.net} bevat ontelbare TikZ en PGF voorbeelden.
+	      \href{http://www.texample.net/tikz/examples/all/}{TeXample.net} bevat ontelbare TikZ en PGF voorbeelden.
 	\item Andere teken-mogelijkheden zijn	\href{http://jpicedt.sourceforge.net/}{jPicEdt} en
-	\href{http://latexdraw.sourceforge.net/}{LaTeXdraw}.
+	      \href{http://latexdraw.sourceforge.net/}{LaTeXdraw}.
 \end{itemize}
 
 \subsection{Veelgebruikte packages}
@@ -527,10 +535,10 @@ Een zeer volledig en relatief gebruiksvriendelijk systeem is ``TikZ''. Een aanta
 	\item \verb+\usepackage{hyperref}+: hyperlinks en bookmarks maken van kruisverwijzingen
 	\item \verb+\usepackage[dutch]{babel}+: correcte woordafbreking en andere taalinstellingen
 	\item \verb+\usepackage{amsmath,amssymb,amsthm}+: wiskundesymbolen en constructies
-	\item \verb+\usepackage{graphicx}+: figuren invoegen 
-	\item \verb+\usepackage{epstopdf}+: \texttt{.eps}-figuren invoegen 
-	\item \verb+\usepackage{natbib}+: meer geavanceerdere mogelijkheden voor citaties en bibliografiestijl 
-	\item \verb+\usepackage{tikz}+: tekeningen maken in een \texttt{.tex}-document via TikZ en PGF 
+	\item \verb+\usepackage{graphicx}+: figuren invoegen
+	\item \verb+\usepackage{epstopdf}+: \texttt{.eps}-figuren invoegen
+	\item \verb+\usepackage{natbib}+: meer geavanceerdere mogelijkheden voor citaties en bibliografiestijl
+	\item \verb+\usepackage{tikz}+: tekeningen maken in een \texttt{.tex}-document via TikZ en PGF
 	\item \verb+\usepackage{pdfpages}+: volledige pagina's uit een ander \texttt{.pdf}-document tussen voegen
 	\item \verb+\usepackage{siunitx}+: correct getalnotaties en eenheden zetten
 	\item \verb+\usepackage{mhchem}+: chemische formules en vergelijkingen zetten
@@ -538,14 +546,14 @@ Een zeer volledig en relatief gebruiksvriendelijk systeem is ``TikZ''. Een aanta
 \end{itemize}
 
 \subsection{Belangrijke bronnen}
-					
+
 \begin{itemize}
 	\item \href{http://mirrors.ctan.org/info/lshort/english/lshort.pdf}{The not so Short Introduction to \LaTeX2e}: absoluut de beste introductie en snelcursus \LaTeX.
 	\item \href{http://en.wikibooks.org/wiki/LaTeX}{The \LaTeX\ wikibook}: uitgebreide wiki-pagina's met veel concrete voorbeelden.
 	\item \href{http://www.texample.net/}{\texttt{TeXample.net}}: ontelbaar veel \LaTeX\ en TikZ voorbeelddocumenten.
 	\item \href{http://www.latex-project.org/}{The \LaTeX\ project site}: informatie over de verdere ontwikkeling van \LaTeX.
-	\item \href{http://www.ctan.org/}{The Comprehensive TeX Archive Network}: belangrijkste databank van \LaTeX-gerelateerd materiaal.	
-	\item \href{https://www.researchgate.net/publication/378520971_The_LaTeX_Companion_Parts_I_II_3rd_Edition}{The \LaTeX\ Companion}: het ultieme referentiewerk.	
+	\item \href{http://www.ctan.org/}{The Comprehensive TeX Archive Network}: belangrijkste databank van \LaTeX-gerelateerd materiaal.
+	\item \href{https://www.researchgate.net/publication/378520971_The_LaTeX_Companion_Parts_I_II_3rd_Edition}{The \LaTeX\ Companion}: het ultieme referentiewerk.
 	\item \href{https://tex.stackexchange.com/}{\texttt{tex.stackexchange.com}}: beantwoordt alle vragen snel en professioneel.
 	\item \href{http://mirrors.ctan.org/macros/latex/contrib/beamer/doc/beameruserguide.pdf}{The \textsc{beamer} class}: uitgebreide handleiding over het maken van  presentaties met \textsc{beamer}. \newline Sectie 3, \emph{Tutorial: Euclid’s Presentation} geeft een goede introductie.
 	\item \href{https://www.cpt.univ-mrs.fr/~masson/latex/Beamer-appearance-cheat-sheet.pdf}{\textsc{beamer} appearance cheat sheet}: compact overzicht van de belangrijkste \textsc{beamer}-elementen.
