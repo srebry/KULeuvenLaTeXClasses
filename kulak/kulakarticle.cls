@@ -7,8 +7,10 @@
 %
 % Tips en hints voor een beter resultaat altijd welkom via Stijn.
 
+
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{kulakarticle}[2023/07/05 Article class for KU Leuven]
+
 
 %%%%%%%%
 % Class options
@@ -38,10 +40,12 @@
 \ProcessOptions\relax
 \LoadClass{article}
 
+
 %%%%%%%%
 % Page layout
 
 \RequirePackage[a4paper, left=3cm, width=16cm, top=1cm, headheight=2cm, textheight=23.5cm, footskip=40pt, includehead]{geometry}
+
 
 %%%%%%%%
 % Packages
@@ -67,6 +71,7 @@
 %\RequirePackage{arev}
 %\renewcommand*\familydefault{\sfdefault}
 
+
 %%%%%%%%
 % Colors
 
@@ -81,6 +86,7 @@
 
 \makeatletter
 
+
 %%%%%%%%
 % Optional: department name, subtitle.
 
@@ -92,6 +98,7 @@
 \newcommand\@subtitle{}
 \newcommand{\thesubtitle}{\@subtitle}
 
+
 %%%%%%%%
 % Compulsory: address (details on front page).
 
@@ -99,11 +106,13 @@
 \newcommand\@address{}
 \newcommand{\theaddress}{\@address{}}
 
-%%%%%%%%
-% Toggle for header details on pages other than the first page
 
-\newif\if@showDetails \@showDetailsfalse
-\newcommand{\showDetails}{\@showDetailstrue}
+%%%%%%%%
+% Toggle for header details
+
+\newif\if@showDetails \@showDetailstrue
+\newcommand{\hideDetails}{\@showDetailsfalse}
+
 
 %%%%%%%%
 % Header and footer settings
@@ -113,12 +122,11 @@
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
 
+
 %%%%%%%%
 % Header
 
-\lhead{
-
-}
+\lhead{}
 \chead{}
 \rhead{
    \begin{tikzpicture}[inner sep=0mm]
@@ -135,6 +143,7 @@
    \end{tikzpicture}
 }
 
+
 %%%%%%%%
 % Footer
 
@@ -150,6 +159,7 @@
 }
 \cfoot{}
 \rfoot{\footnotesize{\thepage/\pageref{LastPage}}}
+
 
 %%%%%%%%
 % Title page
