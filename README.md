@@ -25,7 +25,7 @@ Het bestand `instructies.pdf` is een gedetailleerde gids om aan de slag te gaan 
 * Sectie 3: Gedetailleerde instructies voor **installatie van de huisstijl**
   * 3.2.1 "Downloaden en configureren" is aangewezen voor wie Github niet kent
   * 3.2.2 "Repository clonen en symlinks maken" is aangewezen voor de ervaren Github gebruiker
-  * 3.2.3 en 3.2.4 geven aangepaste richtlijnen voor Linux en MacOS gebruikers
+  * 3.2.3 en 3.2.4 geven aangepaste richtlijnen voor Linux en macOS gebruikers
 * Sectie 4: Toelichting bij specifieke mogelijkheden van TeXstudio
   * 4.1 Spellingscorrectie
   * 4.2 User commands
