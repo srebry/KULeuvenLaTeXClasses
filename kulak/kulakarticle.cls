@@ -1,4 +1,4 @@
-% Corporate article-template for KU Leuven Kulak & Brugge
+% Corporate article-template for KU Leuven
 %
 %     * Stijn Rebry - 2012-2025
 %     * Vincent Van Schependom - 2025 - Faculty of Engineering Science and improvements
@@ -17,22 +17,22 @@
    \providecommand{\Logo}{kulakLogo}
    \providecommand{\LogoHeight}{1.5cm}
    \providecommand{\InstanceName}{KU Leuven Campus Kulak Kortrijk}
-   }
+}
 \DeclareOption{kul}{
    \renewcommand{\Logo}{kuleuvenLogo}
    \renewcommand{\LogoHeight}{1.5cm}
    \renewcommand{\InstanceName}{KU Leuven}
-   }
+}
 \DeclareOption{kuleuven-brugge}{
-    \renewcommand{\Logo}{kuleuvenBruggeLogo}
-    \renewcommand{\LogoHeight}{1.5cm}
-    \renewcommand{\InstanceName}{KU Leuven Campus Brugge}
-    }   
+   \renewcommand{\Logo}{kuleuvenBruggeLogo}
+   \renewcommand{\LogoHeight}{1.5cm}
+   \renewcommand{\InstanceName}{KU Leuven Campus Brugge}
+}
 \DeclareOption{ingenieurswetenschappen}{
-    \renewcommand{\Logo}{irLogo}
-    \renewcommand{\LogoHeight}{2.5cm}
-    \renewcommand{\InstanceName}{KU Leuven Faculty of Engineering Science}
-    }   
+   \renewcommand{\Logo}{irLogo}
+   \renewcommand{\LogoHeight}{2.5cm}
+   \renewcommand{\InstanceName}{KU Leuven Faculty of Engineering Science}
+}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \ExecuteOptions{kulak} % Standaardopties
 \ProcessOptions\relax
@@ -46,37 +46,45 @@
 %%%%%%%%
 % Packages
 
-%\RequirePackage{arev}
-%\renewcommand*\familydefault{\sfdefault} %% Only if the base font of the document is to be sans serif
 \RequirePackage[T1]{fontenc}
 \RequirePackage{hyperref}
 \RequirePackage{titling}
 \RequirePackage{etoolbox}
 \RequirePackage{multicol}
 \RequirePackage{graphicx,xcolor}
-   \definecolor{kulgroen}{rgb}{0.1137,0.5529,0.6902} %Oude kleur
-   \definecolor{kullichtblauw}{RGB}{106,194,238}
-   \definecolor{grijs}{rgb}{0.25,0.25,0.25}
-   \definecolor{KULblauw1}{RGB}{29,141,176} %Hoofdblauw nieuwe huisstijl
-   \definecolor{KULblauw2}{RGB}{220,231,240} %Secundair blauw: heel lichtblauw
-   \definecolor{KULblauw3a}{RGB}{82,189,236} %Tertiair blauw (accent): licht
-   \definecolor{KULblauw3b}{RGB}{30,110,135} %Tertiair blauw (accent): donker
-   \definecolor{KULblauw3c}{RGB}{12,73,92} %Tertiair blauw (accent): donkerst
 \RequirePackage{lastpage}
 \RequirePackage{tikz}
-   \usetikzlibrary{arrows} 
-   \usetikzlibrary{decorations.pathmorphing}
-   \usetikzlibrary{backgrounds}
-   \usetikzlibrary{fit}
-   \usetikzlibrary{shadows}
-   \usetikzlibrary{positioning}
+
+% Tikz
+\usetikzlibrary{arrows}
+\usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{backgrounds}
+\usetikzlibrary{fit}
+\usetikzlibrary{shadows}
+\usetikzlibrary{positioning}
+
+%% Only if the base font of the document is to be sans serif
+%\RequirePackage{arev}
+%\renewcommand*\familydefault{\sfdefault}
+
+%%%%%%%%
+% Colors
+
+\definecolor{kulgroen}{rgb}{0.1137,0.5529,0.6902}  % Oude kleur
+\definecolor{kullichtblauw}{RGB}{106,194,238}
+\definecolor{grijs}{rgb}{0.25,0.25,0.25}
+\definecolor{KULblauw1}{RGB}{29,141,176}           % Hoofdblauw nieuwe huisstijl
+\definecolor{KULblauw2}{RGB}{220,231,240}          % Secundair blauw: heel lichtblauw
+\definecolor{KULblauw3a}{RGB}{82,189,236}          % Tertiair blauw (accent): licht
+\definecolor{KULblauw3b}{RGB}{30,110,135}          % Tertiair blauw (accent): donker
+\definecolor{KULblauw3c}{RGB}{12,73,92}            % Tertiair blauw (accent): donkerst
 
 \makeatletter
 
 %%%%%%%%
 % Optional: department name, subtitle.
 
-\newcommand\department[1]{\renewcommand\@department{#1}}
+\newcommand\department[1]{\renewcommand\@department{\ignorespaces#1}}
 \newcommand\@department{}
 \newcommand{\thedepartment}{\@department}
 
@@ -87,9 +95,15 @@
 %%%%%%%%
 % Compulsory: address (details on front page).
 
-\newcommand\address[1]{\renewcommand\@address{#1}}
+\newcommand\address[1]{\renewcommand\@address{\ignorespaces#1}}
 \newcommand\@address{}
 \newcommand{\theaddress}{\@address{}}
+
+%%%%%%%%
+% Toggle for header details on pages other than the first page
+
+\newif\if@showDetails \@showDetailsfalse
+\newcommand{\showDetails}{\@showDetailstrue}
 
 %%%%%%%%
 % Header and footer settings
@@ -108,13 +122,16 @@
 \chead{}
 \rhead{
    \begin{tikzpicture}[inner sep=0mm]
-         \fill[KULblauw3a] (-0.15,0) rectangle (0,1.2);
-		   \node[anchor=west] at (0.5,0.6) {\includegraphics[height=1.5cm]{kuleuvenSedes}};
-         \node[anchor=east] at (-0.6,0.6) {
-            % Eerste twee kleuren kunnen nog aangepast worden.
-            \footnotesize\begin{tabular}{@{}r@{}}\color{black}\textbf{\InstanceName}
-               \ifdefempty{\@department}{}{\\[0.03cm]\color{black}\thedepartment}\color{black}\end{tabular}
+      \fill[KULblauw3a] (-0.15,0) rectangle (0,1.2);
+      \node[anchor=west] at (0.5,0.6) {\includegraphics[height=1.5cm]{kuleuvenSedes}};
+      \if@showDetails
+   \node[anchor=east] at (-0.6,0.6) {%
+            % De kleuren van onderstaande 2 lijnen kunnen eventueel aangepast worden.
+            \renewcommand{\arraystretch}{1}%
+            \footnotesize\begin{tabular}{@{}r@{}}\color{black}\textbf{\InstanceName}%
+               \ifdefempty{\@department}{}{ \\[0.04cm]\color{black}\thedepartment\vphantom{Ky}}\color{black}\end{tabular}%
          };
+      \fi
    \end{tikzpicture}
 }
 
@@ -123,12 +140,11 @@
 
 \lfoot{%
    \begin{tikzpicture}[overlay, inner sep=0mm]
-      % Use \textwidth instead of 16 to ensure it matches geometry perfectly
       \draw[KULblauw2, line width=1pt]  (0,0.80) -- (\textwidth,0.80);
-   \end{tikzpicture}% <--- This % prevents the horizontal shift
+   \end{tikzpicture}
    \renewcommand{\arraystretch}{0.8}%
    \begin{tabular}[b]{@{}l@{}}
-      \footnotesize{\textbf{\thetitle}}\ifdefempty{\@subtitle}{}{ -- \footnotesize{\textit{\thesubtitle}}}\\
+      \footnotesize{\textbf{\thetitle}}\ifdefempty{\@subtitle}{}{ -- \footnotesize{\textit{\thesubtitle}}} \\
       \footnotesize{\theauthor}
    \end{tabular}
 }
@@ -149,10 +165,10 @@
                \footnotesize\begin{tabular}{@{}r@{}}\ifdefempty{\@department}{}{\textbf{\thedepartment}\\}\theaddress\end{tabular}
             };
             \node[anchor=south east] at (19,24) {
-            \begin{tabular}{@{}r@{}}
-               \large\bf\thetitle\ifdefempty{\@subtitle}{}{\\[0.1cm]\textit{\thesubtitle}}\\[.5cm]
-               \large\theauthor\vphantom{Ky}
-            \end{tabular}};
+               \begin{tabular}{@{}r@{}}
+                  \large\bf\thetitle\ifdefempty{\@subtitle}{}{ \\[0.1cm]\textit{\thesubtitle}}\\[.5cm]
+                  \large\theauthor\vphantom{Ky}
+               \end{tabular}};
             \node[anchor=south west] at (3,24) {
                \begin{tabular}{@{}l@{}}
                   \large \thedate\vphantom{Ky}
