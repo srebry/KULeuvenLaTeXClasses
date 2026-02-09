@@ -47,7 +47,7 @@ In een WYSIWYG tekstverwerker gebeurt het schrijven van een tekst, het opmaken, 
 Bij een markup taal is dat niet zo. De auteur hoeft enkel bezorgd te zijn om de inhoud en structuur van de tekst en werkt in een eenvoudige editor. De omzetting naar een leesbaar document gebeurt dan automatisch door de tekstzetsoftware. Het resultaat wordt dan bekeken of geprint vanuit een viewer. Een goed uitgerust wetenschappelijk tekstverwerkingssysteem gebaseerd op \LaTeX, bestaat dus uit drie onderdelen. Voor elk onderdeel zijn er meerdere mogelijkheden, maar in deze tekst maken we volgende keuzes:
 \begin{description}
 	\item[Editor.] De tekst inclusief markup-commando's wordt getypt in een \texttt{.tex}-bestand. Eender welke editor volstaat (bijvoorbeeld Kladblok) maar om het vlotst te kunnen werken is het gebruik van een editor die speciaal ontworpen is voor \LaTeX\ aanbevolen. Verderop wordt gebruik van \href{http://texstudio.sourceforge.net/}{\textbf{TeXStudio}} toegelicht, maar elk kan vergelijkbare functionaliteit vinden in de eigen favoriete editor zoals Visual Studio Code (één plek voor meerdere programmeertalen) of Overleaf (online, zeer geschikt om samen te werken met meerdere auteurs).
-	\item[Tekstzetsoftware.] Een \LaTeX-distributie bevat alle nodige commando's om een \texttt{.tex}-bestand op basis van de markup-commando's een gepaste lay-out te geven, er inhoudstafel, index, bibliografie, hyperlinks aan toe te voegen  en het resultaat om te zetten in (bijvoorbeeld) een \texttt{.pdf}-document. Deze tekst introduceert \href{http://www.tug.org/texlive/}{\textbf{TeX Live}}, beschikbaar voor Windows, Linux en ook MacOS maar dan onder de naam \href{http://www.tug.org/mactex}{MacTeX}.
+	\item[Tekstzetsoftware.] Een \LaTeX-distributie bevat alle nodige commando's om een \texttt{.tex}-bestand op basis van de markup-commando's een gepaste lay-out te geven, er inhoudstafel, index, bibliografie, hyperlinks aan toe te voegen  en het resultaat om te zetten in (bijvoorbeeld) een \texttt{.pdf}-document. Deze tekst introduceert \href{http://www.tug.org/texlive/}{\textbf{TeX Live}}, beschikbaar voor Windows, Linux en ook macOS maar dan onder de naam \href{http://www.tug.org/mactex}{MacTeX}.
 	\item[Viewer.] Naargelang de noden wordt je brontekst (\texttt{.tex}) omgezet in een \texttt{.dvi}, \texttt{.ps}, \texttt{.pdf} of \texttt{.html}-bestand. Om deze te kunnen lezen heb je respectievelijk YAP, GhostScript en Ghostview of Acrobat Reader nodig. TeXstudio heeft een ingebouwde viewer maar het is handig om daarnaast nog een snelle lichtgewicht viewer zoals \href{https://www.sumatrapdfreader.org/}{\textbf{SumatraPDF}} te installeren.
 \end{description}
 
@@ -121,7 +121,7 @@ Volg de instructies in één van volgende secties
 \begin{description}
 	\item[\ref{sssec:dl}] \textbf{Downloaden en configureren} voor wie GitHub niet kent, je zal nieuwe versies van de huisstijl telkens manueel moeten installeren.
 	\item[\ref{sssec:gh}] \textbf{Repository clonen en symlinks maken} voor de ervaren Github gebruiker, je werkt steeds met de recentste versie van de huisstijl.
-	\item[\ref{sssec:linux} -- \ref{sssec:macos}] \textbf{Linux en MacOS gebruikers} volgen dezelfde principes, al zijn de bestandslocaties verschillend. Deze worden verderop gespecificeerd.
+	\item[\ref{sssec:linux} -- \ref{sssec:macos}] \textbf{Linux en macOS gebruikers} volgen dezelfde principes, al zijn de bestandslocaties verschillend. Deze worden verderop gespecificeerd.
 \end{description}
 
 
@@ -196,10 +196,10 @@ De werkwijze op Linux is analoog als die op Windows, met volgende verschillen.
 	\item Inhoud van de map \texttt{Templates} verplaatsen naar \verb+~/.config/texstudio/templates/user+
 \end{itemize}
 
-\subsubsection{Werkwijze MacOS}
+\subsubsection{Werkwijze macOS}
 \label{sssec:macos}
 
-De werkwijze op MacOS is analoog als die op Windows, met volgende verschillen.
+De werkwijze op macOS is analoog als die op Windows, met volgende verschillen.
 \begin{itemize}
 	\item Map \texttt{kulak} verplaatsen/linken naar \verb+~/Library/texmf/tex/LaTeX/+
 	\item Een symbolische link maken met onderstaand commando
@@ -208,7 +208,7 @@ De werkwijze op MacOS is analoog als die op Windows, met volgende verschillen.
 \end{itemize}
 
 \subsection{Specifieke commando's en opties}
-De vier documentklassen hebben telkens de opties \texttt{kulak}, \texttt{kuleuven-brugge}, \texttt{ingenieurswetenschappen} en \texttt{kul} om het juiste logo te selecteren.
+De vier documentklassen hebben telkens de opties \texttt{kulak}, \texttt{kuleuven-brugge}, en \texttt{kul} om het juiste logo te selecteren. De optie \texttt{ingenieurswetenschappen} is enkel beschikbaar voor de \texttt{article} documentklasse.
 \begin{center}
 	\begin{tabular}{c c}
 		\includegraphics[height=1cm]{kulakLogo}    & \includegraphics[height=1cm]{kuleuvenBruggeLogo} \\
@@ -221,7 +221,7 @@ De vier documentklassen hebben telkens de opties \texttt{kulak}, \texttt{kuleuve
 \subsubsection{Kulak article class}
 
 Deze klasse is gebaseerd op de documentklasse \texttt{article} en laat alle functionaliteit ervan toe. De hoofding op de eerste pagina wordt gezet met het commando \verb+\maketitle+.
-Goede werking vereist volgende vier commando's in de preambule.
+Goede werking vereist volgende commando's in de preambule:
 \begin{itemize}
 	\item \verb+\title{}+ grote vette tekst, rechts bovenaan in de titelbalk
 	\item \verb+\author{}+ grote tekst, rechts onderaan in de titelbalk
@@ -230,6 +230,7 @@ Goede werking vereist volgende vier commando's in de preambule.
 	\item \verb+\address{}+ kleine tekst, tussen beide logo's
 \end{itemize}
 Met het optionele \verb+\subtitle{}+ kan ook een (cursieve) subtitel worden toegevoegd onder de hoofdtitel.
+Om de naam van de instelling (automatisch) en de afdeling (via \verb+\department{}+) te verbergen uit de rechterbovenhoek van pagina's (verschillend van de eerste), kan het commando \verb+\hideDetails+ worden gebruikt.
 
 \subsubsection{Kulak report class}
 
