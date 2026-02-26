@@ -3,6 +3,7 @@
 \usepackage[dutch]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{enumitem}
+\usepackage{KULkleuren}
 
 \title{\LaTeX\ en de KU Leuven huisstijl}
 \subtitle{Handleiding voor installatie en gebruik}
@@ -208,6 +209,7 @@ De werkwijze op macOS is analoog als die op Windows, met volgende verschillen.
 \end{itemize}
 
 \subsection{Specifieke commando's en opties}
+\subsubsection{Logo's}
 De vier documentklassen hebben telkens de opties \texttt{kulak}, \texttt{kuleuven-brugge}, en \texttt{kul} om het juiste logo te selecteren. De optie \texttt{ingenieurswetenschappen} is enkel beschikbaar voor de \texttt{article} documentklasse.
 \begin{center}
 	\begin{tabular}{c c}
@@ -217,6 +219,29 @@ De vier documentklassen hebben telkens de opties \texttt{kulak}, \texttt{kuleuve
 		\textbf{\texttt{kul}}                      & \textbf{\texttt{ingenieurswetenschappen}}
 	\end{tabular}
 \end{center}
+
+\subsubsection{Huisstijl kleurenpallet}
+
+De kleuren die horen bij de KU Leuven huisstijl zijn opgelijst in onderstaande tabel en beschikbaar met het commando \verb+\textcolor{naam}{tekst}+.
+
+~\hfill\begin{tabular}{ll|r|r|r}
+	                            & &   R &   G &   B \\\hline
+	KULijsblauw &\textcolor{KULijsblauw} {\rule{1ex}{1ex}}   & 220 & 231 & 240 \\
+	KULwit      &\textcolor{KULwit}    {\rule{1ex}{1ex}}           & 255 & 255 & 255 \\
+	KULcorporate&\textcolor{KULcorporate}{\rule{1ex}{1ex}} &   0 &  64 & 122 \\
+	KULpetrol   &\textcolor{KULpetrol}   {\rule{1ex}{1ex}}       &  20 & 127 & 161 \\
+	KULzwart  & \textcolor{KULzwart} {\rule{1ex}{1ex}} &   0 &  29 & 65  
+\end{tabular} \hfill
+\begin{tabular}{ll|r|r|r}
+	          &                                       &   R &   G & B   \\ \hline
+
+	KULrood   & \textcolor{KULrood}  {\rule{1ex}{1ex}} & 240 & 119 & 110 \\
+	KULoranje & \textcolor{KULoranje}{\rule{1ex}{1ex}} & 251 & 176 & 55  \\
+	KULgeel   & \textcolor{KULgeel}  {\rule{1ex}{1ex}} & 228 & 218 & 62  \\
+	KULgroen  & \textcolor{KULgroen} {\rule{1ex}{1ex}} & 135 & 192 & 189 \\
+	KULblauw  & \textcolor{KULblauw} {\rule{1ex}{1ex}} &  82 & 189 & 236 \\
+	KULpaars  & \textcolor{KULpaars} {\rule{1ex}{1ex}} & 199 & 147 & 174
+\end{tabular}\hfill~
 
 \subsubsection{Kulak article class}
 
@@ -255,7 +280,6 @@ Deze klasse is gebaseerd op \texttt{sciposter} en laat alle functionaliteit erva
 \begin{itemize}
 	\item \textbf{\texttt{landscape}} en \textbf{\texttt{portrait}} voor de oriëntatie van de pagina
 	\item \textbf{\texttt{a3}} tot \textbf{\texttt{a0}} voor grootte van de pagina en het lettertype.
-	\item \textbf{\texttt{background}} en \textbf{\texttt{nobackground}} bepalen of de achtergrond wordt ingekleurd.
 	\item \textbf{\texttt{photo}} voegt een foto van de auteur toe naast het logo, \textbf{\texttt{nophoto}} onderdrukt deze foto. Het commando \verb+\photohere+ laat toe de foto van de auteur elders te positioneren.
 \end{itemize}
 

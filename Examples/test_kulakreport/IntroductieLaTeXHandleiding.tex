@@ -20,7 +20,7 @@
 \author{Stijn Rebry}
 \emailaddress{stijn.rebry@kuleuven.be}
 \institute{KU Leuven Kulak}
-\date{Academiejaar 2020 -- 2021}
+\date{Versie februari 2026}
 \address{
    \bf KU Leuven Kulak           \\
    \bf Groep Wetenschap \& Technologie \\
@@ -152,9 +152,9 @@ Rechts uitgelijnd
 
 Tekst benadrukken kan met \cmd{emph}\opt\ (\emph{emphasize}). In de klasse \klasse{article} resulteert dit in cursieve tekst (ook te bekomen met \cmd{textit}\opt), maar naargelang de documentklasse kan dat een ander lettertype of kleur zijn. Hoewel het niet altijd te vermijden is, is het de expliciete bedoeling om enkel commando's te gebruiken die structuur te geven aan een document en zo weinig mogelijk commando's die louter lay-out verzorgen. In die zin moet het  verschil tussen de commando's \cmd{emph}\opt\ en \cmd{textit}\opt\ duidelijk zijn: het effect van beide is hetzelfde (in \klasse{article}), maar het tweede commando gaat tegen de geest van \LaTeX\ in.
 
-Voetnoten\footnote{Dit is een voetnoot} kunnen worden ingevoegd met \cmd{footnote}\opt. Met het commando \cmd{marginpar}\opt\marginpar{Een opmerking in de marge} kunnen kernwoorden of opmerkingen in de marge worden gezet.
+Voetnoten\footnote{Dit is een voetnoot} kunnen worden ingevoegd met \cmd{footnote}\opt. Met het commando \cmd{marginpar}\opt\marginpar{Een opmerking\\ in de marge} kunnen kernwoorden of opmerkingen in de marge worden gezet.
 
-Stukken programmacode kunnen in doorlopende tekst gezet worden met het \cmd{texttt}-commando. De inhoud van dit commando wordt wel nog door \LaTeX\ als code geïnterpreteerd. Afzonderlijke lijnen met code gaan in een \env{verbatim}-omgeving. In deze omgeving kunnen de meeste \LaTeX-commando's worden weergegeven zonder dat ze worden geïnterpreteerd. Het commando \cmd{verb}\code{|...|} is een bijzonder commando dat speciaal bedoeld is om \LaTeX-commando's te zetten: het schermt alles tussen de symbolen \code{|} af. De weergegeven code mag dus zelf geen symbool \code{|} bevatten, maar wel alle andere \LaTeX-specifieke symbolen zoals een backslash of accolades. Het begin- en eindeteken is echter vrij te kiezen: \cmd{verb}\code{@...@}, \cmd{verb}\code{\%...\%}, \cmd{verb}\code{+...+}, \ldots zolang de voor te stellen code het begrenzend symbool maar niet bevat.
+Stukken programmacode kunnen in doorlopende tekst gezet worden met het commando \cmd{texttt}. De inhoud van dit commando wordt wel nog door \LaTeX\ als code geïnterpreteerd. Afzonderlijke lijnen met code gaan in een \env{verbatim}-omgeving. In deze omgeving kunnen de meeste \LaTeX-commando's worden weergegeven zonder dat ze worden geïnterpreteerd. Het commando \cmd{verb}\code{|...|} is een bijzonder commando dat speciaal bedoeld is om \LaTeX-commando's te zetten: het schermt alles tussen de symbolen \code{|} af. De weergegeven code mag dus zelf geen symbool \code{|} bevatten, maar wel alle andere \LaTeX-specifieke symbolen zoals een backslash of accolades. Het begin- en eindeteken is echter vrij te kiezen: \cmd{verb}\code{@...@}, \cmd{verb}\code{\%...\%}, \cmd{verb}\code{+...+}, \ldots zolang de voor te stellen code het begrenzend symbool maar niet bevat.
 
 \section{Kruisverwijzingen}
 \label{ssec:kruis}
@@ -274,7 +274,7 @@ Wat in wetenschappelijke teksten vaak voorkomt, zijn tabellen met getallen zoals
 
 \begin{table}
     \centering
-    \caption{Verschillende (foute) manieren om getallen te zetten. De juiste gebruikt het commando \cmd{num}\opt\ uit het \texttt{siunitx}-pakket.}
+    \caption{Verschillende (foute) manieren om getallen te zetten, de correcte manier gebruikt het commando \cmd{num}\opt\ uit het \texttt{siunitx}-pakket.}
     \label{tab:getallen}
 \begin{tabular}{l|l||l|l||l|l}
 	  \multicolumn{2}{c||}{Tekstmodus}   & \multicolumn{2}{c||}{Wiskundemodus} &  \multicolumn{2}{c}{\texttt{siunitx}}   \\ \hline

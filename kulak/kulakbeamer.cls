@@ -1,5 +1,5 @@
 % Corporate article-template for KU Leuven en Kulak
-% Stijn Rebry - 2012-2023
+% Stijn Rebry - 2012-2026
 % Brent De Blaere - mei 2023 - huisstijl campus Brugge
 % Eef Temmerman - 2020 - aanpassing aan breedbeeld
 % Andries Vansweevelt - 2018 - nieuwe huisstijl KU Leuven
@@ -17,52 +17,12 @@
 \RequirePackage{lmodern}
 \RequirePackage{tikz}		
 \RequirePackage{ifthen}				
+\RequirePackage{KULkleuren}
+
 \usetikzlibrary{shapes,shadows,arrows,backgrounds,mindmap,decorations.pathreplacing,positioning,calc}
 \usetikzlibrary{decorations.pathmorphing}
 \usetikzlibrary{fit}
 \usetikzlibrary{shadows}
-
-%%Kleuren
-% Definitie oude kleuren
-\definecolor{kulblauw}{RGB}{0,64,122}
-\colorlet{kulblauw10} {kulblauw!10!white}
-\definecolor{kulappelblauwzeegroen}{RGB}{20,116,146}
-\colorlet{kulappelblauwzeegroen10} {kulappelblauwzeegroen!10!white}
-\definecolor{kuloranje}{RGB}{245,131,87}
-\colorlet{kuloranje10} {kuloranje!10!white}
-\definecolor{kulgroen}{RGB}{82,189,236}
-\colorlet{kulgroen10} {kulgroen!10!white}
-
-%Kleuren nieuwe stijl 2018: hoofdkleuren
-\definecolor{KULblauw1}{RGB}{29,141,176} %Hoofdblauw nieuwe huisstijl
-\definecolor{KULblauw2}{RGB}{220,231,240} %Secundair blauw: heel lichtblauw
-\definecolor{KULblauw3a}{RGB}{82,189,236} %Tertiair blauw (accent): licht
-\definecolor{KULblauw3b}{RGB}{30,110,135} %Tertiair blauw (accent): donker
-\definecolor{KULblauw3c}{RGB}{12,73,92} %Tertiair blauw (accent): donkerst
-\colorlet{KULblauw3a10} {KULblauw3a!10!white}
-
-%Kleuren nieuwe stijl 2018: andere accentkleuren
-\definecolor{KULappelblauwzeegroen}{RGB}{135,192,189} 
-\definecolor{KULoranje}{RGB}{231,176,55} 
-\definecolor{KULdonkergroen}{RGB}{156,166,90} 
-\definecolor{KULgeel}{RGB}{228,218,62} 
-\definecolor{KULgrijsblauw}{RGB}{184,208,212}
-\definecolor{KULbruin}{RGB}{176,159,118}
-\definecolor{KULrood}{RGB}{212,119,110}
-\definecolor{KULoker}{RGB}{203,182,16}
-\definecolor{KULpaars}{RGB}{170,121,130}
-\definecolor{KULroze}{RGB}{199,147,174}
-\definecolor{KULlichtgroen}{RGB}{212,216,66}
-\definecolor{KULroodbruin}{RGB}{186,113,60}
-
-\colorlet{KULoranje10} {KULoranje!10!white}
-\colorlet{KULlichtgroen10} {KULlichtgroen!10!white}
-
-%Kleuren uit beamerstyle
-\definecolor{KULdark}		{RGB}{47,77,93}			%KUL dark blue uit beamerstyle
-\definecolor{gray}			{gray}{.5}				%gray uit beamerstyle
-\definecolor{lgray}			{gray}{.95}				%light gray uit beamerstyle
-
 
 % Opties instellen
 \DeclareOptionBeamer{kul}{
@@ -110,42 +70,43 @@
 %%
 
 % Text colours
-\hypersetup{colorlinks,linkcolor=KULblauw1,urlcolor=KULblauw1} %link colors
+\hypersetup{colorlinks,linkcolor=KULzwart,urlcolor=KULzwart} %link colors
 \urlstyle{sf}					%url addreses are sans-serif font (not typewritter)
-
-\setbeamercolor{title}			{fg=white}				
-\setbeamercolor{title page}		{fg=white}
-\setbeamercolor{normal text}	{fg = black}			%text color
-\setbeamercolor{structure}	{fg = KULblauw1}			%text color
-\setbeamercolor{frametitle}		{fg=KULblauw1}			%frame title color
-\setbeamercolor{section in toc}{fg=white}			%toc (section) color
-\setbeamercolor{section in toc shaded}{fg=black}		%toc (shaded section) color
-\setbeamercolor{item}			{fg=KULblauw1}			%item color
-\setbeamercolor{subitem}		{fg=KULblauw1}			%subitem color
-\setbeamercolor{subsubitem}		{fg=KULblauw1}			%subsubitem color
-\setbeamercolor{text}			{fg=white,bg=KULblauw1}	%text block color
-\setbeamercolor{caption name}	{fg=black}				%figure and table caption color
-\setbeamercolor{abstract title}	{fg=red}			%abstract title color
+\setbeamercolor{title}			      {fg=KULwit}
+\setbeamercolor{title page}		      {fg=KULwit}
+\setbeamercolor{normal text}	      {fg=KULzwart}
+\setbeamercolor{structure}	          {fg=KULblauw}
+\setbeamercolor{frametitle}	          {fg=KULcorporate}
+\setbeamercolor{section in toc}       {fg=KULcorporate}
+\setbeamercolor{section in toc shaded}{fg=KULgroen}
+\setbeamercolor{item}			      {fg=KULpetrol}
+\setbeamercolor{subitem}		      {fg=KULpetrol}
+\setbeamercolor{subsubitem}		      {fg=KULpetrol}
+\setbeamercolor{text}			      {fg=KULwhite,bg=KULblauw}
+\setbeamercolor{caption name}	      {fg=KULzwart}
+\setbeamercolor{abstract title}	      {fg=KULrood}
 
 % Blocks, theorem-like environments and colorboxes
-\setbeamerfont{block title} {size=\normalsize}				%block title font size
-\setbeamercolor{block title}{bg=lgray,fg=KULblauw1}			%block title colour
-\setbeamercolor{block body} {bg=lgray,fg=black}				%block body colour
-\setbeamertemplate{qed symbol}{\color{KULblauw1} $\square$}	%end of proof symbol
+\setbeamerfont{block title} {size=\normalsize, series=\bfseries}				%block title font size
+\setbeamertemplate{qed symbol}{\color{KULzwart} $\square$}
 
-\setbeamercolor{block title alerted}{bg=white!95!red}				%alertbloc title (red)
-\setbeamercolor{block body alerted}{bg=white!95!red}				%alertbloc body
+\setbeamercolor{block title}{bg=KULijsblauw,fg=KULcorporate}			%block title colour
+\setbeamercolor{block body} {bg=KULijsblauw,fg=KULzwart}
 
-\setbeamercolor{block title example}{bg=white!95!KULblauw1,fg=KULblauw1} 	%example block title (blue)
-\setbeamercolor{block body example}{bg=white!95!KULblauw1,fg=black}		%example block body
+\setbeamercolor{block title alerted}{bg=KULrood!20!KULwit,fg=KULrood!80!black}				%alertbloc title (red)
+\setbeamercolor{block body alerted}{bg=KULrood!20!KULwit,fg=KULzwart}				%alertbloc body
 
-\setbeamercolor{box1}		{fg=white,bg=KULblauw1}		
-\setbeamercolor{box2}		{fg=KULblauw1,bg=lgray}			%five different colour schemes for Beamer colour box
-\setbeamercolor{box3}		{fg=black,bg=lgray}
-\setbeamercolor{box4}		{fg=red,bg=lgray}	
-\setbeamercolor{box5}		{fg=white,bg=red}	
+\setbeamercolor{block title example}{bg=KULgroen!20!KULwit,fg=KULgroen!80!black} 	%example block title (blue)
+\setbeamercolor{block body example}{bg=KULgroen!20!KULwit,fg=KULzwart}		%example block body
 
-\setbeamercolor{button}		{bg= lgray,fg=KULblauw1}			%button frame
+\setbeamercolor{box1}		{fg=KULzwart,bg=KULrood}		
+\setbeamercolor{box2}		{fg=KULzwart,bg=KULoranje}			%five different colour schemes for Beamer colour box
+\setbeamercolor{box3}		{fg=KULzwart,bg=KULgeel}
+\setbeamercolor{box4}		{fg=KULzwart,bg=KULgroen}	
+\setbeamercolor{box5}		{fg=KULzwart,bg=KULblauw}	
+\setbeamercolor{box6}		{fg=KULzwart,bg=KULpaars}	
+
+\setbeamercolor{button}		{bg=KULcorporate,fg=KULijsblauw}			%button frame
 
 %math font
 \usefonttheme[onlymath]{serif}
@@ -201,17 +162,17 @@
      \node[above of=authorT, anchor=south west, align=left, text width=.9\paperwidth] (subtitle) {\textbf{\Large\insertsubtitle}};
      \node (subtitleT) at (subtitle.north west) {};
      \node[above of=subtitleT, anchor=south west, align=left, text width=.9\paperwidth] (title) {\textbf{\LARGE\inserttitle}};
-     \node[below of=lijnB, anchor=north west, align=left, text width=.9\paperwidth] (institute) {\large \textcolor{KULblauw1}{\insertinstitute}};
+     \node[below of=lijnB, anchor=north west, align=left, text width=.9\paperwidth] (institute) {\large \textcolor{KULwit}{\insertinstitute}};
   	 \node (instituteB) at (institute.south west) {};
-     \node[below of=instituteB,anchor=north west, align=left, text width=.9\paperwidth] (date) {\textcolor{KULblauw1}{\insertdate}};
+     \node[below of=instituteB,anchor=north west, align=left, text width=.9\paperwidth] (date) {\textcolor{KULwit}{\insertdate}};
     \end{tikzpicture}
   };
 \end{tikzpicture}}
 
 \defbeamertemplate*{footline}{body}
-{\hypersetup{linkcolor=white}
+{\hypersetup{linkcolor=KULwit}
 \hspace{.085\paperheight}
-\raisebox{8.3pt}{\color{white}\scriptsize\hspace{11pt} \insertframenumber\ \(\cdot\) \insertshorttitle\ \(\cdot\) \secname}
+\raisebox{8.3pt}{\color{KULwit}\scriptsize\hspace{11pt} \insertframenumber\ \(\cdot\) \insertshorttitle\ \(\cdot\) \secname}
 
 }	
 

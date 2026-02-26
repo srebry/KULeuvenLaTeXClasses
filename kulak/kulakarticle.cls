@@ -1,6 +1,6 @@
 % Corporate article-template for KU Leuven
 %
-%     * Stijn Rebry - 2012-2025
+%     * Stijn Rebry - 2012-2026
 %     * Vincent Van Schependom - 2025 - Faculty of Engineering Science and improvements
 %     * Brent De Blaere - 2023 - huisstijl campus Brugge
 %     * Andries Vansweevelt - 2018 - nieuwe huisstijl KU Leuven
@@ -58,6 +58,7 @@
 \RequirePackage{graphicx,xcolor}
 \RequirePackage{lastpage}
 \RequirePackage{tikz}
+\RequirePackage{KULkleuren}
 
 % Tikz
 \usetikzlibrary{arrows}
@@ -70,19 +71,6 @@
 %% Only if the base font of the document is to be sans serif
 %\RequirePackage{arev}
 %\renewcommand*\familydefault{\sfdefault}
-
-
-%%%%%%%%
-% Colors
-
-\definecolor{kulgroen}{rgb}{0.1137,0.5529,0.6902}  % Oude kleur
-\definecolor{kullichtblauw}{RGB}{106,194,238}
-\definecolor{grijs}{rgb}{0.25,0.25,0.25}
-\definecolor{KULblauw1}{RGB}{29,141,176}           % Hoofdblauw nieuwe huisstijl
-\definecolor{KULblauw2}{RGB}{220,231,240}          % Secundair blauw: heel lichtblauw
-\definecolor{KULblauw3a}{RGB}{82,189,236}          % Tertiair blauw (accent): licht
-\definecolor{KULblauw3b}{RGB}{30,110,135}          % Tertiair blauw (accent): donker
-\definecolor{KULblauw3c}{RGB}{12,73,92}            % Tertiair blauw (accent): donkerst
 
 \makeatletter
 
@@ -130,7 +118,7 @@
 \chead{}
 \rhead{
    \begin{tikzpicture}[inner sep=0mm]
-      \fill[KULblauw3a] (-0.15,0) rectangle (0,1.2);
+      \fill[KULblauw] (-0.15,0) rectangle (0,1.2);
       \node[anchor=west] at (0.5,0.6) {\includegraphics[height=1.5cm]{kuleuvenSedes}};
       \if@showDetails
    \node[anchor=east] at (-0.6,0.6) {%
@@ -149,7 +137,8 @@
 
 \lfoot{%
    \begin{tikzpicture}[overlay, inner sep=0mm]
-      \draw[KULblauw2, line width=1pt]  (0,0.80) -- (\textwidth,0.80);
+      \draw[KULijsblauw, line width=1pt]  (0,0.80) -- (\textwidth,0.80);
+      \draw[KULijsblauw, line width=1pt]  (0,0.80) -- (\textwidth,0.80);
    \end{tikzpicture}
    \renewcommand{\arraystretch}{0.8}%
    \begin{tabular}[b]{@{}l@{}}
@@ -168,7 +157,7 @@
    \begin{tikzpicture}[remember picture,overlay]
       \node at (current page.south west) {
          \begin{tikzpicture}[remember picture, overlay,inner sep=0mm]
-            \fill[KULblauw3a] (17.5,26.87) rectangle (17.65,28.07);
+            \fill[KULblauw] (17.5,26.87) rectangle (17.65,28.07);
             \node[anchor=north west] at ( 3.0,28.2) {\includegraphics[height=\LogoHeight]{\Logo}};
             \node[anchor=north east] at ( 19,28.2) {\includegraphics[height=1.5cm]{kuleuvenSedes}};
             \node[anchor=east] at (17,27.47) {
@@ -183,7 +172,7 @@
                \begin{tabular}{@{}l@{}}
                   \large \thedate\vphantom{Ky}
                \end{tabular}};
-            \draw[KULblauw2, line width=1.5pt]  (3,23.7) -- ( 19,23.7);
+            \draw[KULijsblauw, line width=1.5pt]  (3,23.7) -- ( 19,23.7);
          \end{tikzpicture}
       };
    \end{tikzpicture}

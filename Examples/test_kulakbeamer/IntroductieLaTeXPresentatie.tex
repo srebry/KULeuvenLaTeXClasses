@@ -1,5 +1,5 @@
-%\documentclass[kulak,handout]{kulakbeamer} % handout
-\documentclass[kulak,outline]{kulakbeamer} % outline
+\documentclass[kulak,handout]{kulakbeamer} % handout
+%\documentclass[kulak,outline]{kulakbeamer} % outline
 
 \usepackage[dutch]{babel}
 \usepackage[T1]{fontenc}
@@ -1240,26 +1240,44 @@ presentatie-opmaak
 \frametitle{Horizontaal structureren}
 \begin{columns}
 \column{.5\textwidth}
-\begin{exampleblock}{Block-syntax}
+\begin{block}{Een blok}
 \begin{verbatim}
 \begin{block} {Een blok}
 ...
 \end{block}
+\end{verbatim}
+\end{block}
+
+\begin{exampleblock} {Een voorbeeld}
+\begin{verbatim}
 \begin{exampleblock} {Een voorbeeld}
 ...
 \end{exampleblock}
-\begin{alertblock} {Een opmerking}
-...
-\end{alertblock}
 \end{verbatim}
 \end{exampleblock}
 \column{.5\textwidth}
-\begin{itemize}
-\item \texttt{block}:\newline belangrijk resultaat, doorgaans blauw
-\item \texttt{exampleblock}:\newline een voorbeeld, groen
-\item \texttt{alertblock}:\newline een opmerking, rood
-\item \texttt{theorem}:\newline automatisch als \texttt{block}
-\end{itemize}
+
+\begin{alertblock} {Een opmerking}
+\begin{verbatim}
+\begin{alertblock} {Een opmerking}
+	...
+\end{alertblock}
+\end{verbatim}
+\end{alertblock}
+
+\newtheorem{stelling}{Stelling}
+\begin{stelling} {Naam van stelling}
+\begin{verbatim}
+\begin{theorem} {Naam van stelling}
+\end{theorem}
+\end{verbatim}
+\end{stelling}
+%\begin{itemize}
+%\item \texttt{block}:\newline belangrijk resultaat, doorgaans blauw
+%\item \texttt{exampleblock}:\newline een voorbeeld, groen
+%\item \texttt{alertblock}:\newline een opmerking, rood
+%\item \texttt{theorem}:\newline automatisch als \texttt{block}
+%\end{itemize}
 \end{columns}
 \end{frame}
 
@@ -1325,22 +1343,24 @@ Tekst in kolom 2
 \column{.5\textwidth}
 \begin{exampleblock}{Speciale effecten}
 \begin{verbatim}
-\uncover<2-> {Leesbaar maken}
+\uncover <2-> {Leesbaar maken}
 
 \only <3-4> {Laten verschijnen}
 
-\alert <4> {Benadrukken}
+\structure <4> {Benadrukken}
 
-\textit <5> {Tekstopmaak toepassen}
+\alert <5> {Benadrukken}
+
+\textit <6> {Tekstopmaak toepassen}
 \end{verbatim}
 \end{exampleblock}
 \column{.5\textwidth}
 \begin{itemize}
-\item \verb+<2->+:\newline slide specificatie
-\item \verb+\uncover+:\newline  \uncover<2->{Leesbaar maken}
-\item<only@3-4> \verb+\only+:\newline  Tekst laten verschijnen
-\item \verb+\alert+:\newline  \alert<4>{Tekst benadrukken}
-\item \verb+\textit+:\newline  \textit<5>{Tekstopmaak toepassen}
+\item \verb+<2->+: slide specificatie
+\item \verb+\uncover+: \uncover<2->{Zichtbaar maken}
+\item<only@3-4> \verb+\only+: Tekst tussenvoegen
+\item \verb+\structure+ en \verb+\alert+:\newline  \structure<4>{\alert<5>{Tekst benadrukken}}
+\item \verb+\textit+:\newline  \textit<6>{Tekstopmaak toepassen}
 \end{itemize}
 \end{columns}
 \end{frame}
@@ -1356,12 +1376,11 @@ Tekst in kolom 2
 \item<2> Enkel op slide 2
 
 \item<-4> Tot en met slide 4
-
 \item<3-5> Van slide 3 tot 5
-
 \item<2-> Vanaf slide 2
 
 \item<-2|alert@4> Combinatie
+\item<structure@2|2,4-> Combinatie
 \end{verbatim}
 \end{exampleblock}
 \column{.5\textwidth}
@@ -1371,7 +1390,8 @@ Slide \only<1>{1}\only<2>{2}\only<3>{3}\only<4>{4}\only<5>{5}
 \item<-4> Tot en met slide 4
 \item<3-5> Van slide 3 tot slide 5
 \item<2-> Vanaf slide 2
-\item<-2,4|alert@4> Tot slide twee en op slide 4 benadrukt
+\item<-2,4|alert@4> Tot slide twee gewoon, op slide 4 benadrukt
+\item<structure@2|2,4-> Op slide 2 benadrukt, vanaf slide 4 gewoon
 \end{itemize}
 \end{columns}
 \end{frame}
@@ -1422,6 +1442,8 @@ Slide \only<1>{1}\only<2>{2}\only<3>{3}\only<4>{4}\only<5>{5}
 \hypertarget <2> {label2} {tekst2}
 
 \hyperlink {label1} {tekst}
+
+\beamergotobutton{\hyperlink{}{}}
 \end{verbatim}
 \end{exampleblock}
 \column{.5\textwidth}
@@ -1437,9 +1459,11 @@ Slide \only<1>{1}\only<2>{2}\only<3>{3}\only<4>{4}\only<5>{5}
 \item \verb|{label1}|: bestaand label
 \item \verb|{tekst}|: aanklikbare tekst
 \end{itemize}
+\item<2> \verb+\beamergotobutton{}+: \hyperlink{vorige}{\beamergotobutton{Vorige slide}}
 \end{itemize}
 
 \end{columns}
+\hypertarget<1>{vorige}{}
 \end{frame}
 
 % -----------------------------------------------------------
@@ -1512,7 +1536,7 @@ Slide \only<1>{1}\only<2>{2}\only<3>{3}\only<4>{4}\only<5>{5}
 
 \begin{frame}[fragile,t]
 \frametitle{KU Leuven en Kulak huisstijl: bestanden}
-Beschikbare documentklassen:
+Beschikbare documentklassen
 \begin{itemize}
 	\item \texttt{kulakarticle}, eenzijdig, eenvoudige hoofding
 	\item \texttt{kulakreport}, tweezijdig, voorblad en achterflap
@@ -1524,6 +1548,18 @@ Beschikbare documentklassen:
 %	\item \texttt{beamerthemekuleuven2}
 %\end{itemize}
 %\only<2>{\texttt{kulakbeamer} is verouderd, gebruik het beamersjabloon voor nieuwe documenten!}
+Huisstijl kleurenpallet 
+\begin{itemize}
+	\item Corporate kleuren:\newline \textcolor{KULzwart}{KULwit}, \textcolor{KULijsblauw}{KULijsblauw}, \textcolor{KULcorporate}{KULcorporate}, \textcolor{KULpetrol}{KULpetrol}
+	\item Accentkleuren:\newline
+	\textcolor{KULzwart}{KULzwart},
+	\textcolor{KULrood}{KULrood},
+	\textcolor{KULoranje}{KULoranje},
+	\textcolor{KULgeel}{KULgeel},
+	\textcolor{KULgroen}{KULgroen},
+	\textcolor{KULblauw}{KULblauw},
+	\textcolor{KULpaars}{KULpaars}
+\end{itemize}
 \end{frame}
 
 \begin{frame}[fragile,t]

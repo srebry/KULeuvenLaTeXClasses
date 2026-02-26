@@ -1,5 +1,5 @@
 % Corporate article-template for KU Leuven en Kulak
-% Stijn Rebry - 2012-2023
+% Stijn Rebry - 2012-2026
 % Brent De Blaere - mei 2023 - huisstijl campus Brugge
 % Andries Vansweevelt - 2018 - nieuwe huisstijl KU Leuven
 % Tips en hints voor een beter resultaat altijd welkom
@@ -24,13 +24,8 @@
 \RequirePackage{titling}
 \RequirePackage{multicol}
 \RequirePackage{graphicx,xcolor}
-	\definecolor{kulgroen}{rgb}{0.635,0.784,0.227} %Oude kleur
-	\definecolor{grijs}{rgb}{0.25,0.25,0.25} %Oude kleur
-	\definecolor{KULblauw1}{RGB}{29,141,176} %Hoofdblauw nieuwe huisstijl
-	\definecolor{KULblauw2}{RGB}{220,231,240} %Secundair blauw: heel lichtblauw
-	\definecolor{KULblauw3a}{RGB}{82,189,236} %Tertiair blauw (accent): licht
-	\definecolor{KULblauw3b}{RGB}{30,110,135} %Tertiair blauw (accent): donker
-	\definecolor{KULblauw3c}{RGB}{12,73,92} %Tertiair blauw (accent): donkerst
+\RequirePackage{KULkleuren}
+
 \RequirePackage{tikz}
 	\usetikzlibrary{arrows} 
 	\usetikzlibrary{decorations.pathmorphing}
@@ -73,42 +68,42 @@
      \node at (current page.south west)
      {
      \begin{tikzpicture}[remember picture, overlay,inner sep=0mm]
-         \fill[KULblauw1] (1.5,27.1) rectangle (19.5,25.3);
-         \fill[KULblauw1] (1.5, 2.5) rectangle (19.5, 2.7);
-         \node[anchor=south west] at ( 2.0,26.0) {\includegraphics[height=1.8cm]{\Logo}};
+         \fill[KULijsblauw] (1.5,27.1) rectangle (19.5,25.3); % balk onderaan voorblad
+         \fill[KULijsblauw] (1.5, 2.5) rectangle (19.5, 2.7); % balk bovenaan voorblad
+         \node[anchor=south west] at ( 2.0,26.0) {\includegraphics[height=1.8cm]{\Logo}}; % logo linksboven
          \node[anchor=east]       at (19.2,26.2) {
-         \begin{tabularx}{.99\textwidth}{@{}>{\sc\color{white}}R@{}}
-			\bf\thefaculty
+         \begin{tabularx}{.99\textwidth}{@{}>{\sc\color{KULcorporate}}R@{}}
+			\bf\thefaculty % Tekst in balk bovenaan
          \end{tabularx}
          };
          \node[anchor=north east] at (19.2,24.6) {
          \begin{tabularx}{.99\textwidth}{@{}R@{}}
-			\thegroup
+			\thegroup % tekst onder balk bovenaan
          \end{tabularx}
          };
          \node[anchor=south west] at ( 2.6,18.5){
-            \begin{tabular}{@{}>{\Huge\bf}p{.99\textwidth}@{}}
-			\thetitle
+            \begin{tabular}{@{}>{\Huge\bf\color{KULcorporate}}p{.99\textwidth}@{}}
+			\thetitle % titel blauw
             \end{tabular}
          };
          \node[anchor=north west] at ( 2.6,17.6){
             \begin{tabular}{@{}>{\LARGE\bf}p{.99\textwidth}@{}}
-			\thesubtitle
+			\thesubtitle % ondertitel zwart
             \end{tabular}
             };
          \node (datum) [anchor=south east] at (19.2, 3.5){
-         \begin{tabularx}{.99\textwidth}{@{}>{\color{grijs}\large}R@{}}
-			\thedate
+         \begin{tabularx}{.99\textwidth}{@{}>{\large}R@{}}
+			\thedate % datum rechtsonder
          \end{tabularx}
          };
          \node[anchor=south east, at=(    datum.north east),yshift=1.5cm] (instituut) {
-         \begin{tabularx}{.99\textwidth}{@{}>{\color{grijs}\large}R@{}}
-			\theinstitute
+         \begin{tabularx}{.99\textwidth}{@{}>{\large}R@{}}
+			\theinstitute % subtekst auteursnaam
          \end{tabularx}
          };
          \node[anchor=south east, at=(instituut.north east),yshift=0.5cm] {
          \begin{tabularx}{.99\textwidth}{@{}R@{}}
-         \textcolor{grijs}{\Large\bf\theauthor}
+         \Large\bf\theauthor
          \end{tabularx}
          };
       \end{tikzpicture}
@@ -127,9 +122,9 @@
      \node at (current page.south west)
      {
      \begin{tikzpicture}[remember picture, overlay,inner sep=0mm]
-         \fill[KULblauw1] ( 1.5, 2.5) rectangle (19.5,4.3);
-         \fill[KULblauw1] (13.5,27.6) rectangle (18.8,27.8);
-         \fill[KULblauw1] (18.6,27.8) rectangle (18.8,26.0);
+         \fill[KULijsblauw] ( 1.5, 2.5) rectangle (19.5,4.3);
+         \fill[KULblauw] (13.5,27.6) rectangle (18.8,27.8);
+         \fill[KULblauw] (18.6,27.8) rectangle (18.8,26.0);
          \node[anchor=south]      at (17.8,26.0) {\includegraphics[height=1.5cm]{kuleuvenSedes}};
          \node[anchor=north east] at (17.0,27.5) {\scalebox{.75}{\begin{tabular}{r}\theaddress\end{tabular}}};
       \end{tikzpicture}
