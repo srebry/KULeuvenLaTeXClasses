@@ -15,5 +15,5 @@
 *.ind
 *.blg
 
-# MacOS
+# macOS
 .DS_Store
