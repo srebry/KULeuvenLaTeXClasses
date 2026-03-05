@@ -113,7 +113,7 @@
 \usefonttheme[onlymath]{serif}
 
 %outline and margins
-\setbeamertemplate{sections/subsections in toc}[circle]			%toc symbols
+\setbeamertemplate{sections/subsections in toc}[square]			%toc symbols
 \setbeamersize{text margin left=21pt,text margin right=21pt} 	%text margins
 
 %itemize list
@@ -131,8 +131,6 @@
 %%		
 %%  OUTER THEME
 %%
-\setbeamertemplate{sections/subsections in toc}[square]
-
 \usebackgroundtemplate{\Background}
 \newenvironment{titleframe}
 {\bgroup\usebackgroundtemplate{\Titlepage}\begin{frame}[plain]}
