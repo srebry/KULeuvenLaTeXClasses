@@ -45,6 +45,7 @@
   }
 \newcommand{\outlineTitle}{Outline}
 \DeclareOptionBeamer{outline}{
+\setbeamerfont{section number projected}{series=\mdseries}
 \setbeamertemplate{sections/subsections in toc shaded}[default][100]
 \AtBeginSection[]{
 	\setbeamerfont{section in toc}{series=\bfseries}			
