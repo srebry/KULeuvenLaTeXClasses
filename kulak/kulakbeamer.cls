@@ -43,6 +43,19 @@
   \renewcommand{\Titlepage}{\includegraphics[width=\paperwidth,height=\paperheight]{kuleuvenBruggeTitlepage}}
     \renewcommand{\Logo}{\includegraphics[height=.8cm]{kuleuvenBruggeLogo}}
   }
+
+% Geen verspringende getallen wanneer aantal cijfers verandert
+\newcommand{\InsertFrames}{
+  \makebox[\widthof{\inserttotalframenumber}][r]{\insertframenumber}
+}
+
+% Totaal aantal frames
+\DeclareOptionBeamer{totalframes}{
+  \renewcommand{\InsertFrames}{
+    \makebox[\widthof{\inserttotalframenumber}][r]{\insertframenumber}/\inserttotalframenumber
+  }
+}
+
 \newcommand{\outlineTitle}{Outline}
 \DeclareOptionBeamer{outline}{
 \setbeamertemplate{sections/subsections in toc shaded}[default][100]
@@ -172,7 +185,7 @@
 \defbeamertemplate*{footline}{body}
 {\hypersetup{linkcolor=KULwit}
 \hspace{.085\paperheight}
-\raisebox{8.3pt}{\color{KULwit}\scriptsize\hspace{11pt} \insertframenumber\ \(\cdot\) \insertshorttitle\ \(\cdot\) \secname}
+\raisebox{8.3pt}{\color{KULwit}\scriptsize\hspace{11pt} \InsertFrames\ \(\cdot\) \insertshorttitle\ \(\cdot\) \secname}
 
 }	
 
