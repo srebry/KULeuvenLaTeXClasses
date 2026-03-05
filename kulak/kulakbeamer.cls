@@ -113,7 +113,18 @@
 \usefonttheme[onlymath]{serif}
 
 %outline and margins
-\setbeamertemplate{sections/subsections in toc}[square]			%toc symbols
+%custom template to fix square box width when section titles are bold
+\defbeamertemplate{section in toc}{squarefix}
+{\leavevmode\leftskip=15pt{\mdseries%use pt instead of ex to prevent stretching
+  \llap{%
+    \usebeamerfont*{section number projected}%
+    \usebeamercolor[bg]{section number projected}%
+    \vrule width2.25ex height1.85ex depth.4ex%
+    \hskip-2.25ex%
+    \hbox to2.25ex{\hfil\color{fg}\inserttocsectionnumber\hfil}\kern1.25ex}%
+  }\inserttocsection\par}
+
+\setbeamertemplate{sections/subsections in toc}[squarefix]			%toc symbols
 \setbeamersize{text margin left=21pt,text margin right=21pt} 	%text margins
 
 %itemize list
