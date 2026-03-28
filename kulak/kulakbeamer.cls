@@ -47,6 +47,8 @@
 \newcommand{\KulakTitlepageVariant}{default}
 \newboolean{kulakbeamerKulakSelected}
 \setboolean{kulakbeamerKulakSelected}{false}
+% Small-caps fallback used only inside the title node.
+\newcommand{\kulakTitleTextsc}[1]{{\rmfamily\scshape #1}}
 \newcommand{\KulakApplyTitlepage}{%
   \ifthenelse{\equal{\KulakTitlepageVariant}{sedes}}{
     \renewcommand{\Titlepage}{\includegraphics[width=\paperwidth,height=\paperheight]{\KulakTitlepageSedesFile}}
@@ -213,7 +215,7 @@
 	 \node (authorT) at (author.north west) {};
      \node[above of=authorT, anchor=south west, align=left, text width=.9\paperwidth] (subtitle) {\textbf{\Large\insertsubtitle}};
      \node (subtitleT) at (subtitle.north west) {};
-    \node[above of=subtitleT, anchor=south west, align=left, text width=.9\paperwidth] (title) {\LARGE\sffamily\inserttitle};
+    \node[above of=subtitleT, anchor=south west, align=left, text width=.9\paperwidth] (title) {\LARGE\sffamily\bfseries\begingroup\let\textsc\kulakTitleTextsc\inserttitle\endgroup};
      \node[below of=lijnB, anchor=north west, align=left, text width=.9\paperwidth] (institute) {\large \textcolor{KULwit}{\insertinstitute}};
   	 \node (instituteB) at (institute.south west) {};
      \node[below of=instituteB,anchor=north west, align=left, text width=.9\paperwidth] (date) {\textcolor{KULwit}{\insertdate}};
