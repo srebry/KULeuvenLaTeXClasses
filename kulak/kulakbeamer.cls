@@ -41,7 +41,7 @@
 
 % File names
 \newcommand{\KulakTitlepageDefaultFile}{kulakTitlepage}
-\newcommand{\KulakTitlepageSedesFile}{kulakTitlepageSedesBlauw}
+\newcommand{\KulakTitlepageSedesFile}{kulakTitlepageSedes}
 
 % Kulak Titlepage variants
 \newcommand{\KulakTitlepageVariant}{default}
