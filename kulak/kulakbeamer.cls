@@ -36,27 +36,22 @@
 
 
 %%
-%% Kulak titlepage variants (default, sedes, sedesWhite)
+%% Kulak titlepage variants (default, sedes)
 %%
 
 % File names
 \newcommand{\KulakTitlepageDefaultFile}{kulakTitlepage}
-\newcommand{\KulakTitlepageSedesBlueFile}{kulakTitlepageSedesBlauw}
-\newcommand{\KulakTitlepageSedesWhiteFile}{kulakTitlepageSedesWit}
+\newcommand{\KulakTitlepageSedesFile}{kulakTitlepageSedesBlauw}
 
-% Titlepage variants
+% Kulak Titlepage variants
 \newcommand{\KulakTitlepageVariant}{default}
 \newboolean{kulakbeamerKulakSelected}
 \setboolean{kulakbeamerKulakSelected}{false}
 \newcommand{\KulakApplyTitlepage}{%
   \ifthenelse{\equal{\KulakTitlepageVariant}{sedes}}{
-    \renewcommand{\Titlepage}{\includegraphics[width=\paperwidth,height=\paperheight]{\KulakTitlepageSedesBlueFile}}
-  }{%
-    \ifthenelse{\equal{\KulakTitlepageVariant}{sedesWhite}}{
-      \renewcommand{\Titlepage}{\includegraphics[width=\paperwidth,height=\paperheight]{\KulakTitlepageSedesWhiteFile}}
-    }{
-      \renewcommand{\Titlepage}{\includegraphics[width=\paperwidth,height=\paperheight]{\KulakTitlepageDefaultFile}}
-    }%
+    \renewcommand{\Titlepage}{\includegraphics[width=\paperwidth,height=\paperheight]{\KulakTitlepageSedesFile}}
+  }{
+    \renewcommand{\Titlepage}{\includegraphics[width=\paperwidth,height=\paperheight]{\KulakTitlepageDefaultFile}}
   }%
 }
 
@@ -81,10 +76,6 @@
   }
 \DeclareOptionBeamer{sedes}{
   \renewcommand{\KulakTitlepageVariant}{sedes}
-  \ifthenelse{\boolean{kulakbeamerKulakSelected}}{\KulakApplyTitlepage}{}
-}
-\DeclareOptionBeamer{sedesWhite}{
-  \renewcommand{\KulakTitlepageVariant}{sedesWhite}
   \ifthenelse{\boolean{kulakbeamerKulakSelected}}{\KulakApplyTitlepage}{}
 }
 \DeclareOptionBeamer{kuleuven-brugge}{
