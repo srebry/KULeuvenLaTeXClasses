@@ -1,18 +1,28 @@
-% Corporate article-template for KU Leuven en Kulak
-% Stijn Rebry - 2012-2026
-% Brent De Blaere - mei 2023 - huisstijl campus Brugge
-% Eef Temmerman - 2020 - aanpassing aan breedbeeld
-% Andries Vansweevelt - 2018 - nieuwe huisstijl KU Leuven
-% Tips en hints voor een beter resultaat altijd welkom
-% Deze template is gebaseerd op de lay-out van de beamer style beamerthemekuleuven2. Deze is te downloaden op https://www.kuleuven.be/communicatie/marketing/templates/presentatiemateriaal/index.html
+% Corporate article-template for KU Leuven en Kulak.
+%
+%   * Stijn Rebry - 2012-2026
+%   * Vincent Van Schependom - 2026 - sedes backgrounds
+%   * Brent De Blaere - mei 2023 - huisstijl campus Brugge
+%   * Eef Temmerman - 2020 - aanpassing aan breedbeeld
+%   * Andries Vansweevelt - 2018 - nieuwe huisstijl KU Leuven
+% 
+% Tips en hints voor een beter resultaat altijd welkom via Stijn.
+%
+% Deze template is gebaseerd op de lay-out van de beamer style beamerthemekuleuven2. 
+% Deze is te downloaden op https://www.kuleuven.be/communicatie/marketing/templates/presentatiemateriaal/index.html
 % Niet alle opties van de beamerstyle worden in deze classfile geïmplementeerd.
+
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{kulakbeamer}[2023/07/05 Beamer class for KU Leuven]
 \DeclareOption*{\PassOptionsToClass{\CurrentOption, aspectratio=169, t}{beamer}}
 \ProcessOptions\relax
 \LoadClass{beamer}
 
-%Fonts en encoding
+
+%%
+%% Fonts and packages
+%%
+
 %\RequirePackage[T1]{fontenc}
 \RequirePackage{lmodern}
 \RequirePackage{tikz}		
@@ -24,7 +34,37 @@
 \usetikzlibrary{fit}
 \usetikzlibrary{shadows}
 
-% Opties instellen
+
+%%
+%% Kulak titlepage variants (default, sedes, sedesWhite)
+%%
+
+% File names
+\newcommand{\KulakTitlepageDefaultFile}{kulakTitlepage}
+\newcommand{\KulakTitlepageSedesBlueFile}{kulakTitlepageSedesBlauw}
+\newcommand{\KulakTitlepageSedesWhiteFile}{kulakTitlepageSedesWit}
+
+% Titlepage variants
+\newcommand{\KulakTitlepageVariant}{default}
+\newboolean{kulakbeamerKulakSelected}
+\setboolean{kulakbeamerKulakSelected}{false}
+\newcommand{\KulakApplyTitlepage}{%
+  \ifthenelse{\equal{\KulakTitlepageVariant}{sedes}}{
+    \renewcommand{\Titlepage}{\includegraphics[width=\paperwidth,height=\paperheight]{\KulakTitlepageSedesBlueFile}}
+  }{%
+    \ifthenelse{\equal{\KulakTitlepageVariant}{sedesWhite}}{
+      \renewcommand{\Titlepage}{\includegraphics[width=\paperwidth,height=\paperheight]{\KulakTitlepageSedesWhiteFile}}
+    }{
+      \renewcommand{\Titlepage}{\includegraphics[width=\paperwidth,height=\paperheight]{\KulakTitlepageDefaultFile}}
+    }%
+  }%
+}
+
+
+%%
+%% Opties instellen
+%%
+
 \DeclareOptionBeamer{kul}{
   \renewcommand{\Background}{\includegraphics[width=\paperwidth,height=\paperheight]{kuleuvenBackground}}
   \renewcommand{\Outline}{\includegraphics[width=\paperwidth,height=\paperheight]{kuleuvenOutline}}
@@ -32,11 +72,21 @@
   \renewcommand{\Logo}{\includegraphics[height=.8cm]{kuleuvenLogo}}
   }
 \DeclareOptionBeamer{kulak}{
+  \setboolean{kulakbeamerKulakSelected}{true}
   \providecommand{\Background}{\includegraphics[width=\paperwidth,height=\paperheight]{kulakBackground}}
   \providecommand{\Outline}{\includegraphics[width=\paperwidth,height=\paperheight]{kulakOutline}}
   \providecommand{\Titlepage}{\includegraphics[width=\paperwidth,height=\paperheight]{kulakTitlepage}}
+  \KulakApplyTitlepage
   \providecommand{\Logo}{\includegraphics[height=.8cm]{kulakLogo}}
   }
+\DeclareOptionBeamer{sedes}{
+  \renewcommand{\KulakTitlepageVariant}{sedes}
+  \ifthenelse{\boolean{kulakbeamerKulakSelected}}{\KulakApplyTitlepage}{}
+}
+\DeclareOptionBeamer{sedesWhite}{
+  \renewcommand{\KulakTitlepageVariant}{sedesWhite}
+  \ifthenelse{\boolean{kulakbeamerKulakSelected}}{\KulakApplyTitlepage}{}
+}
 \DeclareOptionBeamer{kuleuven-brugge}{
   \renewcommand{\Background}{\includegraphics[width=\paperwidth,height=\paperheight]{kuleuvenBruggeBackground}}
   \renewcommand{\Outline}{\includegraphics[width=\paperwidth,height=\paperheight]{kuleuvenBruggeOutline}}
@@ -72,19 +122,19 @@
 
 % Text colours
 \hypersetup{colorlinks,linkcolor=KULzwart,urlcolor=KULzwart} %link colors
-\urlstyle{sf}					%url addreses are sans-serif font (not typewritter)
-\setbeamercolor{title}			      {fg=KULwit}
-\setbeamercolor{title page}		      {fg=KULwit}
-\setbeamercolor{normal text}	      {fg=KULzwart}
+\urlstyle{sf}					                                        %url addreses are sans-serif font (not typewritter)
+\setbeamercolor{title}			          {fg=KULwit}
+\setbeamercolor{title page}		        {fg=KULwit}
+\setbeamercolor{normal text}	        {fg=KULzwart}
 \setbeamercolor{structure}	          {fg=KULblauw}
 \setbeamercolor{frametitle}	          {fg=KULcorporate}
 \setbeamercolor{section in toc}       {fg=KULcorporate}
 \setbeamercolor{section in toc shaded}{fg=KULgroen}
-\setbeamercolor{item}			      {fg=KULpetrol}
-\setbeamercolor{subitem}		      {fg=KULpetrol}
-\setbeamercolor{subsubitem}		      {fg=KULpetrol}
-\setbeamercolor{text}			      {fg=KULwhite,bg=KULblauw}
-\setbeamercolor{caption name}	      {fg=KULzwart}
+\setbeamercolor{item}			            {fg=KULpetrol}
+\setbeamercolor{subitem}		          {fg=KULpetrol}
+\setbeamercolor{subsubitem}		        {fg=KULpetrol}
+\setbeamercolor{text}			            {fg=KULwhite,bg=KULblauw}
+\setbeamercolor{caption name}	        {fg=KULzwart}
 \setbeamercolor{abstract title}	      {fg=KULrood}
 
 % Blocks, theorem-like environments and colorboxes
@@ -142,6 +192,7 @@
 %%		
 %%  OUTER THEME
 %%
+
 \usebackgroundtemplate{\Background}
 \newenvironment{titleframe}
 {\bgroup\usebackgroundtemplate{\Titlepage}\begin{frame}[plain]}
@@ -171,7 +222,7 @@
 	 \node (authorT) at (author.north west) {};
      \node[above of=authorT, anchor=south west, align=left, text width=.9\paperwidth] (subtitle) {\textbf{\Large\insertsubtitle}};
      \node (subtitleT) at (subtitle.north west) {};
-     \node[above of=subtitleT, anchor=south west, align=left, text width=.9\paperwidth] (title) {\textbf{\LARGE\inserttitle}};
+    \node[above of=subtitleT, anchor=south west, align=left, text width=.9\paperwidth] (title) {\LARGE\sffamily\inserttitle};
      \node[below of=lijnB, anchor=north west, align=left, text width=.9\paperwidth] (institute) {\large \textcolor{KULwit}{\insertinstitute}};
   	 \node (instituteB) at (institute.south west) {};
      \node[below of=instituteB,anchor=north west, align=left, text width=.9\paperwidth] (date) {\textcolor{KULwit}{\insertdate}};
