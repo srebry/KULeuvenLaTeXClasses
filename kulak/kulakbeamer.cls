@@ -48,7 +48,7 @@
 \newboolean{kulakbeamerKulakSelected}
 \setboolean{kulakbeamerKulakSelected}{false}
 % Small-caps fallback used only inside the title node.
-\newcommand{\kulakTitleTextsc}[1]{{\rmfamily\scshape #1}}
+\newcommand{\kulakTitleTextsc}[1]{{\rmfamily\mdseries\scshape #1}}
 \newcommand{\KulakApplyTitlepage}{%
   \ifthenelse{\equal{\KulakTitlepageVariant}{sedes}}{
     \renewcommand{\Titlepage}{\includegraphics[width=\paperwidth,height=\paperheight]{\KulakTitlepageSedesFile}}
