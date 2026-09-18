@@ -75,13 +75,13 @@
 \setbeamercolor{title}			      {fg=KULwit}
 \setbeamercolor{title page}		      {fg=KULwit}
 \setbeamercolor{normal text}	      {fg=KULzwart}
-\setbeamercolor{structure}	          {fg=KULblauw}
+\setbeamercolor{structure}	          {fg=KULcorporate}
 \setbeamercolor{frametitle}	          {fg=KULcorporate}
 \setbeamercolor{section in toc}       {fg=KULcorporate}
 \setbeamercolor{section in toc shaded}{fg=KULgroen}
-\setbeamercolor{item}			      {fg=KULpetrol}
-\setbeamercolor{subitem}		      {fg=KULpetrol}
-\setbeamercolor{subsubitem}		      {fg=KULpetrol}
+\setbeamercolor{item}			      {fg=KULblauw}
+\setbeamercolor{subitem}		      {fg=KULblauw}
+\setbeamercolor{subsubitem}		      {fg=KULblauw}
 \setbeamercolor{text}			      {fg=KULwhite,bg=KULblauw}
 \setbeamercolor{caption name}	      {fg=KULzwart}
 \setbeamercolor{abstract title}	      {fg=KULrood}
