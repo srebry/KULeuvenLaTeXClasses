@@ -113,13 +113,13 @@ Er is geen documentklasse ter vervanging van \texttt{book}. Voor het schrijven v
 De volgende secties legt uit hoe deze kunnen worden geïnstalleerd en gebruikt.
 
 \subsection{Huisstijl installeren}
-Volg de instructies in één van volgende secties
-\begin{description}
-	\item[\ref{sssec:dl}] \textbf{Downloaden en configureren} voor wie GitHub niet kent, je zal nieuwe versies van de huisstijl telkens manueel moeten installeren.
-	\item[\ref{sssec:gh}] \textbf{Repository clonen en symlinks maken} voor de ervaren Github gebruiker, je werkt steeds met de recentste versie van de huisstijl.
-	\item[\ref{sssec:linux} -- \ref{sssec:macos}] \textbf{Linux en macOS gebruikers} volgen dezelfde principes, al zijn de bestandslocaties verschillend. Deze worden verderop gespecificeerd.
-\end{description}
-
+Volg de instructies in één van volgende secties om de class-files te installeren.
+\begin{itemize}
+	\item \textbf{Downloaden en configureren} (\ref{sssec:dl}) voor wie GitHub niet kent, je zal nieuwe versies van de huisstijl telkens manueel moeten installeren.
+	\item \textbf{Repository clonen en symlinks maken} (\ref{sssec:gh}) voor de ervaren Github gebruiker, je werkt steeds met de recentste versie van de huisstijl.
+	\item \textbf{Linux en macOS gebruikers} (\ref{sssec:linux} en \ref{sssec:macos}) volgen dezelfde principes, al zijn de bestandslocaties verschillend. Deze worden verderop gespecificeerd.
+\end{itemize}
+Na installatie van de class-files, kan je \texttt{VSCode} configureren om de templates te gebruiken (\ref{sssec:templates}).
 
 \subsubsection{Downloaden en configureren}
 \label{sssec:dl}
@@ -138,14 +138,6 @@ Deze methode is aangewezen voor wie Github niet kent, je zal nieuwe versies van 
 	\item Verplaats de map kulak naar \verb+C:\texlive\texmf-local\tex\LaTeX\local\kulak+
 	\item Start het Windows-programma ``TeX Live Shell'' en klik op ``Actions'' en ``Regenerate filename database''
 \end{enumerate}
-\paragraph{Templates configureren.}
-\begin{enumerate}
-	\item Pas de \texttt{.tex}-bestanden in de map \texttt{Templates} aan (naam, jaartal, studierichting, ...).
-	\item Verplaats de bestanden uit de map \texttt{Templates} naar volgende map (TeXstudio herkent de templates niet als ze in een subdirectory van deze locatie zitten).
-	      \begin{verbatim} C:\Users\<username>\AppData\Roaming\texstudio\templates\user
-\end{verbatim}
-	\item TeXstudio herstarten en klikken op ``File'', ``New From Template...''
-\end{enumerate}
 
 \subsubsection{Repository clonen en symlinks maken}
 \label{sssec:gh}
@@ -157,7 +149,7 @@ Deze methode is aangewezen voor ervaren GitHub gebruikers en hoef je niet te doe
 	\item Cloon de repository \href{https://github.com/srebry/KULeuvenLaTeXClasses}{KULeuvenLaTeXClasses} naar het eigen bestandssyteem
 \end{enumerate}
 
-\paragraph{Class files configureren.}
+\paragraph{Class files configureren in Windows.}
 \begin{enumerate}[resume]
 	\item Zoek de locatie van de map kulak, bijvoorbeeld \begin{verbatim}
 C:\Users\<username>\Documents\KULeuvenLaTeXClasses\kulak
@@ -172,7 +164,30 @@ mklink /D C:\texlive\texmf-local\tex\LaTeX\local\kulak
 	\item Start het Windows-programma ``TeX Live Shell'' en klik op ``Actions'' en ``Regenerate filename database''. Deze laatste stap is opnieuw nodig als er na een pull van een nieuwe versie extra bestanden zouden zijn geïnstalleerd.
 \end{enumerate}
 
-\paragraph{Templates configureren in VSCode.}
+\subsubsection{Class files configureren in Linux.}
+\label{sssec:linux}
+
+De werkwijze op Linux is analoog als die op Windows, met volgende verschillen.
+
+\begin{itemize}
+	\item Map \texttt{kulak} verplaatsen naar \verb+~/texmf/tex/LaTeX/+
+	\item Een symbolische link maken met het commando \texttt{ln -s }
+	\item Commando \verb+texhash ~/texmf+ in terminal uitvoeren om de TeX Live databases te regenereren
+\end{itemize}
+
+\subsubsection{Class files configureren in MacOS.}
+\label{sssec:macos}
+
+De werkwijze op macOS is analoog als die op Windows, met volgende verschillen.
+\begin{itemize}
+	\item Map \texttt{kulak} verplaatsen naar \verb+~/Library/texmf/tex/LaTeX/+
+	\item Of een symbolische link maken naar de geclonede repository met onderstaand commando
+	      \begin{verbatim} ln -s <pad_naar_repo>/KULeuvenLaTeXClasses/kulak ~/Library/texmf/tex/latex/kulak\end{verbatim}
+\end{itemize}
+
+
+\subsubsection{Templates configureren in VSCode.}
+\label{sssec:templates}
 \begin{enumerate}
 	\item De meegeleverde Kulak-templates zijn te vinden in de map \texttt{Templates} van het pakket \texttt{KULeuvenLaTeXClasses}. Noteer de locatie van deze map, bijvoorbeeld
 	\begin{verbatim}C:\Projecten\KULeuvenLaTeXClasses\Templates

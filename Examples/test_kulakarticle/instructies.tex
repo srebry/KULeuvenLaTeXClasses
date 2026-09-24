@@ -162,7 +162,7 @@ Deze methode is aangewezen voor ervaren GitHub gebruikers en hoef je niet te doe
 	\item Cloon de repository \href{https://github.com/srebry/KULeuvenLaTeXClasses}{KULeuvenLaTeXClasses} naar het eigen bestandssyteem
 \end{enumerate}
 
-\paragraph{Class files configureren.}
+\paragraph{Class files configureren in Windows.}
 \begin{enumerate}[resume]
 	\item Zoek de locatie van de map kulak, bijvoorbeeld \begin{verbatim}
 C:\Users\<username>\Documents\KULeuvenLaTeXClasses\kulak
@@ -177,7 +177,7 @@ mklink /D C:\texlive\texmf-local\tex\LaTeX\local\kulak
 	\item Start het Windows-programma ``TeX Live Shell'' en klik op ``Actions'' en ``Regenerate filename database''. Deze laatste stap is opnieuw nodig als er na een pull van een nieuwe versie extra bestanden zouden zijn geïnstalleerd.
 \end{enumerate}
 
-\paragraph{Templates configureren.}
+\paragraph{Templates configureren in TeXstudio.}
 \begin{enumerate}
 	\item Pas de \texttt{.tex}-bestanden in de map \texttt{Templates} aan (naam, jaartal, studierichting, ...)
 	\item Verplaats de bestanden uit de map \texttt{Templates} naar volgende map (TeXstudio herkent de templates niet als ze in een subdirectory van deze locatie zitten).
@@ -185,7 +185,7 @@ mklink /D C:\texlive\texmf-local\tex\LaTeX\local\kulak
 	\item TeXstudio herstarten en klikken op ``File'', ``New From Template...''
 \end{enumerate}
 
-\subsubsection{Werkwijze Linux}
+\subsubsection{Class files en templates in Linux.}
 \label{sssec:linux}
 
 De werkwijze op Linux is analoog als die op Windows, met volgende verschillen.
@@ -197,7 +197,7 @@ De werkwijze op Linux is analoog als die op Windows, met volgende verschillen.
 	\item Inhoud van de map \texttt{Templates} verplaatsen naar \verb+~/.config/texstudio/templates/user+
 \end{itemize}
 
-\subsubsection{Werkwijze macOS}
+\subsubsection{Class files en templates in MacOS.}
 \label{sssec:macos}
 
 De werkwijze op macOS is analoog als die op Windows, met volgende verschillen.
