@@ -266,16 +266,16 @@ Een berekening loopt vaak over verschillende lijnen. In dat geval is de omgeving
 
 \section{Getallen in \LaTeX}
 
-Het zetten van getallen vereist welbepaalde typografische vereisten om de leesbaarheid te maximaliseren. Verschillende manieren om getallen te zetten worden vergeleken in Tabel \ref{tab:getallen}. In principe is het niet nodig om natuurlijke getallen in wiskundemodus te zetten,  de invoer \code{1} en \wis{1} produceren hetzelfde correcte resultaat 1. Voor grote getallen als 1000000000 is het echter gebruikelijk om witruimtes te laten teneinde de leesbaarheid te verhogen, dit manueel doen is nogal bewerkelijk en foutgevoelig. Het teken \code{-} heeft verschillende betekenissen: in tekstmodus is het een koppelteken, invoer \code{-1} heeft foutieve uitvoer -1, in wiskundemodus ziet het er anders uit en is het een minteken, de uitvoer van \wis{-1} is het correcte \(-1\). Het decimaalteken veroorzaakt dan weer een probleem in wiskunde-modus. In principe is het effect 1,1 van de invoer \code{1,1} in tekstmodus correct, maar bij dezelfde code \wis{1,1} in wiskundemodus blijkt de spatiëring na de komma fout: \(1,1\). Dit komt in eerste plaats omdat \LaTeX\ niet een komma maar een punt als decimaalteken gebruikt.
+Het zetten van getallen vereist welbepaalde typografische vereisten om de leesbaarheid te maximaliseren. Verschillende manieren om getallen te zetten worden vergeleken in Tabel \ref{tab:getalnotaties}. In principe is het niet nodig om natuurlijke getallen in wiskundemodus te zetten,  de invoer \code{1} en \wis{1} produceren hetzelfde correcte resultaat 1. Voor grote getallen als 1000000000 is het echter gebruikelijk om witruimtes te laten teneinde de leesbaarheid te verhogen, dit manueel doen is nogal bewerkelijk en foutgevoelig. Het teken \code{-} heeft verschillende betekenissen: in tekstmodus is het een koppelteken, invoer \code{-1} heeft foutieve uitvoer -1, in wiskundemodus ziet het er anders uit en is het een minteken, de uitvoer van \wis{-1} is het correcte \(-1\). Het decimaalteken veroorzaakt dan weer een probleem in wiskunde-modus. In principe is het effect 1,1 van de invoer \code{1,1} in tekstmodus correct, maar bij dezelfde code \wis{1,1} in wiskundemodus blijkt de spatiëring na de komma fout: \(1,1\). Dit komt in eerste plaats omdat \LaTeX\ niet een komma maar een punt als decimaalteken gebruikt.
 
 Voor al deze problemen is er één oplossing, namelijk het commando \cmd{num}\opt\ uit het pakket \pakket{siunitx}. Zowel grote \num{1000000000} als negatieve \num{-1} en decimale getallen \num{-1,1} worden automatisch in de correcte lay-out gezet. Voor positieve getallen kleiner dan duizend in tekstmodus en kleine gehele getallen in wiskunde-modus is het commando overkill. Het commando \cmd{num}\opt werkt zowel in tekst- als wiskundemodus en zet voor de uniformiteit ongeacht de invoer overal in het document hetzelfde decimaalteken. In de preambule kan dat desgewenst worden ingesteld als komma: \cmd{sisetup}\opt[decimalsymbol = comma].
 
-Wat in wetenschappelijke teksten vaak voorkomt, zijn tabellen met getallen zoals in Tabel \ref{tab:getallen}. Die worden voor de leesbaarheid zo veel mogelijk op het decimaalteken gealigneerd. Het pakket \pakket{siunitx} voorziet hiertoe de extra kolomdefinitie \code{S}. Deze kolom behandelt alle invoer automatisch net als het \cmd{num}\opt-commando.
+Wat in wetenschappelijke teksten vaak voorkomt, zijn tabellen met getallen zoals in Tabel \ref{tab:decimalen}. Die worden voor de leesbaarheid zo veel mogelijk op het decimaalteken gealigneerd. Het pakket \pakket{siunitx} voorziet hiertoe de extra kolomdefinitie \code{S}. Deze kolom behandelt alle invoer automatisch net als het \cmd{num}\opt-commando.
 
 \begin{table}
     \centering
     \caption{Verschillende (foute) manieren om getallen te zetten, de correcte manier gebruikt het commando \cmd{num}\opt\ uit het \texttt{siunitx}-pakket.}
-    \label{tab:getallen}
+    \label{tab:getalnotaties}
 \begin{tabular}{l|l||l|l||l|l}
 	  \multicolumn{2}{c||}{Tekstmodus}   & \multicolumn{2}{c||}{Wiskundemodus} &  \multicolumn{2}{c}{\texttt{siunitx}}   \\ \hline
 	\texttt{1}       & 1                 & \wis{1}       & $1$                 & \cmd{num}\opt[1]       & \num{1       } \\
@@ -289,7 +289,7 @@ Wat in wetenschappelijke teksten vaak voorkomt, zijn tabellen met getallen zoals
 \begin{table}
     \centering
     \caption{Gealigneerde getallen in een kolom van type \texttt{S}}
-    \label{tab:getallen}
+    \label{tab:decimalen}
     \begin{tabular}{|S|}
     	\hline
     	\text{Dit is tekst} \\
