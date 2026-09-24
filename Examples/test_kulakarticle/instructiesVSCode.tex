@@ -185,11 +185,10 @@ De werkwijze op macOS is analoog als die op Windows, met volgende verschillen.
 	      \begin{verbatim} ln -s <pad_naar_repo>/KULeuvenLaTeXClasses/kulak ~/Library/texmf/tex/latex/kulak\end{verbatim}
 \end{itemize}
 
-
 \subsubsection{Templates configureren in VSCode.}
 \label{sssec:templates}
 \begin{enumerate}
-	\item De meegeleverde Kulak-templates zijn te vinden in de map \texttt{Templates} van het pakket \texttt{KULeuvenLaTeXClasses}. Noteer de locatie van deze map, bijvoorbeeld
+	\item De repository \texttt{KULeuvenLaTeXClasses} bevat een map met Kulak-templates. Noteer de locatie van deze map op je lokale systeem, bijvoorbeeld
 	\begin{verbatim}C:\Projecten\KULeuvenLaTeXClasses\Templates
 	\end{verbatim}
 	\item Installeer de extensie \texttt{Template Generator} in VSCode (\texttt{ctrl+shift+X}). Klik na installatie op \texttt{Manage} (tandwiel), \texttt{Settings} en plak de locatie van de template-map in het veld \texttt{Templates: Path}.
@@ -297,7 +296,7 @@ Er zijn twee extra omgevingen die een andere frame-layout voorzien: \textbf{\tex
 	\end{outlineframe}
 \end{verbatim}
 
-\section{Gebruik van VSCode en \LaTeX}
+\section{Gebruik van de VS Code-extensie LaTeX Workshop}
 \label{sec:vscode}
 
 %\subsection{\LaTeX\ in VSCode}
@@ -309,7 +308,6 @@ Een bestand met de extensie \texttt{.tex} activeert automatisch de \texttt{LaTeX
 	\item Forward search: spring van code naar de overeenkomstige plek in de \texttt{.pdf} (\texttt{ctrl+alt+J}).
 	\item Inverse search: spring van de \texttt{.pdf} naar de overeenkomstige plek in de \texttt{.tex}-code (\texttt{ctrl+click}).
 	\item Het \texttt{Problems panel}  inventariseert alle \LaTeX- en spellingsfouten in het document (klik links onderaan op het waar/schuwingsicoontje of \texttt{ctrl+shift+M}). Klikken op een probleem springt naar de de regel in de bron waar het probleem is vastgesteld (zoals steeds in \LaTeX\ niet noodzakelijk de plek waar het probleem kan worden opgelost).
-	\item Een hele resem extra commando's in de quick access balk (\texttt{ctrl+shift+P}, typ ``LaTeX'').
 \end{itemize}
 
 Nog wat handige trucjes:
