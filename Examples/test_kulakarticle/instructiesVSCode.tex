@@ -297,141 +297,160 @@ Er zijn twee extra omgevingen die een andere frame-layout voorzien: \textbf{\tex
 	\end{outlineframe}
 \end{verbatim}
 
-\section{Verdere configuratie van VSCode}
+\section{Gebruik van VSCode en \LaTeX}
 \label{sec:vscode}
 
-\subsection{Extra recept in VSCode: slides en handouts}
-Met een extra recept van de extensie \texttt{LaTeX Workshop} kan één build zowel de gewone presentatie als de handouts genereren. Open de werkruimte-instellingen via ``Preferences'', ``Settings'', klik rechtsboven op ``Open Settings (JSON)'' en voeg volgende instellingen toe. Bestaan de velden al, voeg dan enkel de nieuwe tools en recipe toe aan de bestaande lijsten.
-\begin{verbatim}
-{
-	"latex-workshop.latex.tools": [
-		{
-			"name": "pdflatex-slides",
-			"command": "pdflatex",
-			"args": [
-				"-synctex=1",
-				"-interaction=nonstopmode",
-				"-file-line-error",
-				"%DOC%.tex"
-			]
-		},
-		{
-			"name": "pdflatex-handout",
-			"command": "pdflatex",
-			"args": [
-				"-jobname=%DOC%-handout",
-				"-interaction=nonstopmode",
-				"-file-line-error",
-				"\\PassOptionsToClass{handout}{beamer}\\input{%DOC%}"
-			]
-		}
-	],
-	"latex-workshop.latex.recipes": [
-		{
-			"name": "Slides + handout",
-			"tools": [
-				"pdflatex-slides",
-				"pdflatex-handout"
-			]
-		}
-	]
-}
-\end{verbatim}
-De eerste tool maakt de gewone presentatie \texttt{file.pdf}; de tweede geeft de optie \texttt{handout} mee zonder het bronbestand aan te passen en maakt \texttt{file-handout.pdf}. Selecteer daarna in de \TeX-zijbalk de recipe ``Slides + handout'' of gebruik het commando ``LaTeX Workshop: Build with recipe'' uit de Command Palette (\texttt{ctrl+shift+P}).
-
-\subsection{User commands: Handouts bij een beamer-presentatie}
-De gebruiker kan naargelang de eigen nood veelgebruikte output-routines automatiseren en toekennen aan een sneltoets. Als eerste voorbeeld het genereren van de handout-versie van een beamer-presentatie:
-\paragraph{Gebruikelijke workflow.}
+%\subsection{\LaTeX\ in VSCode}
+Een bestand met de extensie \texttt{.tex} activeert automatisch de \texttt{LaTeX Workshop}-extensie van \texttt{VSCode}. Dit zijn de belangrijkste functies van deze extensie:
 \begin{itemize}
-	\item \verb+\documentclass{beamer}+ + quickbuild: genereert \texttt{file.pdf} met de on screen-presentatie
-	\item \verb+\documentclass[handout]{beamer}+ + quickbuild: overschrijft \texttt{file.pdf} met de handout-versie
-\end{itemize}
-In het bronbestand \texttt{file.tex} moet dus telkens de optie \texttt{[handout]} worden toegevoegd of verwijderd, en het doelbestand \texttt{file.pdf} van naam veranderd om beide versies te behouden.
-\paragraph{Automatiseren van de workflow.}
-
-Het volgende commando geeft de optie \texttt{[handout]} mee zonder het bronbestand aan te passen en schrijft de uitvoer van de pdflatex-routine weg naar een alternatief bestand.
-\begin{verbatim}
-pdf\LaTeX\ -jobname "?m)Handout" "\PassOptionsToClass{handout}{beamer}\input{%}"
-\end{verbatim}
-
-\begin{itemize}
-	\item \verb+-jobname+ stelt een alternatieve naam voor de uitvoer in
-	      \texttt{-jobname}
-	\item \verb+"?m)Handout"+ selecteert de bestandsnaam zonder extensie en voegt het suffix Handout toe
-	\item \verb+%+ is binnen TeXstudio de naam van het \texttt{.tex}-bestand (zonder extensie, tussen aanhalingstekens)
-	\item Het laatste argument is eigenlijk de volledige \LaTeX-code waarop het commando pdflatex wordt losgelaten, en die code bestaat uit twee commando's
-	      \begin{itemize}
-		      \item \verb+\PassOptionsToClass{handout}{beamer}+, commando dat de extra optie toevoegt om handouts te maken aan het daaropvolgende \verb+\documentclass+-commando
-		      \item \verb+\input{%}+ voegt het volledige bestand aan het voorgaande commando toe
-	      \end{itemize}
+	\item \texttt{TeX}-knop in de zijbalk (\texttt{ctrl+alt+X}) toont de titelstructuur van het document en een hele resem commando's, zoals builden, bekijken, hulpfiles opschonen, \ldots
+	\item \texttt{Build LaTeX-project} (groene pijltje in de knoppenbalk, \texttt{ctrl+alt+B}) genereert het uitvoerbestand (\texttt{.pdf}).
+	\item \texttt{View LaTeX PDF File} (knoppenbalk, \texttt{ctrl+alt+V}) opent de ingebouwde PDF-viewer.
+	\item Forward search: spring van code naar de overeenkomstige plek in de \texttt{.pdf} (\texttt{ctrl+alt+J}).
+	\item Inverse search: spring van de \texttt{.pdf} naar de overeenkomstige plek in de \texttt{.tex}-code (\texttt{ctrl+click}).
+	\item Het \texttt{Problems panel}  inventariseert alle \LaTeX- en spellingsfouten in het document (klik links onderaan op het waar/schuwingsicoontje of \texttt{ctrl+shift+M}). Klikken op een probleem springt naar de de regel in de bron waar het probleem is vastgesteld (zoals steeds in \LaTeX\ niet noodzakelijk de plek waar het probleem kan worden opgelost).
+	\item Een hele resem extra commando's in de quick access balk (\texttt{ctrl+shift+P}, typ ``LaTeX'').
 \end{itemize}
 
-\paragraph{Eenmalige configuratie.}
-
+Nog wat handige trucjes:
 \begin{itemize}
-	\item Klik op ``Options'', ``Configure TeXstudio'', ``Build''
-	\item Typ in een vrije invoerlijn onder ``User Commands'' de naam ``Handout'' in het linkervak en rechts daarvan bovenstaand commando
-	\item Klik op ``Shortcuts'', ``Tools'', ``User'' en selecteer een sneltoets (bijvoorbeeld ``ctrl+F5'') voor het uitvoeren van de net geschreven output-routine
+	\item Toggle comment (\texttt{ctrl+/}) zet de geselecteerde tekst om in een commentaar of haalt het commentaar weg.
+	\item Toggle word wrap (\texttt{alt+Z}) laat tekstregels automatisch afbreken aan de rand van het editorvenster (zoals in een tekstverwerker) of zet de tekst in de editor op één lijn (zoals gebruikelijk bij programmacode).
+	\item Multi cursor (\texttt{alt+(shift+)click}) zet de cursus op meerdere plaatsen tegelijk, zodat je meerdere lijnen tegelijk kan aanpassen (bijvoorbeeld nuttig bij het maken van tabellen).
+	\item Command palette (\texttt{ctrl+shift+P}) geeft zoals steeds in \texttt{VSCode} toegang tot alle commando's en de extensies. Typ ``\texttt{LaTeX}'' om meteen de relevante commando's te zien.
 \end{itemize}
+% \subsection{Extra recept in VSCode: slides en handouts}
+% Met een extra recept van de extensie \texttt{LaTeX Workshop} kan één build zowel de gewone presentatie als de handouts genereren. Open de werkruimte-instellingen via ``Preferences'', ``Settings'', klik rechtsboven op ``Open Settings (JSON)'' en voeg volgende instellingen toe. Bestaan de velden al, voeg dan enkel de nieuwe tools en recipe toe aan de bestaande lijsten.
+% \begin{verbatim}
+% {
+% 	"latex-workshop.latex.tools": [
+% 		{
+% 			"name": "pdflatex-slides",
+% 			"command": "pdflatex",
+% 			"args": [
+% 				"-synctex=1",
+% 				"-interaction=nonstopmode",
+% 				"-file-line-error",
+% 				"%DOC%.tex"
+% 			]
+% 		},
+% 		{
+% 			"name": "pdflatex-handout",
+% 			"command": "pdflatex",
+% 			"args": [
+% 				"-jobname=%DOC%-handout",
+% 				"-interaction=nonstopmode",
+% 				"-file-line-error",
+% 				"\\PassOptionsToClass{handout}{beamer}\\input{%DOC%}"
+% 			]
+% 		}
+% 	],
+% 	"latex-workshop.latex.recipes": [
+% 		{
+% 			"name": "Slides + handout",
+% 			"tools": [
+% 				"pdflatex-slides",
+% 				"pdflatex-handout"
+% 			]
+% 		}
+% 	]
+% }
+% \end{verbatim}
+% De eerste tool maakt de gewone presentatie \texttt{file.pdf}; de tweede geeft de optie \texttt{handout} mee zonder het bronbestand aan te passen en maakt \texttt{file-handout.pdf}. Selecteer daarna in de \TeX-zijbalk de recipe ``Slides + handout'' of gebruik het commando ``LaTeX Workshop: Build with recipe'' uit de Command Palette (\texttt{ctrl+shift+P}).
 
-\paragraph{Combineren van twee flows.}
+% \subsection{User commands: Handouts bij een beamer-presentatie}
+% De gebruiker kan naargelang de eigen nood veelgebruikte output-routines automatiseren en toekennen aan een sneltoets. Als eerste voorbeeld het genereren van de handout-versie van een beamer-presentatie:
+% \paragraph{Gebruikelijke workflow.}
+% \begin{itemize}
+% 	\item \verb+\documentclass{beamer}+ + quickbuild: genereert \texttt{file.pdf} met de on screen-presentatie
+% 	\item \verb+\documentclass[handout]{beamer}+ + quickbuild: overschrijft \texttt{file.pdf} met de handout-versie
+% \end{itemize}
+% In het bronbestand \texttt{file.tex} moet dus telkens de optie \texttt{[handout]} worden toegevoegd of verwijderd, en het doelbestand \texttt{file.pdf} van naam veranderd om beide versies te behouden.
+% \paragraph{Automatiseren van de workflow.}
 
-Om systematisch zowel slides als handouts te maken, is het nodig telkens tegelijk het gewone pdflatex-proces uit te voeren als het hierboven gedefinieerde ``Handout''-commando.
-\begin{itemize}
-	\item Klik op ``Options'', ``Configure TeXstudio'', ``Build''
-	\item Typ in een vrije invoerlijn onder ``User Commands'' de naam ``Presentation'' in het linkervak en rechts daarvan onderstaand commando
-	      \begin{verbatim}
-	txs:///pdf\LaTeX\ | txs:///Handout
-\end{verbatim}
-	\item Ken eventueel opnieuw een sneltoets toe. Uitvoeren van het user-command ``Presentation'' resulteert dus meteen in 2 \texttt{.pdf}-bestanden: \texttt{file.pdf} met slides en \texttt{fileHandout.pdf} met handouts.
-\end{itemize}
+% Het volgende commando geeft de optie \texttt{[handout]} mee zonder het bronbestand aan te passen en schrijft de uitvoer van de pdflatex-routine weg naar een alternatief bestand.
+% \begin{verbatim}
+% pdf\LaTeX\ -jobname "?m)Handout" "\PassOptionsToClass{handout}{beamer}\input{%}"
+% \end{verbatim}
 
-\subsection{On-the-fly berekeningen met externe programmeertaal}
-Een tweede voorbeeld gebruikt Knitr binnen TeXstudio om R-code te integreren in een \LaTeX-bestand. Integratie van Python-code kan op analoge manier met Pweave.
+% \begin{itemize}
+% 	\item \verb+-jobname+ stelt een alternatieve naam voor de uitvoer in
+% 	      \texttt{-jobname}
+% 	\item \verb+"?m)Handout"+ selecteert de bestandsnaam zonder extensie en voegt het suffix Handout toe
+% 	\item \verb+%+ is binnen TeXstudio de naam van het \texttt{.tex}-bestand (zonder extensie, tussen aanhalingstekens)
+% 	\item Het laatste argument is eigenlijk de volledige \LaTeX-code waarop het commando pdflatex wordt losgelaten, en die code bestaat uit twee commando's
+% 	      \begin{itemize}
+% 		      \item \verb+\PassOptionsToClass{handout}{beamer}+, commando dat de extra optie toevoegt om handouts te maken aan het daaropvolgende \verb+\documentclass+-commando
+% 		      \item \verb+\input{%}+ voegt het volledige bestand aan het voorgaande commando toe
+% 	      \end{itemize}
+% \end{itemize}
 
-Knitr laat toe om R-commando's in een \LaTeX-document te integreren in omgevingen met als syntax \verb+<<>>= ... @+. Het resultaat wordt opgeslagen als een \texttt{.Rnw}-bestand. Hieronder een kort voorbeeld.
-\begin{verbatim}
-\documentclass{article}
-\begin{document}
-  Standaard zijn commando's en output zichtbaar:
-  <<>>= pnorm(-3:3) @
-  Commando's kunnen worden onderdrukt, 
-  dan is er geen code-blok zichtbaar.
-  <<echo=FALSE>>= mu0 = 900; sigma=25; n=12; xbar=860; alpha = .05  @
-  Resultaten blijven bewaard en kunnen gebruikt worden in lopende tekst
-  (de standaarddeviatie is \Sexpr{sigma}) of in een volgend code-blok.
-  <<echo=FALSE>>=
-    z = (xbar-mu0)/sigma*sqrt(n)
-    p = pnorm(z)
-  @
-\end{document}
-\end{verbatim}
+% \paragraph{Eenmalige configuratie.}
 
-Een volgend commando zet dit \texttt{.Rnw}-bestand dan om in een \texttt{.tex}-bestand. De R-commando's worden uitgerekend en de resultaten in het \LaTeX-bestand ingevoegd
+% \begin{itemize}
+% 	\item Klik op ``Options'', ``Configure TeXstudio'', ``Build''
+% 	\item Typ in een vrije invoerlijn onder ``User Commands'' de naam ``Handout'' in het linkervak en rechts daarvan bovenstaand commando
+% 	\item Klik op ``Shortcuts'', ``Tools'', ``User'' en selecteer een sneltoets (bijvoorbeeld ``ctrl+F5'') voor het uitvoeren van de net geschreven output-routine
+% \end{itemize}
 
-\begin{verbatim}
-Rscript.exe -e "knitr::knit2pdf('%.Rnw')"
-\end{verbatim}
+% \paragraph{Combineren van twee flows.}
 
-Het resultaat ziet er uit als volgt en kan daarna dus door pdflatex worden gelezen.
+% Om systematisch zowel slides als handouts te maken, is het nodig telkens tegelijk het gewone pdflatex-proces uit te voeren als het hierboven gedefinieerde ``Handout''-commando.
+% \begin{itemize}
+% 	\item Klik op ``Options'', ``Configure TeXstudio'', ``Build''
+% 	\item Typ in een vrije invoerlijn onder ``User Commands'' de naam ``Presentation'' in het linkervak en rechts daarvan onderstaand commando
+% 	      \begin{verbatim}
+% 	txs:///pdf\LaTeX\ | txs:///Handout
+% \end{verbatim}
+% 	\item Ken eventueel opnieuw een sneltoets toe. Uitvoeren van het user-command ``Presentation'' resulteert dus meteen in 2 \texttt{.pdf}-bestanden: \texttt{file.pdf} met slides en \texttt{fileHandout.pdf} met handouts.
+% \end{itemize}
 
-\begin{verbatim}
-\documentclass{article}
-[...]
-\begin{document}
-  Standaard zijn commando's en output zichtbaar:
-  \begin{knitrout}
-    [...]
-    pnorm(-3:3)
-    [...]
-    ## [1] 0.00135 0.02275 0.15866 0.50000 0.84134 0.97725 0.99865
-  \end{knitrout}
-  Commando's kunnen worden onderdrukt,
-  dan is er geen code-blok zichtbaar.
-  Resultaten blijven bewaard en kunnen gebruikt worden in lopende tekst
-  (de standaarddeviatie is 25) of in een volgend code-blok.
-\end{document}
-\end{verbatim}
+% \subsection{On-the-fly berekeningen met externe programmeertaal}
+% Een tweede voorbeeld gebruikt Knitr binnen TeXstudio om R-code te integreren in een \LaTeX-bestand. Integratie van Python-code kan op analoge manier met Pweave.
+
+% Knitr laat toe om R-commando's in een \LaTeX-document te integreren in omgevingen met als syntax \verb+<<>>= ... @+. Het resultaat wordt opgeslagen als een \texttt{.Rnw}-bestand. Hieronder een kort voorbeeld.
+% \begin{verbatim}
+% \documentclass{article}
+% \begin{document}
+%   Standaard zijn commando's en output zichtbaar:
+%   <<>>= pnorm(-3:3) @
+%   Commando's kunnen worden onderdrukt, 
+%   dan is er geen code-blok zichtbaar.
+%   <<echo=FALSE>>= mu0 = 900; sigma=25; n=12; xbar=860; alpha = .05  @
+%   Resultaten blijven bewaard en kunnen gebruikt worden in lopende tekst
+%   (de standaarddeviatie is \Sexpr{sigma}) of in een volgend code-blok.
+%   <<echo=FALSE>>=
+%     z = (xbar-mu0)/sigma*sqrt(n)
+%     p = pnorm(z)
+%   @
+% \end{document}
+% \end{verbatim}
+
+% Een volgend commando zet dit \texttt{.Rnw}-bestand dan om in een \texttt{.tex}-bestand. De R-commando's worden uitgerekend en de resultaten in het \LaTeX-bestand ingevoegd
+
+% \begin{verbatim}
+% Rscript.exe -e "knitr::knit2pdf('%.Rnw')"
+% \end{verbatim}
+
+% Het resultaat ziet er uit als volgt en kan daarna dus door pdflatex worden gelezen.
+
+% \begin{verbatim}
+% \documentclass{article}
+% [...]
+% \begin{document}
+%   Standaard zijn commando's en output zichtbaar:
+%   \begin{knitrout}
+%     [...]
+%     pnorm(-3:3)
+%     [...]
+%     ## [1] 0.00135 0.02275 0.15866 0.50000 0.84134 0.97725 0.99865
+%   \end{knitrout}
+%   Commando's kunnen worden onderdrukt,
+%   dan is er geen code-blok zichtbaar.
+%   Resultaten blijven bewaard en kunnen gebruikt worden in lopende tekst
+%   (de standaarddeviatie is 25) of in een volgend code-blok.
+% \end{document}
+% \end{verbatim}
 
 \section{Tips \& tricks}
 \label{sec:tips}
